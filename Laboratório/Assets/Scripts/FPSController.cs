@@ -36,6 +36,7 @@ public class FPSController : MonoBehaviour
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
     private float speed;
+    public float life = 30;
 
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -186,4 +187,20 @@ public class FPSController : MonoBehaviour
         Destroy(bullet);
     }
 
+    private void Die(Collision collision)
+    {
+        if (collision.gameObject.tag == "PU")
+        {
+            life += 10;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Morrer")
+        {
+            life -= 10;
+        }
+        if (life <= 0)
+        {
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }
