@@ -332,10 +332,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   range: 100
-  fireRate: 15
+  fireRate: 1.5
   impactForce: 30
   fpsCamera: {fileID: 1591801212}
   impactEffect: {fileID: 1505401773094298419, guid: 8de300f05e9cbae49ae0dab9df60d514, type: 3}
+  isHealingGun: 0
 --- !u!1 &1461021370
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +552,7 @@ GameObject:
   - component: {fileID: 1851203879}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Matar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -718,7 +719,7 @@ GameObject:
   - component: {fileID: 2023082084}
   m_Layer: 0
   m_Name: Inimigo teste
-  m_TagString: Matar
+  m_TagString: Morrer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
