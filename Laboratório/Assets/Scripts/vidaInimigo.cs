@@ -21,6 +21,11 @@ public class Target : MonoBehaviour
 
         Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(lookAtPosition);
+
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    TakeDamage(20f);        
+        //}
     }
 
     public void TakeDamage(float amount)

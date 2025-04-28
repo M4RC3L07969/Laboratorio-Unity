@@ -6,7 +6,7 @@ public class FPSController : MonoBehaviour
 {
 
     public float fireRate;       // Tempo entre os tiros
-    public float nextFireTime = 1f;    // Próximo momento em que pode atirar
+    public float nextFireTime = 1f;    // Prï¿½ximo momento em que pode atirar
 
 
     [SerializeField] private Camera camera;
@@ -36,6 +36,7 @@ public class FPSController : MonoBehaviour
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
     private float speed;
+    public float life = 30;
 
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -109,11 +110,11 @@ public class FPSController : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
 
-                        // Verifica se o jogador pressionou o botão de fogo e se já pode atirar novamente
+                        // Verifica se o jogador pressionou o botï¿½o de fogo e se jï¿½ pode atirar novamente
                         if (Time.time >= nextFireTime)
                         {
                             Fire();
-                            nextFireTime = Time.time + fireRate; // Atualiza o tempo para o próximo tiro
+                            nextFireTime = Time.time + fireRate; // Atualiza o tempo para o prï¿½ximo tiro
                         }
                     }
                     if (Input.GetButtonDown("Jump"))
@@ -137,11 +138,11 @@ public class FPSController : MonoBehaviour
                     //anim.SetBool("isWalking", false);
                     if (Input.GetKeyDown(KeyCode.Mouse0))
                     {
-                        // Verifica se o jogador pressionou o botão de fogo e se já pode atirar novamente
+                        // Verifica se o jogador pressionou o botï¿½o de fogo e se jï¿½ pode atirar novamente
                         if (Time.time >= nextFireTime)
                         {
                             Fire();
-                            nextFireTime = Time.time + fireRate; // Atualiza o tempo para o próximo tiro
+                            nextFireTime = Time.time + fireRate; // Atualiza o tempo para o prï¿½ximo tiro
                         }
                     }
                 }
@@ -186,4 +187,20 @@ public class FPSController : MonoBehaviour
         Destroy(bullet);
     }
 
+    private void Die(Collision collision)
+    {
+        if (collision.gameObject.tag == "PU")
+        {
+            life += 10;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Morrer")
+        {
+            life -= 10;
+        }
+        if (life <= 0)
+        {
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }
