@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -10,21 +9,72 @@ public class Boss : MonoBehaviour
 
     private bool isAttacking = false;
 
+    private enum BossType { Normal, Healing }
+    private BossType currentBossType;
+
+    private Renderer bossRenderer;
+    private Material material1; 
+    private Material material2; 
+
     void Start()
     {
+        
         animator = GetComponent<Animator>();
 
         if (animator == null)
         {
-            Debug.LogError("animator not found.");
+            Debug.LogError("Animator não encontrado.");
         }
 
+       
+        bossRenderer = GetComponent<Renderer>();
+        if (bossRenderer == null)
+        {
+            Debug.LogError("O Boss não tem um Renderer associado.");
+        }
+
+        
+        material1 = bossRenderer.materials[0]; 
+        material2 = bossRenderer.materials[1];
+
+        currentBossType = BossType.Normal;
         StartCoroutine(AttackRoutine());
+        StartCoroutine(ChangeBossTypeRoutine());
     }
 
-    void Update()
+    IEnumerator ChangeBossTypeRoutine()
     {
+        while (healthBoss > 0)
+        {
+            yield return new WaitForSeconds(8f);
 
+            if (currentBossType == BossType.Normal)
+            {
+                currentBossType = BossType.Healing;
+                ChangeBossColor(Color.green);  
+            }
+            else
+            {
+                currentBossType = BossType.Normal;
+                ChangeBossColor(Color.red);  
+            }
+
+            Debug.Log("Boss status: " + currentBossType);
+        }
+    }
+
+    
+    private void ChangeBossColor(Color newColor)
+    {
+        if (material1 != null)
+        {
+            material1.color = newColor;  
+        }
+
+        if (material2 != null)
+        {
+            material2.color = newColor;  
+        }
     }
 
     IEnumerator AttackRoutine()
@@ -46,23 +96,29 @@ public class Boss : MonoBehaviour
             }
             yield return null;
         }
-        
     }
 
-
-    public void heal(float value)
+    public void TakeHit(float damageAmount, bool isHealing)
     {
-        healthBoss += value;
-        
+        if (currentBossType == BossType.Healing && isHealing)
+        {
+            healthBoss += damageAmount;
+            Debug.Log("Vida atual: " + healthBoss);
+        }
+        else if (currentBossType == BossType.Normal && !isHealing)
+        {
+            healthBoss -= damageAmount;
+            Debug.Log("Vida atual: " + healthBoss);
+            Die();
+        }
     }
+
     void OnTriggerEnter(Collider obj)
     {
-        if(obj.GetComponent<Gun>())
+        if (obj.GetComponent<Gun>())
         {
-           Gun bt = obj.GetComponent<Gun>();
-           healthBoss -= bt.damage;
-           Debug.Log("Health: " + healthBoss);
-            Die();
+            Gun bt = obj.GetComponent<Gun>();
+            TakeHit(bt.damage, bt.isHealingGun);
         }
     }
 
@@ -74,4 +130,3 @@ public class Boss : MonoBehaviour
         }
     }
 }
-
