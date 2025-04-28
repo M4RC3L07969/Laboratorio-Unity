@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 using UnityEngine.UI;
+using TMPro;
 
 public class PerguntasQuiz : MonoBehaviour
 {
     public Text titulo;
-    public Text text1;
-    public Text text2;
-    public Text text3;
-    public Text text4;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public Button button4;
 
     private String[] listaDePerguntas = new String[45] {"O que são átomos e moléculas?",
             "Qual a diferença entre substâncias puras e misturas?",
@@ -400,10 +401,10 @@ public class PerguntasQuiz : MonoBehaviour
             respostas[j] = temp;
         }
 
-        // Exibe as respostas embaralhadas nos Texts
-        text1.text = respostas[0];
-        text2.text = respostas[1];
-        text3.text = respostas[2];
-        text4.text = respostas[3];
+        // Exibe as respostas embaralhadas nos Botões
+        button1.GetComponentInChildren<TMP_Text>().text = respostas[0];
+        button2.GetComponentInChildren<TMP_Text>().text = respostas[1];
+        button3.GetComponentInChildren<TMP_Text>().text = respostas[2];
+        button4.GetComponentInChildren<TMP_Text>().text = respostas[3];
     }
 }

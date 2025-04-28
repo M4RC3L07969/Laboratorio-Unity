@@ -188,7 +188,7 @@ public class FPSController : MonoBehaviour
         Destroy(bullet);
     }
 
-    private void Die(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "PU")
         {
