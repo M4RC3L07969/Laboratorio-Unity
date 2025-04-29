@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    public float lifetime = 5f; // Tempo para destruir automaticamente (caso não acerte nada)
+    public float lifeTime = 5f;
+
+    private bool hasCollided = false;
 
     void Start()
     {
-        Destroy(gameObject, lifetime); // Se não bater em nada, some depois de X segundos
+        // Só destrói após X segundos, se não colidir antes
+        Destroy(gameObject, lifeTime);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject); // Quando encostar em qualquer coisa, destrói a bala
+        if (!hasCollided)
+        {
+            hasCollided = true;
+            Destroy(gameObject);
+        }
     }
 }
