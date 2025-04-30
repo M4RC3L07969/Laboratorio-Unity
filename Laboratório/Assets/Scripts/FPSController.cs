@@ -6,9 +6,6 @@ using UnityEngine.SceneManagement;
 public class FPSController : MonoBehaviour
 {
 
-    public float fireRate;       // Tempo entre os tiros
-    public float nextFireTime = 1f;    // Próximo momento em que pode atirar
-
 
     [SerializeField] private Camera camera;
 
@@ -51,13 +48,6 @@ public class FPSController : MonoBehaviour
     public float mouseSensitivity = 1000f;
     float xRotation = 0f;
 
-    [Header("Weapon External")]
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-
-    [Header("Weapon Controller")]
-    public float bulletVelocity = 20f;
-    public float bulletPrefabLife = 3f;
 
     float x;
     float z;
@@ -114,14 +104,7 @@ public class FPSController : MonoBehaviour
         }
 
         //anim.SetBool("isWalking", false);
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-
-            Debug.Log("atirou");
-
-                Fire();
-
-        }
+      
 
 
 
@@ -146,13 +129,7 @@ public class FPSController : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0, rotationX, 0);
     }
 
-    private void Fire()
-    {
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().AddForce(firePoint.forward.normalized * bulletVelocity, ForceMode.Impulse);
-       // StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLife));
-    }
+    
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {

@@ -11,10 +11,7 @@ public class Boss : MonoBehaviour
 
     private enum BossType { Normal, Healing }
     private BossType currentBossType;
-
-    private Renderer bossRenderer;
-    private Material material1; 
-    private Material material2; 
+ 
 
     void Start()
     {
@@ -26,16 +23,6 @@ public class Boss : MonoBehaviour
             Debug.LogError("Animator não encontrado.");
         }
 
-       
-        bossRenderer = GetComponent<Renderer>();
-        if (bossRenderer == null)
-        {
-            Debug.LogError("O Boss não tem um Renderer associado.");
-        }
-
-        
-        material1 = bossRenderer.materials[0]; 
-        material2 = bossRenderer.materials[1];
 
         currentBossType = BossType.Normal;
         StartCoroutine(AttackRoutine());
@@ -51,31 +38,18 @@ public class Boss : MonoBehaviour
             if (currentBossType == BossType.Normal)
             {
                 currentBossType = BossType.Healing;
-                ChangeBossColor(Color.green);  
+               
             }
             else
             {
                 currentBossType = BossType.Normal;
-                ChangeBossColor(Color.red);  
+                
             }
 
             Debug.Log("Boss status: " + currentBossType);
         }
     }
 
-    
-    private void ChangeBossColor(Color newColor)
-    {
-        if (material1 != null)
-        {
-            material1.color = newColor;  
-        }
-
-        if (material2 != null)
-        {
-            material2.color = newColor;  
-        }
-    }
 
     IEnumerator AttackRoutine()
     {

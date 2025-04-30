@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
+    public float fireRate;       // Tempo entre os tiros
+    public float nextFireTime = 1f;    // Próximo momento em que pode atirar
+
     public GameObject weapon;  // A arma que você está usando
     public GameObject bullet1Prefab;  // Bala associada à arma 1
     public GameObject bullet2Prefab;  // Bala associada à arma 2
@@ -21,6 +24,14 @@ public class WeaponSwitcher : MonoBehaviour
     public Texture weapon1Texture;  // Textura da arma 1
     public Texture weapon2Texture;  // Textura da arma 2
 
+    [Header("Weapon External")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    [Header("Weapon Controller")]
+    public float bulletVelocity = 20f;
+    public float bulletPrefabLife = 3f;
+
     void Start()
     {
         // Inicializa a posição e rotação original da arma
@@ -36,6 +47,22 @@ public class WeaponSwitcher : MonoBehaviour
         {
             StartCoroutine(SwitchWeapon());
         }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            Debug.Log("atirou");
+
+            Fire();
+
+        }
+
+    }
+    private void Fire()
+    {
+
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody>().AddForce(firePoint.forward.normalized * bulletVelocity, ForceMode.Impulse);
+        // StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLife));
     }
 
     private System.Collections.IEnumerator SwitchWeapon()
