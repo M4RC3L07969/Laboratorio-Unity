@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float lifeTime = 5f;
+    public float lifeTime = 0;
 
     private bool hasCollided = false;
 
-    void Start()
+    void Update()
     {
-        // Só destrói após X segundos, se não colidir antes
-        Destroy(gameObject, lifeTime);
+
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (!hasCollided)
-        {
-            hasCollided = true;
-            Destroy(gameObject);
-        }
+       Destroy(this.gameObject);
     }
 }
