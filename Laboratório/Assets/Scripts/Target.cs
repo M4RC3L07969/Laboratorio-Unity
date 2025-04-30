@@ -3,7 +3,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health = 30f;
-    public float velocidade = 1.0f;
+    public float velocidade = 2f;
     public Rigidbody inimigoRb;
     public GameObject player;
 
