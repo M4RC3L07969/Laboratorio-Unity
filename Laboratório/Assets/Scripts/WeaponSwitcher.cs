@@ -17,9 +17,6 @@ public class WeaponSwitcher : MonoBehaviour
     private Quaternion originalRotation;
     public Quaternion loweredRotation = Quaternion.Euler(-45f, 4f, 0f); // Rotação ao abaixar
 
-    // Referência ao script de disparo da arma (WeaponShooter)
-    private WeaponShooter weaponShooter;
-
     // Referências para as texturas diretamente no Inspector
     public Texture weapon1Texture;  // Textura da arma 1
     public Texture weapon2Texture;  // Textura da arma 2
@@ -30,14 +27,7 @@ public class WeaponSwitcher : MonoBehaviour
         originalPosition = weapon.transform.localPosition;
         originalRotation = weapon.transform.localRotation;
 
-        // Obtém a referência ao script WeaponShooter
-        weaponShooter = weapon.GetComponent<WeaponShooter>();
 
-        // Se o script de disparo não estiver encontrado, lança um erro
-        if (weaponShooter == null)
-        {
-            Debug.LogError("WeaponShooter não encontrado na arma!");
-        }
     }
 
     void Update()
@@ -65,12 +55,10 @@ public class WeaponSwitcher : MonoBehaviour
         if (!isTextureChanged)
         {
             ChangeWeaponTexture(weapon2Texture); // Troca a textura para a arma 2
-            weaponShooter.UpdateBulletPrefab(bullet2Prefab); // Troca a bala para a arma 2
         }
         else
         {
             ChangeWeaponTexture(weapon1Texture); // Retorna à textura da arma 1
-            weaponShooter.UpdateBulletPrefab(bullet1Prefab); // Troca a bala para a arma 1
         }
 
         isTextureChanged = !isTextureChanged; // Alterna o estado da textura
