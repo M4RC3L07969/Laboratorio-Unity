@@ -29,10 +29,7 @@ public class bossFollow : MonoBehaviour
         Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         transform.LookAt(lookAtPosition);
 
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    TakeDamage(20f);        
-        //}
+
     }
   
 
@@ -49,9 +46,9 @@ public class bossFollow : MonoBehaviour
     void Die()
     {
         isDead = true;
-        inimigoRb.isKinematic = true;  // Para a física e o movimento
-        animator.SetBool("isWalking", false);  // Para a animação de movimento
-        animator.SetBool("isDead", true);  // Ativa a animação de morte
+        inimigoRb.isKinematic = true;  
+        animator.SetBool("isWalking", false);  
+        animator.SetBool("isDead", true);  
         animator.SetBool("isDead", true);
         //Destroy(gameObject);
     }
