@@ -3,9 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
+using UnityEngine.UI;
+using TMPro;
 
 public class PerguntasQuiz : MonoBehaviour
 {
+    public Text titulo;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public Button button4;
+
     private String[] listaDePerguntas = new String[45] {"O que são átomos e moléculas?",
             "Qual a diferença entre substâncias puras e misturas?",
             "O que caracteriza uma mudança física e uma mudança química?",
@@ -377,10 +385,9 @@ public class PerguntasQuiz : MonoBehaviour
     {
         random = new Random();
 
-
         // Seleciona uma pergunta aleatória
         int numeroAleatorio = random.Next(0, listaDePerguntas.Length);
-        Debug.Log(listaDePerguntas[numeroAleatorio]);
+        titulo.text = listaDePerguntas[numeroAleatorio];
 
         // Cria uma cópia das respostas para a pergunta sorteada
         string[] respostas = (string[])listaDeRespostas[numeroAleatorio].Clone();
@@ -394,10 +401,10 @@ public class PerguntasQuiz : MonoBehaviour
             respostas[j] = temp;
         }
 
-        // Exibe as respostas embaralhadas
-        foreach (string resposta in respostas)
-        {
-            Debug.Log(resposta);
-        }
+        // Exibe as respostas embaralhadas nos Botões
+        button1.GetComponentInChildren<TMP_Text>().text = respostas[0];
+        button2.GetComponentInChildren<TMP_Text>().text = respostas[1];
+        button3.GetComponentInChildren<TMP_Text>().text = respostas[2];
+        button4.GetComponentInChildren<TMP_Text>().text = respostas[3];
     }
 }

@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class WeaponShooter : MonoBehaviour
 {
-    public GameObject bulletPrefab;  // A bala associada ï¿½ arma
-    public Transform shootPoint;     // O ponto de onde a bala serï¿½ disparada (geralmente na boca da arma)
+    public GameObject bulletPrefab;  // A bala associada à arma
+    public Transform shootPoint;     // O ponto de onde a bala será disparada (geralmente na boca da arma)
 
-    public float shootForce = 10f;  // A forï¿½a de disparo da bala
+    public float shootForce = 10f;  // A força de disparo da bala
 
     void Update()
     {
-        // Disparo ao clicar com o botï¿½o esquerdo do mouse
-        if (Input.GetMouseButtonDown(0)) // Verifica se o botï¿½o esquerdo do mouse foi pressionado
+        // Disparo ao clicar com o botão esquerdo do mouse
+        if (Input.GetMouseButtonDown(0)) // Verifica se o botão esquerdo do mouse foi pressionado
         {
             Shoot();
         }
     }
 
-    // Funï¿½ï¿½o para disparar a bala
+    // Função para disparar a bala
     void Shoot()
     {
-        // Verifica se o shootPoint e a bulletPrefab estï¿½o configurados corretamente
+        // Verifica se o shootPoint e a bulletPrefab estão configurados corretamente
         if (bulletPrefab != null && shootPoint != null)
         {
             GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
@@ -33,7 +33,7 @@ public class WeaponShooter : MonoBehaviour
         }
     }
 
-    // Funï¿½ï¿½o para atualizar o prefab da bala quando a arma muda
+    // Função para atualizar o prefab da bala quando a arma muda
     public void UpdateBulletPrefab(GameObject newBulletPrefab)
     {
         bulletPrefab = newBulletPrefab;

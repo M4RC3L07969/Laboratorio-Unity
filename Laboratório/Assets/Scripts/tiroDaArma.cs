@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
     public GameObject impactEffect;
 
     private float nextTimeToFire = 0f;
+    public bool isHealingGun = false;
 
     void Update()
     {
@@ -26,14 +27,24 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
+
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out RaycastHit hit, range))
         {
             Debug.Log(hit.transform.name);
 
-            Target target = hit.transform.GetComponent<Target>();
-            if (target != null)
+            Boss boss = hit.transform.GetComponent<Boss>();
+            if (boss != null)
             {
-                target.TakeDamage(damage);
+                boss.TakeHit(damage,isHealingGun);
+            }
+            else
+            {
+                Target target = hit.transform.GetComponent<Target>();
+
+                if (target != null)
+                {
+                    target.TakeDamage(damage);
+                }
             }
 
             if (hit.rigidbody != null)
@@ -41,6 +52,7 @@ public class Gun : MonoBehaviour
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
 
+           
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO, 0.2f);
         }

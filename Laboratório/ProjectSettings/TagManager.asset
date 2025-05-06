@@ -6,13 +6,11 @@ TagManager:
   tags:
   - Matar
   - Morrer
-  - porta 1
-  - colisorPorta
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
