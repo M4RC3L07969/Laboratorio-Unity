@@ -33,12 +33,7 @@ public class Target : MonoBehaviour
         health -= amount;
         if (health <= 0f)
         {
-            Die();
+            Destroy(gameObject);
         }
-    }
-
-    void Die()
-    {
-        Destroy(gameObject);
     }
 }
