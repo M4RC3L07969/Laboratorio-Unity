@@ -20,9 +20,21 @@ public class WeaponSwitcher : MonoBehaviour
     // Referência ao script de disparo da arma (WeaponShooter)
     private WeaponShooter weaponShooter;
 
+<<<<<<< Updated upstream
     // Referências para as texturas diretamente no Inspector
     public Texture weapon1Texture;  // Textura da arma 1
     public Texture weapon2Texture;  // Textura da arma 2
+=======
+    [Header("Weapon External")]
+    public GameObject balaAtual;
+    public Transform firePoint;
+
+    [Header("Weapon Controller")]
+    public float bulletVelocity = 20f;
+    public float bulletPrefabLife = 3f;
+
+    private bool usandoBalaBase = false; // Agora usado como alternador fixo
+>>>>>>> Stashed changes
 
     void Start()
     {
@@ -46,6 +58,18 @@ public class WeaponSwitcher : MonoBehaviour
         {
             StartCoroutine(SwitchWeapon());
         }
+<<<<<<< Updated upstream
+=======
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            Debug.Log("atirou");
+
+            Fire();
+
+        }
+
+>>>>>>> Stashed changes
     }
 
     private System.Collections.IEnumerator SwitchWeapon()
