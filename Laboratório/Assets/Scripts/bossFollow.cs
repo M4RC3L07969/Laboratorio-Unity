@@ -1,8 +1,10 @@
 using UnityEngine;
 
+
+
 public class bossFollow : MonoBehaviour
 {
-    public float health = 90f;
+    public int health = 90;
     public float velocidade = 0.5f;
     public Rigidbody inimigoRb;
     public GameObject player;
@@ -28,7 +30,7 @@ public class bossFollow : MonoBehaviour
 
         if (distance > attackDistance)
         {
-            // Aproximação
+            
             Vector3 direction = (player.transform.position - transform.position).normalized;
             inimigoRb.AddForce(direction * velocidade);
 
@@ -38,11 +40,11 @@ public class bossFollow : MonoBehaviour
             Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.LookAt(lookAtPosition);
 
-            canAttack = true; // permite novo ataque se sair da área
+            canAttack = true; 
         }
         else
         {
-            // Parar e atacar
+            
             inimigoRb.velocity = Vector3.zero;
             animator.SetBool("isWalking", false);
 
@@ -52,27 +54,36 @@ public class bossFollow : MonoBehaviour
                 FPSController fps = player.GetComponent<FPSController>();
                 if (fps != null)
                 {
-                    fps.life -= 10f;
+                    fps.life -= 5f;
                 }
                 canAttack = false;
             }
         }
     }
 
-    public void TakeDamage(float amount)
+    private void OnCollisionEnter(Collision collision)
     {
-        health -= amount;
-        if (health <= 0f)
+        if (collision.gameObject.tag == "bala ácido")
         {
-            Die();
+            health -= 10;
+        }
+        else
+        {
+            if(collision.gameObject.tag == "bala base")
+            {
+                health += 10;
+            }
+            
+        }
+
+        if (health <= 0)
+        {
+            isDead = true;
+            inimigoRb.isKinematic = true;
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isDead", true);
         }
     }
-
-    void Die()
-    {
-        isDead = true;
-        inimigoRb.isKinematic = true;
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isDead", true);
-    }
 }
+
+

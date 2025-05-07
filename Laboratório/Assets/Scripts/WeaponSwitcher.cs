@@ -18,9 +18,6 @@ public class WeaponSwitcher : MonoBehaviour
     private Quaternion originalRotation;
     public Quaternion loweredRotation = Quaternion.Euler(-45f, 4f, 0f);
 
-    public Texture weapon1Texture;
-    public Texture weapon2Texture;
-
     // Refer�ncias para as texturas diretamente no Inspector
     public Texture weapon1Texture;  // Textura da arma 1
     public Texture weapon2Texture;  // Textura da arma 2
@@ -62,6 +59,7 @@ public class WeaponSwitcher : MonoBehaviour
             Fire();
 
         }
+    }
 
     private void Fire()
     {
