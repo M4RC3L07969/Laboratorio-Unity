@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 public class FPSController : MonoBehaviour
 {
 
-    public float fireRate;       // Tempo entre os tiros
-    public float nextFireTime = 1f;    // Próximo momento em que pode atirar
-
-
     [SerializeField] private Camera camera;
 
     private float sensitivityX = 1000f;
@@ -51,13 +47,6 @@ public class FPSController : MonoBehaviour
     public float mouseSensitivity = 1000f;
     float xRotation = 0f;
 
-    [Header("Weapon External")]
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-
-    [Header("Weapon Controller")]
-    public float bulletVelocity = 200f;
-    public float bulletPrefabLife = 3f;
 
     float x;
     float z;
@@ -91,68 +80,32 @@ public class FPSController : MonoBehaviour
             velocity.y = -2f;
         }
 
-        if (isGrounded)
-        {
-            //anim.SetBool("isJumping", false);
-            //anim.SetBool("isIdle", true);
-            if (x != 0 || z != 0)
-            {
-                //anim.SetBool("isIdle", false);
-                //anim.SetBool("isWalking", true);
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    speed = runSpeed;
-                    //anim.SetBool("isRunning", true);
-                }
-                else
-                {
-                    speed = walkSpeed;
-                    //anim.SetBool("isRunning", false);
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
 
-                        // Verifica se o jogador pressionou o botão de fogo e se já pode atirar novamente
-                        if (Time.time >= nextFireTime)
-                        {
-                            Fire();
-                            nextFireTime = Time.time + fireRate; // Atualiza o tempo para o próximo tiro
-                        }
-                    }
-                    if (Input.GetButtonDown("Jump"))
-                    {
-                        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                    }
-                }
-                if (Input.GetKey(KeyCode.LeftShift) && Input.GetButtonDown("Jump"))
-                {
-                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                }
-            }
-            else
-            {
-                if (Input.GetButtonDown("Jump"))
-                {
-                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-                }
-                else
-                {
-                    //anim.SetBool("isWalking", false);
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        // Verifica se o jogador pressionou o botão de fogo e se já pode atirar novamente
-                        if (Time.time >= nextFireTime)
-                        {
-                            Fire();
-                            nextFireTime = Time.time + fireRate; // Atualiza o tempo para o próximo tiro
-                        }
-                    }
-                }
-            }
+        //anim.SetBool("isJumping", false);
+        //anim.SetBool("isIdle", true);
+
+        //anim.SetBool("isIdle", false);
+        //anim.SetBool("isWalking", true);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = runSpeed;
+            //anim.SetBool("isRunning", true);
         }
         else
         {
-            //anim.SetBool("isJumping", true);
+            speed = walkSpeed;
+            //anim.SetBool("isRunning", false);
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        //anim.SetBool("isWalking", false);
+      
+
+
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
@@ -175,12 +128,7 @@ public class FPSController : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0, rotationX, 0);
     }
 
-    private void Fire()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody>().AddForce(firePoint.forward.normalized * bulletVelocity, ForceMode.Impulse);
-        StartCoroutine(DestroyBulletAfterTime(bullet, bulletPrefabLife));
-    }
+    
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
     {
