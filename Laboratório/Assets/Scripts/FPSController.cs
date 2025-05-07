@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class FPSController : MonoBehaviour
 {
 
-
     [SerializeField] private Camera camera;
 
     private float sensitivityX = 1000f;
