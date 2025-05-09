@@ -103,6 +103,8 @@ public class FPSController : MonoBehaviour
         }
 
         //anim.SetBool("isWalking", false);
+      
+
 
 
         Vector3 move = transform.right * x + transform.forward * z;
@@ -125,6 +127,15 @@ public class FPSController : MonoBehaviour
         camera.transform.localRotation = Quaternion.Euler(rotationY, 0, 0);
         this.transform.rotation = Quaternion.Euler(0, rotationX, 0);
     }
+
+    
+
+    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(bullet);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "PU")

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
-    public float fireRate;
-    public float nextFireTime = 1f;
+    public float fireRate;       // Tempo entre os tiros
+    public float nextFireTime = 1f;    // Prï¿½ximo momento em que pode atirar
 
-    public GameObject weapon;
-    public GameObject bullet1Prefab; // Bala ácida
-    public GameObject bullet2Prefab; // Bala base
+    public GameObject weapon;  // A arma que vocï¿½ estï¿½ usando
+    public GameObject bullet1Prefab;  // Bala associada ï¿½ arma 1
+    public GameObject bullet2Prefab;  // Bala associada ï¿½ arma 2
     private bool isSwitching = false;
     private bool isTextureChanged = false;
 
@@ -18,8 +18,9 @@ public class WeaponSwitcher : MonoBehaviour
     private Quaternion originalRotation;
     public Quaternion loweredRotation = Quaternion.Euler(-45f, 4f, 0f);
 
-    public Texture weapon1Texture;
-    public Texture weapon2Texture;
+    // Referï¿½ncias para as texturas diretamente no Inspector
+    public Texture weapon1Texture;  // Textura da arma 1
+    public Texture weapon2Texture;  // Textura da arma 2
 
     [Header("Weapon External")]
     public GameObject balaAtual;
@@ -36,25 +37,27 @@ public class WeaponSwitcher : MonoBehaviour
         originalPosition = weapon.transform.localPosition;
         originalRotation = weapon.transform.localRotation;
 
-        // Começa com a bala ácida
+        // Comeï¿½a com a bala ï¿½cida
         usandoBalaBase = false;
         balaAtual = bullet1Prefab;
     }
 
     void Update()
     {
-        // Ao clicar com o botão direito, troca entre as balas
+        // Ao clicar com o botï¿½o direito, troca entre as balas
         if (Input.GetMouseButtonDown(1) && !isSwitching)
         {
             usandoBalaBase = !usandoBalaBase; // Alterna o estado
             balaAtual = usandoBalaBase ? bullet2Prefab : bullet1Prefab;
             StartCoroutine(SwitchWeapon());
         }
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+
             Debug.Log("atirou");
+
             Fire();
+
         }
     }
 
@@ -62,7 +65,7 @@ public class WeaponSwitcher : MonoBehaviour
     {
         if (balaAtual == null)
         {
-            Debug.LogWarning("Bala atual não foi atribuída!");
+            Debug.LogWarning("Bala atual nï¿½o foi atribuï¿½da!");
             return;
         }
 
@@ -88,7 +91,7 @@ public class WeaponSwitcher : MonoBehaviour
         }
         else
         {
-            ChangeWeaponTexture(weapon1Texture); // Textura da bala ácida
+            ChangeWeaponTexture(weapon1Texture); // Textura da bala ï¿½cida
         }
 
         yield return new WaitForSeconds(0.25f);
