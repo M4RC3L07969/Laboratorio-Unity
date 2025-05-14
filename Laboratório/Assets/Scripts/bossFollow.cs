@@ -89,6 +89,7 @@ public class bossFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isDead) return;
         if (other.CompareTag("bala ácido"))
         {
             health -= 10;
