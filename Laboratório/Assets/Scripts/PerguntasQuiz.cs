@@ -390,11 +390,11 @@ public class PerguntasQuiz : MonoBehaviour
     private Random random;
 
     private int indicePerguntaAtual;
-    private string respostaCorreta;
-    private HashSet<int> indicesRespondidos = new HashSet<int>();
+    public string respostaSelecionada;
+    //private HashSet<int> indicesRespondidos = new HashSet<int>();
 
     private int vezesMostrada = 0;
-    private const int maximoRepeticoes = 5;
+    private const int maximoAcertos = 5;
 
     void Start()
     {
@@ -411,7 +411,7 @@ public class PerguntasQuiz : MonoBehaviour
 
     void CarregarPergunta()
     {
-        if (vezesMostrada >= maximoRepeticoes)
+        if (vezesMostrada >= maximoAcertos)
         {
             Debug.Log("Fim das repetições da pergunta.");
             return;
@@ -430,7 +430,6 @@ public class PerguntasQuiz : MonoBehaviour
         titulo.text = listaDePerguntas[indicePerguntaAtual];
 
         string[] respostas = (string[])listaDeRespostas[indicePerguntaAtual].Clone();
-        respostaCorreta = listaDeRespostas[indicePerguntaAtual][0];
 
         for (int i = respostas.Length - 1; i > 0; i--)
         {
@@ -444,16 +443,18 @@ public class PerguntasQuiz : MonoBehaviour
         button2.GetComponentInChildren<TMP_Text>().text = respostas[1];
         button3.GetComponentInChildren<TMP_Text>().text = respostas[2];
         button4.GetComponentInChildren<TMP_Text>().text = respostas[3];
+
+        button1.onClick.AddListener(() => VerificarResposta(respostas[0]));
+        button2.onClick.AddListener(() => VerificarResposta(respostas[1]));
+        button3.onClick.AddListener(() => VerificarResposta(respostas[2]));
+        button4.onClick.AddListener(() => VerificarResposta(respostas[3]));
     }
+
 
     public void VerificarResposta(string respostaSelecionada)
     {
-        /**if (string.Equals(respostaSelecionada, listaDeRespostas[indicePerguntaAtual][0]))
-        {
 
-        }**/
-
-        if (respostaSelecionada == respostaCorreta)
+        if (respostaSelecionada == listaDeRespostas[indicePerguntaAtual][0])
 
         {
             Debug.Log("Acertou!");
