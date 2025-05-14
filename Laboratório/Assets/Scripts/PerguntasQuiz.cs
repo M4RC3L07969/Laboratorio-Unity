@@ -388,41 +388,32 @@ public class PerguntasQuiz : MonoBehaviour
     };
 
     private Random random;
-
     private int indicePerguntaAtual;
     public string respostaSelecionada;
-    //private HashSet<int> indicesRespondidos = new HashSet<int>();
-
     private int vezesMostrada = 0;
+    private int vezesAcertada = 0;
     private const int maximoAcertos = 5;
+
+
 
     void Start()
     {
-
-        titulo.text = "Testando título";
-        button1.GetComponentInChildren<TMP_Text>().text = "Resposta A";
-        button2.GetComponentInChildren<TMP_Text>().text = "Resposta B";
-        button3.GetComponentInChildren<TMP_Text>().text = "Resposta C";
-        button4.GetComponentInChildren<TMP_Text>().text = "Resposta D";
-
-
         CarregarPergunta();
     }
 
     void CarregarPergunta()
     {
-        if (vezesMostrada >= maximoAcertos)
+        if (vezesAcertada >= maximoAcertos)
         {
-            Debug.Log("Fim das repetições da pergunta.");
+            Debug.Log("Você ganhou.");
             return;
         }
 
-
-        if(lifeQuiz <= 0)
+        if (lifeQuiz <= 0)
         {
             Debug.Log("Você perdeu.");
+            return;
         }
-
 
         random = new Random();
 
@@ -430,13 +421,12 @@ public class PerguntasQuiz : MonoBehaviour
         titulo.text = listaDePerguntas[indicePerguntaAtual];
 
         string[] respostas = (string[])listaDeRespostas[indicePerguntaAtual].Clone();
-
         for (int i = respostas.Length - 1; i > 0; i--)
         {
             int j = random.Next(i + 1);
             string temp = respostas[i];
             respostas[i] = respostas[j];
-            respostas[j] = temp; 
+            respostas[j] = temp;
         }
 
         button1.GetComponentInChildren<TMP_Text>().text = respostas[0];
@@ -444,30 +434,38 @@ public class PerguntasQuiz : MonoBehaviour
         button3.GetComponentInChildren<TMP_Text>().text = respostas[2];
         button4.GetComponentInChildren<TMP_Text>().text = respostas[3];
 
+        if (vezesMostrada != 0)
+        {
+            button1.onClick.RemoveAllListeners();
+            button2.onClick.RemoveAllListeners();
+            button3.onClick.RemoveAllListeners();
+            button4.onClick.RemoveAllListeners();
+        }
+
         button1.onClick.AddListener(() => VerificarResposta(respostas[0]));
         button2.onClick.AddListener(() => VerificarResposta(respostas[1]));
         button3.onClick.AddListener(() => VerificarResposta(respostas[2]));
         button4.onClick.AddListener(() => VerificarResposta(respostas[3]));
+        
     }
-
 
     public void VerificarResposta(string respostaSelecionada)
     {
-
         if (respostaSelecionada == listaDeRespostas[indicePerguntaAtual][0])
-
         {
             Debug.Log("Acertou!");
+            vezesAcertada++;
             vezesMostrada++;
-            CarregarPergunta(); 
+            CarregarPergunta();
         }
         else
-        {
+        {      
             Debug.Log("Errou!");
             lifeQuiz--;
+            vezesMostrada++;
             CarregarPergunta();
-
-
+            
         }
     }
+
 }
