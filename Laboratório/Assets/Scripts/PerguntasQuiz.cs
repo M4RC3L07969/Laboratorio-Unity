@@ -9,20 +9,13 @@ using TMPro;
 public class PerguntasQuiz : MonoBehaviour
 {
     [Header("Texts")]
-<<<<<<< Updated upstream
 
         public Text titulo;
         public Button button1;
         public Button button2;
         public Button button3;
         public Button button4;
-=======
 
-    public Text titulo;
-    public Button button1;
-    public Button button2;
-    public Button button3;
-    public Button button4;
 
     [Header("Player's Quiz Life")]
 
@@ -73,58 +66,8 @@ public class PerguntasQuiz : MonoBehaviour
             "O que são os gases do efeito estufa e qual seu impacto ambiental?",
             "Como os combustíveis fósseis afetam o meio ambiente?",
             "O que são energias renováveis e como a química contribui para seu desenvolvimento?"};
->>>>>>> Stashed changes
 
-    [Header("Player's Quiz Life")]
-
-        public int lifeQuiz = 5;
-
-        private String[] listaDePerguntas = new String[45] {"O que são átomos e moléculas?",
-                "Qual a diferença entre substâncias puras e misturas?",
-                "O que caracteriza uma mudança física e uma mudança química?",
-                "Quais são os estados físicos da matéria?",
-                "O que é a tabela periódica e como ela está organizada?",
-                "O que são metais, ametais e gases nobres?",
-                "Qual a diferença entre substâncias simples e compostas?",
-                "O que são reações químicas? Dê um exemplo.",
-                "O que é um elemento químico?",
-                "O que são ácidos e bases?",
-                "O que são ligações iônicas e covalentes?",
-                "Como ocorre a ligação metálica?",
-                "O que é eletronegatividade e como ela influencia as ligações químicas?",
-                "Qual a diferença entre reações endotérmicas e exotérmicas?",
-                "O que são coeficientes estequiométricos?",
-                "O que é um mol e qual sua relação com a constante de Avogadro?",
-                "Como se classificam as funções inorgânicas (ácidos, bases, sais e óxidos)?",
-                "O que são soluções e quais são suas classificações?",
-                "Como calcular a concentração de uma solução?",
-                "O que é a lei da conservação da massa de Lavoisier?",
-                "Como balancear uma equação química?",
-                "Qual a importância do pH e como ele é calculado?",
-                "O que são reações de oxidação e redução?",
-                "O que é cinética química e quais fatores influenciam a velocidade de uma reação?",
-                "O que é catalisador e qual seu papel nas reações químicas?",
-                "Como funcionam os equilíbrios químicos?",
-                "O que é a constante de equilíbrio (Kc)?",
-                "Como a pressão e a temperatura afetam um equilíbrio químico?",
-                "O que diz o princípio de Le Chatelier?",
-                "O que são reações reversíveis e irreversíveis?",
-                "O que é solubilidade e quais fatores a influenciam?",
-                "O que é eletroquímica e como funcionam as pilhas eletroquímicas?",
-                "Qual a diferença entre eletrólise ígnea e eletrólise aquosa?",
-                "O que é química orgânica e qual sua importância?",
-                "O que são hidrocarbonetos e como são classificados?",
-                "O que são grupos funcionais na química orgânica?",
-                "O que é isomeria e quais são seus tipos?",
-                "Como funcionam as reações de substituição, adição e eliminação?",
-                "O que é polimerização e quais são os principais tipos de polímeros?",
-                "O que são biomoléculas e qual sua importância para a vida?",
-                "O que é a radioatividade e como ela foi descoberta?",
-                "Como funcionam as reações nucleares de fissão e fusão?",
-                "O que são os gases do efeito estufa e qual seu impacto ambiental?",
-                "Como os combustíveis fósseis afetam o meio ambiente?",
-                "O que são energias renováveis e como a química contribui para seu desenvolvimento?"};
-
+        
         string[][] listaDeRespostas = new string[][]
     {
         new string[]
@@ -455,15 +398,14 @@ public class PerguntasQuiz : MonoBehaviour
 
     void Start()
     {
-<<<<<<< Updated upstream
-=======
+
         titulo.text = "Testando título";
         button1.GetComponentInChildren<TMP_Text>().text = "Resposta A";
         button2.GetComponentInChildren<TMP_Text>().text = "Resposta B";
         button3.GetComponentInChildren<TMP_Text>().text = "Resposta C";
         button4.GetComponentInChildren<TMP_Text>().text = "Resposta D";
 
->>>>>>> Stashed changes
+
         CarregarPergunta();
     }
 
@@ -475,14 +417,13 @@ public class PerguntasQuiz : MonoBehaviour
             return;
         }
 
-<<<<<<< Updated upstream
+
         if(lifeQuiz <= 0)
         {
             Debug.Log("Você perdeu.");
         }
 
-=======
->>>>>>> Stashed changes
+
         random = new Random();
 
         indicePerguntaAtual = random.Next(0, listaDePerguntas.Length);
@@ -507,11 +448,13 @@ public class PerguntasQuiz : MonoBehaviour
 
     public void VerificarResposta(string respostaSelecionada)
     {
-<<<<<<< Updated upstream
-        if (string.Equals(respostaSelecionada, listaDeRespostas[indicePerguntaAtual][0]))
-=======
+        /**if (string.Equals(respostaSelecionada, listaDeRespostas[indicePerguntaAtual][0]))
+        {
+
+        }**/
+
         if (respostaSelecionada == respostaCorreta)
->>>>>>> Stashed changes
+
         {
             Debug.Log("Acertou!");
             vezesMostrada++;
@@ -520,12 +463,10 @@ public class PerguntasQuiz : MonoBehaviour
         else
         {
             Debug.Log("Errou!");
-<<<<<<< Updated upstream
             lifeQuiz--;
             CarregarPergunta();
 
-=======
->>>>>>> Stashed changes
+
         }
     }
 }
