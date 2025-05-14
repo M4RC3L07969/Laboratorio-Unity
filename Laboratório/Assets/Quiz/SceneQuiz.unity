@@ -206,17 +206,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< Updated upstream
       - m_Target: {fileID: 1854310630}
         m_TargetAssemblyTypeName: PerguntasQuiz, Assembly-CSharp
         m_MethodName: VerificarResposta
         m_Mode: 5
-=======
       - m_Target: {fileID: 11500000, guid: 8c0ba713cd769b84b9dafefe89fa8070, type: 3}
         m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
         m_MethodName: 
         m_Mode: 1
->>>>>>> Stashed changes
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -772,17 +769,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< Updated upstream
       - m_Target: {fileID: 1854310630}
         m_TargetAssemblyTypeName: PerguntasQuiz, Assembly-CSharp
         m_MethodName: VerificarResposta
         m_Mode: 5
-=======
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonUI, Assembly-CSharp
         m_MethodName: AnswerButton
         m_Mode: 1
->>>>>>> Stashed changes
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -892,17 +886,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< Updated upstream
       - m_Target: {fileID: 1854310630}
         m_TargetAssemblyTypeName: PerguntasQuiz, Assembly-CSharp
         m_MethodName: VerificarResposta
         m_Mode: 5
-=======
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonUI, Assembly-CSharp
         m_MethodName: AnswerButton
         m_Mode: 1
->>>>>>> Stashed changes
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1298,10 +1289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854310629}
-<<<<<<< Updated upstream
   - component: {fileID: 1854310630}
-=======
->>>>>>> Stashed changes
   m_Layer: 5
   m_Name: ButtonController
   m_TagString: Untagged
@@ -1328,7 +1316,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< Updated upstream
 --- !u!114 &1854310630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,8 +1334,6 @@ MonoBehaviour:
   button3: {fileID: 1080361777}
   button4: {fileID: 853264449}
   lifeQuiz: 5
-=======
->>>>>>> Stashed changes
 --- !u!1 &1961474150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,17 +1397,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< Updated upstream
       - m_Target: {fileID: 1854310630}
         m_TargetAssemblyTypeName: PerguntasQuiz, Assembly-CSharp
         m_MethodName: VerificarResposta
         m_Mode: 5
-=======
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonUI, Assembly-CSharp
         m_MethodName: AnswerButton
         m_Mode: 1
->>>>>>> Stashed changes
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1703,10 +1685,7 @@ GameObject:
   - component: {fileID: 2120035413}
   - component: {fileID: 2120035412}
   - component: {fileID: 2120035411}
-<<<<<<< Updated upstream
-=======
   - component: {fileID: 2120035415}
->>>>>>> Stashed changes
   m_Layer: 5
   m_Name: Quiz (Canvas)
   m_TagString: Untagged
@@ -1803,8 +1782,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!114 &2120035415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1823,7 +1800,6 @@ MonoBehaviour:
   button3: {fileID: 1080361777}
   button4: {fileID: 853264449}
   lifeQuiz: 5
->>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
