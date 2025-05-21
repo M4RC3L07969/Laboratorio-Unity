@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Matar
   - Morrer
+  - Bala
+  - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX
