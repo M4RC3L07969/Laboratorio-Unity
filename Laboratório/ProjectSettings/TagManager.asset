@@ -9,6 +9,13 @@ TagManager:
   - Bala
   - Bullet
   - Boss
+  - colisorPorta
+  - computador2
+  - computador1
+  - porta 1
+  - "bala \xE1cido"
+  - bala base
+  - chaos
   layers:
   - Default
   - TransparentFX
