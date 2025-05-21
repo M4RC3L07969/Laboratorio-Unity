@@ -448,7 +448,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0/5
+  m_Text: 0/4
 --- !u!222 &478439539
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1868,6 +1868,7 @@ MonoBehaviour:
   button2: {fileID: 1961474151}
   button3: {fileID: 1080361777}
   button4: {fileID: 853264449}
+  acertos: {fileID: 478439538}
   lifeQuiz: 5
   respostaSelecionada: 
 --- !u!1660057539 &9223372036854775807
