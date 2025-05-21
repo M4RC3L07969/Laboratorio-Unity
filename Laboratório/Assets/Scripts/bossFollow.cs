@@ -61,32 +61,6 @@ public class bossFollow : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (isDead) return;
-    //    if (collision.gameObject.tag == "bala ácido")
-    //    {
-    //        health -= 10;
-
-    //    }
-    //    else
-    //    {
-    //        if(collision.gameObject.tag == "bala base")
-    //        {
-    //            health += 10;
-    //        }
-
-    //    }
-
-    //    if (health <= 0)
-    //    {
-    //        isDead = true;
-    //        inimigoRb.isKinematic = true;
-    //        animator.SetBool("isWalking", false);
-    //        animator.SetBool("isDead", true);
-    //    }
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
         if (isDead) return;

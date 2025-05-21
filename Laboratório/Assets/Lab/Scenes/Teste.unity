@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 1743711724}
   - component: {fileID: 1743711725}
   - component: {fileID: 1743711726}
+  - component: {fileID: 1743711727}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -801,7 +802,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743711719}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1e5becbe915d024cafe13c530189bfe, type: 3}
   m_Name: 
@@ -902,6 +903,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1743711727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743711719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1170b2459f0f45746af1ea4a0c955933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 90
+  velocidade: 2
+  inimigoRb: {fileID: 1743711726}
+  player: {fileID: 699267534}
+  attackDistance: 2
+  distanceToStop: 2
 --- !u!20 &1871559434 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4917363365130316987, guid: fc13b8fd35363f34db04732fb27fe804, type: 3}
