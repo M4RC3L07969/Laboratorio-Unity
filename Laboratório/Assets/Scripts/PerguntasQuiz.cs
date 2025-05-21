@@ -16,11 +16,16 @@ public class PerguntasQuiz : MonoBehaviour
         public Button button2;
         public Button button3;
         public Button button4;
+        public Text acertos;
+
+    public Color correctColor = Color.green; 
+    public Color wrongColor = Color.red;     
+    public Color normalColor = Color.white;  
 
 
     [Header("Player's Quiz Life")]
 
-    public int lifeQuiz = 5;
+    public int lifeQuiz = 3;
 
     private String[] listaDePerguntas = new String[45] {"O que são átomos e moléculas?",
             "Qual a diferença entre substâncias puras e misturas?",
@@ -393,7 +398,7 @@ public class PerguntasQuiz : MonoBehaviour
     public string respostaSelecionada;
     private int vezesMostrada = 0;
     private int vezesAcertada = 0;
-    private const int MinAcertos= 1;
+    private const int MinAcertos= 4;
 
 
 
@@ -411,7 +416,7 @@ public class PerguntasQuiz : MonoBehaviour
 
         if (lifeQuiz <= 0)
         {
-            Debug.Log("Você perdeu.");
+            SceneManager.LoadScene("TelaInicial");
             return;
         }
 
@@ -442,20 +447,25 @@ public class PerguntasQuiz : MonoBehaviour
             button4.onClick.RemoveAllListeners();
         }
 
-        button1.onClick.AddListener(() => VerificarResposta(respostas[0]));
-        button2.onClick.AddListener(() => VerificarResposta(respostas[1]));
-        button3.onClick.AddListener(() => VerificarResposta(respostas[2]));
-        button4.onClick.AddListener(() => VerificarResposta(respostas[3]));
+        button1.onClick.AddListener(() => VerificarResposta(respostas[0],button1));
+        button2.onClick.AddListener(() => VerificarResposta(respostas[1],button2));
+        button3.onClick.AddListener(() => VerificarResposta(respostas[2],button3));
+        button4.onClick.AddListener(() => VerificarResposta(respostas[3],button4));
         
     }
+    private void Update()
+    {
+        acertos.text = "" + vezesAcertada + "/4";
+    }
 
-    public void VerificarResposta(string respostaSelecionada)
+    public void VerificarResposta(string respostaSelecionada, Button clickedButton)
     {
         if (respostaSelecionada == listaDeRespostas[indicePerguntaAtual][0])
         {
             Debug.Log("Acertou!");
             vezesAcertada++;
             vezesMostrada++;
+            SetButtonColor(clickedButton, correctColor);
             CarregarPergunta();
         }
         else
@@ -463,9 +473,57 @@ public class PerguntasQuiz : MonoBehaviour
             Debug.Log("Errou!");
             lifeQuiz--;
             vezesMostrada++;
+            SetButtonColor(clickedButton, wrongColor);
+            SetButtonColor(FindCorrectButton(), correctColor);
             CarregarPergunta();
-            
+        }
+        StartCoroutine(EsperarEResetarCores(2f));
+    }
+    private Button FindCorrectButton()
+    {
+
+        string respostaCorreta = listaDeRespostas[indicePerguntaAtual][0];
+
+
+        if (button1.GetComponentInChildren<TMP_Text>().text == respostaCorreta)
+        {
+            return button1;
+        }
+        else if (button2.GetComponentInChildren<TMP_Text>().text == respostaCorreta)
+        {
+            return button2;
+        }
+        else if (button3.GetComponentInChildren<TMP_Text>().text == respostaCorreta)
+        {
+            return button3;
+        }
+        else
+        {
+            return button4;
         }
     }
 
+    private IEnumerator EsperarEResetarCores(float tempo)
+    {
+        yield return new WaitForSeconds(tempo);
+        ResetButtonColors();
+        CarregarPergunta(); 
+    }
+    private void SetButtonColor(Button button, Color color)
+    {
+        button.GetComponent<Image>().color = color;
+    }
+
+    private void ResetButtonColors()
+    {
+        SetButtonNormal(button1);
+        SetButtonNormal(button2);
+        SetButtonNormal(button3);
+        SetButtonNormal(button4);
+    }
+
+    private void SetButtonNormal(Button button)
+    {
+        button.GetComponent<Image>().color = normalColor;
+    }
 }
