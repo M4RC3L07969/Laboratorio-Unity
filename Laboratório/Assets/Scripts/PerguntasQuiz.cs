@@ -5,6 +5,7 @@ using UnityEngine;
 using Random = System.Random;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PerguntasQuiz : MonoBehaviour
 {
@@ -392,7 +393,7 @@ public class PerguntasQuiz : MonoBehaviour
     public string respostaSelecionada;
     private int vezesMostrada = 0;
     private int vezesAcertada = 0;
-    private const int maximoAcertos = 5;
+    private const int MinAcertos= 1;
 
 
 
@@ -403,10 +404,9 @@ public class PerguntasQuiz : MonoBehaviour
 
     void CarregarPergunta()
     {
-        if (vezesAcertada >= maximoAcertos)
+        if (vezesAcertada >= MinAcertos)
         {
-            Debug.Log("Você ganhou.");
-            return;
+            SceneManager.LoadScene("Cenário");
         }
 
         if (lifeQuiz <= 0)
