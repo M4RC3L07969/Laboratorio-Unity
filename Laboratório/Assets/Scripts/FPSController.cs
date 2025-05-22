@@ -5,27 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class FPSController : MonoBehaviour
 {
-
     [SerializeField] private Camera camera;
 
-    private float sensitivityX = 1000f;
-    private float sensitivityY = 1000f;
-
-    private float mouseX;
-    private float mouseY;
-
-    private float rotationX;
-    private float rotationY;
-
-    private float minAngleY = -45;
-    private float maxAngleY = 45;
-
+    [Header("Mouse Settings")]
+    public float mouseSensitivity = 1000f;
+    private float rotationX = 0f;
+    private float rotationY = 0f;
+    public float minAngleY = -45f;
+    public float maxAngleY = 45f;
 
     [Header("Player External")]
     public CharacterController controller;
-    //public Animator anim;
     public Transform playerBody;
-    //public Transform playerCamera;
     public Transform groundCheck;
     public LayerMask groundMask;
 
@@ -33,46 +24,36 @@ public class FPSController : MonoBehaviour
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
     private float speed;
-    public float life = 30;
-
+    public float life = 30f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-
     public float groundDistance = 0.4f;
 
-    Vector3 velocity;
-    public bool isGrounded;
+    private Vector3 velocity;
+    private bool isGrounded;
 
-    [Header("Camera Controller")]
-    public float mouseSensitivity = 1000f;
-    float xRotation = 0f;
+    [Header("Weapon Holder Settings")]
+    public Transform weaponHolder;
+    public Vector3 weaponPositionOffset = new Vector3(1.2f, -1f, 1.3f);
+    public Vector3 weaponRotationOffset = new Vector3(-1f, 4f, 0f);
 
-
-    float x;
-    float z;
-    //float mouseX;
-    //float mouseY;
-
-    void Start()
+    private void Start()
     {
         speed = walkSpeed;
-        //   anim.SetBool("isIdle", true);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Update()
+    private void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
-        Movement();
-
-        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-        LookRotation();
+        HandleMovement();
+        HandleMouseLook();
     }
 
-    public void Movement()
+    private void HandleMovement()
     {
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -80,32 +61,12 @@ public class FPSController : MonoBehaviour
             velocity.y = -2f;
         }
 
+        speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
 
-        //anim.SetBool("isJumping", false);
-        //anim.SetBool("isIdle", true);
-
-        //anim.SetBool("isIdle", false);
-        //anim.SetBool("isWalking", true);
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            speed = runSpeed;
-            //anim.SetBool("isRunning", true);
-        }
-        else
-        {
-            speed = walkSpeed;
-            //anim.SetBool("isRunning", false);
-        }
-
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
-        //anim.SetBool("isWalking", false);
-      
-
-
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
@@ -114,36 +75,34 @@ public class FPSController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    private void LookRotation()
+    private void HandleMouseLook()
     {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        rotationX += mouseX;
+        rotationY -= mouseY;
         rotationY = Mathf.Clamp(rotationY, minAngleY, maxAngleY);
 
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
+        camera.transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f);
+        playerBody.rotation = Quaternion.Euler(0f, rotationX, 0f);
 
-        rotationX += mouseX * sensitivityX * Time.deltaTime;
-        rotationY -= mouseY * sensitivityY * Time.deltaTime;
-
-        camera.transform.localRotation = Quaternion.Euler(rotationY, 0, 0);
-        this.transform.rotation = Quaternion.Euler(0, rotationX, 0);
-    }
-
-    
-
-    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(bullet);
+        // Atualiza posição e rotação da arma (WeaponHolder)
+        if (weaponHolder != null)
+        {
+            weaponHolder.localPosition = weaponPositionOffset;
+            weaponHolder.localRotation = Quaternion.Euler(weaponRotationOffset);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "PU")
+        if (collision.gameObject.CompareTag("PU"))
         {
             life += 10;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Morrer")
+        if (collision.gameObject.CompareTag("Morrer"))
         {
             life -= 10;
         }
@@ -151,5 +110,11 @@ public class FPSController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(bullet);
     }
 }
