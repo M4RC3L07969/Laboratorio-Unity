@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     private CharacterController controller;
 
     public float speed = 12f;
@@ -20,15 +19,18 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isMoving;
 
-    private Vector3 lastPosition = new Vector3(0f,0f,0f);
-    
+    private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
+
+    // --- Sistema de Vida ---
+    public int maxHealth = 100;
+    private int currentHealth;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -62,7 +64,33 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = false;
         }
-        
+
         lastPosition = gameObject.transform.position;
+    }
+
+    // --- Método para receber dano ---
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        Debug.Log("Vida atual: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("O jogador morreu!");
+        gameObject.SetActive(false); // Desativa o jogador
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Inimigo"))
+        {
+            TakeDamage(10);
+        }
     }
 }
