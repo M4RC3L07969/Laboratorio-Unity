@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.061674118, a: 1}
+  m_Color: {r: 0.7880573, g: 1, b: 0.75, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1869,6 +1869,9 @@ MonoBehaviour:
   button3: {fileID: 1080361777}
   button4: {fileID: 853264449}
   acertos: {fileID: 478439538}
+  correctColor: {r: 0.021381378, g: 1, b: 0, a: 1}
+  wrongColor: {r: 1, g: 0, b: 0, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
   lifeQuiz: 5
   respostaSelecionada: 
 --- !u!1660057539 &9223372036854775807
