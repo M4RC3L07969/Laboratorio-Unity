@@ -4,101 +4,125 @@ using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
-    public GameObject weapon;  // A arma que você está usando
-    public GameObject bullet1Prefab;  // Bala associada à arma 1
-    public GameObject bullet2Prefab;  // Bala associada à arma 2
+    public float fireRate;       // Tempo entre os tiros
+    public float nextFireTime = 1f;    // Prï¿½ximo momento em que pode atirar
+
+    public GameObject weapon;  // A arma que vocï¿½ estï¿½ usando
+    public GameObject bullet1Prefab;  // Bala associada ï¿½ arma 1
+    public GameObject bullet2Prefab;  // Bala associada ï¿½ arma 2
     private bool isSwitching = false;
-    private bool isTextureChanged = false;  // Controle de alternância da textura
+    private bool isTextureChanged = false;
 
-    // Posições e rotações de troca da arma
     private Vector3 originalPosition;
-    public Vector3 loweredPosition = new Vector3(1.2f, -2.0f, 1.3f); // Posição de abaixar a arma
-
+    public Vector3 loweredPosition = new Vector3(1.2f, -2.0f, 1.3f);
     private Quaternion originalRotation;
-    public Quaternion loweredRotation = Quaternion.Euler(-45f, 4f, 0f); // Rotação ao abaixar
+    public Quaternion loweredRotation = Quaternion.Euler(-45f, 4f, 0f);
 
-    // Referências para as texturas diretamente no Inspector
+    // Referï¿½ncias para as texturas diretamente no Inspector
     public Texture weapon1Texture;  // Textura da arma 1
     public Texture weapon2Texture;  // Textura da arma 2
 
+    [Header("Weapon External")]
+    public GameObject balaAtual;
+    public Transform firePoint;
+
+    [Header("Weapon Controller")]
+    public float bulletVelocity = 20f;
+    public float bulletPrefabLife = 3f;
+
+    private bool usandoBalaBase = false; // Agora usado como alternador fixo
+
     void Start()
     {
-        // Inicializa a posição e rotação original da arma
         originalPosition = weapon.transform.localPosition;
         originalRotation = weapon.transform.localRotation;
 
-
+        // Comeï¿½a com a bala ï¿½cida
+        usandoBalaBase = false;
+        balaAtual = bullet1Prefab;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !isSwitching) // Botão direito do mouse (1)
+        // Ao clicar com o botï¿½o direito, troca entre as balas
+        if (Input.GetMouseButtonDown(1) && !isSwitching)
         {
+            usandoBalaBase = !usandoBalaBase; // Alterna o estado
+            balaAtual = usandoBalaBase ? bullet2Prefab : bullet1Prefab;
             StartCoroutine(SwitchWeapon());
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            Debug.Log("atirou");
+
+            Fire();
+
         }
     }
 
-    private System.Collections.IEnumerator SwitchWeapon()
+    private void Fire()
+    {
+        if (balaAtual == null)
+        {
+            Debug.LogWarning("Bala atual nï¿½o foi atribuï¿½da!");
+            return;
+        }
+
+        GameObject bullet = Instantiate(balaAtual, firePoint.position, Quaternion.identity);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.AddForce(firePoint.forward.normalized * bulletVelocity, ForceMode.Impulse);
+        }
+        Destroy(bullet, bulletPrefabLife);
+    }
+
+    private IEnumerator SwitchWeapon()
     {
         isSwitching = true;
 
-        // Simula "abaixar" a arma
-        Vector3 startPosition = weapon.transform.localPosition;
-        Vector3 targetPosition = loweredPosition;
-        Quaternion startRotation = weapon.transform.localRotation;
-        Quaternion targetRotation = loweredRotation;
+        yield return MoveWeapon(weapon, weapon.transform.localPosition, loweredPosition, weapon.transform.localRotation, loweredRotation);
 
-        // Movimento suave da arma
-        yield return MoveWeapon(weapon, startPosition, targetPosition, startRotation, targetRotation);
-
-        // Troca a textura e a bala associada à nova arma
-        if (!isTextureChanged)
+        // Troca a textura conforme o tipo de bala atual
+        if (usandoBalaBase)
         {
-            ChangeWeaponTexture(weapon2Texture); // Troca a textura para a arma 2
+            ChangeWeaponTexture(weapon2Texture); // Textura da bala base
         }
         else
         {
-            ChangeWeaponTexture(weapon1Texture); // Retorna à textura da arma 1
+            ChangeWeaponTexture(weapon1Texture); // Textura da bala ï¿½cida
         }
-
-        isTextureChanged = !isTextureChanged; // Alterna o estado da textura
 
         yield return new WaitForSeconds(0.25f);
 
-        // Simula "subir" a arma de volta
-        startPosition = weapon.transform.localPosition;
-        targetPosition = originalPosition;
-        startRotation = weapon.transform.localRotation;
-        targetRotation = originalRotation;
-
-        // Movimento suave de volta para a posição original
-        yield return MoveWeapon(weapon, startPosition, targetPosition, startRotation, targetRotation);
+        yield return MoveWeapon(weapon, weapon.transform.localPosition, originalPosition, weapon.transform.localRotation, originalRotation);
 
         isSwitching = false;
     }
 
-    // Função para mover a arma suavemente
-    private System.Collections.IEnumerator MoveWeapon(GameObject weapon, Vector3 startPosition, Vector3 targetPosition, Quaternion startRotation, Quaternion targetRotation)
+    private IEnumerator MoveWeapon(GameObject weapon, Vector3 startPosition, Vector3 targetPosition, Quaternion startRotation, Quaternion targetRotation)
     {
         float elapsedTime = 0f;
         while (elapsedTime < 0.5f)
         {
-            weapon.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, (elapsedTime / 0.5f));
-            weapon.transform.localRotation = Quaternion.Lerp(startRotation, targetRotation, (elapsedTime / 0.5f));
+            weapon.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / 0.5f);
+            weapon.transform.localRotation = Quaternion.Lerp(startRotation, targetRotation, elapsedTime / 0.5f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
         weapon.transform.localPosition = targetPosition;
         weapon.transform.localRotation = targetRotation;
     }
 
-    // Função para alterar a textura da arma
     void ChangeWeaponTexture(Texture texture)
     {
-        Renderer weaponRenderer = weapon.GetComponent<Renderer>();
-        if (weaponRenderer != null)
+        Renderer renderer = weapon.GetComponent<Renderer>();
+        if (renderer != null)
         {
-            weaponRenderer.material.mainTexture = texture;
+            renderer.material.mainTexture = texture;
         }
     }
 }
+

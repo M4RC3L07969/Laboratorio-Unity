@@ -6,11 +6,16 @@ TagManager:
   tags:
   - Matar
   - Morrer
+  - Bala
+  - Bullet
+  - Boss
+  - "bala \xE1cido"
+  - bala base
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
