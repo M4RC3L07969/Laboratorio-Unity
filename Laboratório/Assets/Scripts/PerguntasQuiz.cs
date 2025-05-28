@@ -414,11 +414,7 @@ public class PerguntasQuiz : MonoBehaviour
             SceneManager.LoadScene("Cenário");
         }
 
-        if (lifeQuiz <= 0)
-        {
-            SceneManager.LoadScene("TelaInicial");
-            return;
-        }
+        
 
         random = new Random();
 
@@ -505,8 +501,21 @@ public class PerguntasQuiz : MonoBehaviour
 
     private IEnumerator EsperarEResetarCores(float tempo)
     {
+        button1.interactable = false;
+        button2.interactable = false;
+        button3.interactable = false;
+        button4.interactable = false;
+
         yield return new WaitForSeconds(tempo);
         ResetButtonColors();
+        if (lifeQuiz <= 0)
+        {
+            SceneManager.LoadScene("TelaInicial");
+        }
+        button1.interactable = true;
+        button2.interactable = true;
+        button3.interactable = true;
+        button4.interactable = true;
         CarregarPergunta(); 
     }
     private void SetButtonColor(Button button, Color color)

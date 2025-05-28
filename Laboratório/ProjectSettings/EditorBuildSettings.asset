@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Cen\xE1rio.unity"
     guid: 982137a070d161a479ab0b7c98bea652
+  - enabled: 1
+    path: Assets/Tela inicial/TelaInicial.unity
+    guid: 0c229e2cea85ab645b02ee6b915ec83d
   m_configObjects: {}
