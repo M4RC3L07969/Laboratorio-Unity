@@ -88,9 +88,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Inimigo"))
+        if (collision.gameObject.CompareTag("InimigoAcido"))
+        {
+            TakeDamage(10);
+        }
+        if (collision.gameObject.CompareTag("InimigoBase"))
         {
             TakeDamage(10);
         }
     }
+
 }
+
