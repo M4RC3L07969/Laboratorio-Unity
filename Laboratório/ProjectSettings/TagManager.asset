@@ -11,6 +11,12 @@ TagManager:
   - Boss
   - "bala \xE1cido"
   - bala base
+  - colisorPorta
+  - chaos
+  - computador2
+  - porta 1
+  - computador1
+  - computador3
   layers:
   - Default
   - TransparentFX

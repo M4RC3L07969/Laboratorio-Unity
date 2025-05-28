@@ -20,8 +20,8 @@ public class abrirPorta2 : MonoBehaviour
     {
         if(other.gameObject.tag == "DoorCollider");
         {
-            primeiroQuiz = true;
-            portaoUmAnimaçao.SetBool("segundoQuiz", segundoQuiz);
+            segundoQuiz = true;
+            portaoDoisAnimaçao.SetBool("segundoQuiz", segundoQuiz);
         }
     }
 }
