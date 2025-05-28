@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 7400000, guid: a86e44d04076f624db72754bcd567a21, type: 3}
     - target: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       propertyPath: m_Name
-      value: Inimigo
+      value: Inimigo base
       objectReference: {fileID: 0}
     - target: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       propertyPath: m_TagString
-      value: Matar
+      value: Inimigo base
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       propertyPath: m_LocalScale.x
@@ -101,13 +101,16 @@ PrefabInstance:
       addedObject: {fileID: 7927591619366416390}
     - targetCorrespondingSourceObject: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4680231213749675416}
-    - targetCorrespondingSourceObject: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4594768530745458844}
     - targetCorrespondingSourceObject: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2899960868931099121}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 487758995008853313}
+    - targetCorrespondingSourceObject: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3090695989391671637}
   m_SourcePrefab: {fileID: 100100000, guid: a86e44d04076f624db72754bcd567a21, type: 3}
 --- !u!1 &3158958769689923483 stripped
 GameObject:
@@ -141,22 +144,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &4680231213749675416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3158958769689923483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e410d180f8414a74ba3b0a37f3cb3652, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 50
-  velocidade: 5
-  inimigoRb: {fileID: 7927591619366416390}
-  player: {fileID: 0}
 --- !u!65 &4594768530745458844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -199,3 +186,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &487758995008853313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158958769689923483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a473b8298826d0843ba49c913a4aa894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaInimigo: 5
+  vidaMaxima: 10
+  tamanhoMaximo: 10
+  tamanhoInicial: 5
+--- !u!114 &3090695989391671637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158958769689923483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786eca7217671cb4684033d866049aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  velocidade: 2
+  inimigoRb: {fileID: 7927591619366416390}
+  player: {fileID: 4525412178675800274, guid: 4635c891915c6a247ab3233051a3a5ce, type: 3}

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
-public class InimigoBase : MonoBehaviour
+public class InimigoMorrer : MonoBehaviour
 {
-    //  bala base
+    // bala base
     // bala ácido
     // Inimigo base
+    // Inimigo ácido
 
     public int vidaInimigo = 5;
     public int vidaMaxima = 10;
+    public int tamanhoMaximo = 10;
+    public int tamanhoInicial = 5;
     void Update()
     {
         
@@ -18,18 +21,35 @@ public class InimigoBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "bala ácido")
+        if (gameObject.tag == "Inimigo base"){
+            if (collision.gameObject.tag == "bala ácido")
+            {
+                vidaInimigo -= 1;
+            }
+            else
+            {
+                if (collision.gameObject.tag == "bala base")
+                {
+                    vidaInimigo += 1;
+                }
+
+            }
+        }else if (gameObject.tag == "Inimigo ácido")
         {
-            vidaInimigo -= 1;
-        }
-        else
-        {
-            if (collision.gameObject.tag == "bala base")
+            if (collision.gameObject.tag == "bala ácido")
             {
                 vidaInimigo += 1;
             }
+            else
+            {
+                if (collision.gameObject.tag == "bala base")
+                {
+                    vidaInimigo -= 1;
+                }
 
+            }
         }
+
 
         if (vidaInimigo <= 0)
         {
