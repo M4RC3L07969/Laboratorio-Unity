@@ -60,6 +60,8 @@ public class InimigoMorrer : MonoBehaviour
 
         if (vidaInimigo <= 0)
         {
+            Destroy(gameObject);
+            return;
         }
     }
 
