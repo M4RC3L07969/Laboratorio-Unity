@@ -6,11 +6,23 @@ TagManager:
   tags:
   - Matar
   - Morrer
+  - Bala
+  - Bullet
+  - Boss
+  - "bala \xE1cido"
+  - bala base
+  - colisorPorta
+  - chaos
+  - computador2
+  - porta 1
+  - computador1
+  - Inimigo base
+  - "Inimigo \xE1cido"
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
