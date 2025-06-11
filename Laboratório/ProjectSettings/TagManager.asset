@@ -18,6 +18,7 @@ TagManager:
   - computador1
   - Inimigo base
   - "Inimigo \xE1cido"
+  - computador3
   layers:
   - Default
   - TransparentFX

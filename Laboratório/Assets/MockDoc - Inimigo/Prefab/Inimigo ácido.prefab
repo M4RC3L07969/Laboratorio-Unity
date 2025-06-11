@@ -163,7 +163,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0573151, y: 0.10555655, z: 0.059115265}
+  m_Size: {x: 9, y: 9, z: 9}
   m_Center: {x: 0.00890559, y: 0.043048102, z: -0.026895955}
 --- !u!95 &2899960868931099121
 Animator:
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaInimigo: 5
   vidaMaxima: 10
-  tamanhoMaximo: 10
   tamanhoInicial: 5
+  aumentoTamanho: 1.5
 --- !u!114 &5185653391078255655
 MonoBehaviour:
   m_ObjectHideFlags: 0

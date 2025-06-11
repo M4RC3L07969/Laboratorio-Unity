@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentHealth;
 
     // --- Sistema de Invencibilidade ---
-    public float invulnerabilityTime = 1f; // Tempo de invencibilidade após tomar dano
+    public float invulnerabilityTime = 1f; // Tempo de invencibilidade apï¿½s tomar dano
     private bool isInvulnerable = false;
 
     void Start()
@@ -65,13 +65,13 @@ public class PlayerMovement : MonoBehaviour
         lastPosition = gameObject.transform.position;
     }
 
-    // --- Método para receber dano ---
+    // --- Mï¿½todo para receber dano ---
     public void TakeDamage(int amount, string enemyType = "Desconhecido")
     {
-        // Verifica se o player está invulnerável
+        // Verifica se o player estï¿½ invulnerï¿½vel
         if (isInvulnerable)
         {
-            Debug.Log("[DANO BLOQUEADO] Player está invulnerável! Dano de " + amount + " foi bloqueado.");
+            Debug.Log("[DANO BLOQUEADO] Player estï¿½ invulnerï¿½vel! Dano de " + amount + " foi bloqueado.");
             return;
         }
 
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("[VIDA DEPOIS] " + currentHealth + "/" + maxHealth);
         Debug.Log("[DANO] Dano aplicado com sucesso!");
 
-        // Ativa invencibilidade temporária
+        // Ativa invencibilidade temporï¿½ria
         StartCoroutine(InvulnerabilityCoroutine());
 
         if (currentHealth <= 0)
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("[STATUS] Player ainda está vivo. Vida restante: " + currentHealth);
+            Debug.Log("[STATUS] Player ainda estï¿½ vivo. Vida restante: " + currentHealth);
         }
 
         Debug.Log("======================");
@@ -123,39 +123,39 @@ public class PlayerMovement : MonoBehaviour
         gameObject.SetActive(false); // Desativa o jogador
     }
 
-    // --- Detecção de colisão com inimigos ---
+    // --- Detecï¿½ï¿½o de colisï¿½o com inimigos ---
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("[COLISÃO] Detectada colisão com: " + collision.gameObject.name + " (Tag: " + collision.gameObject.tag + ")");
+        Debug.Log("[COLISï¿½O] Detectada colisï¿½o com: " + collision.gameObject.name + " (Tag: " + collision.gameObject.tag + ")");
 
-        // Verifica tag do Inimigo Ácido
-        if (collision.gameObject.CompareTag("Inimigo ácido"))
+        // Verifica tag do Inimigo ï¿½cido
+        if (collision.gameObject.CompareTag("Inimigo ï¿½cido"))
         {
-            Debug.Log("[COLISÃO] Colidiu com Inimigo Ácido!");
-            TakeDamage(10, "Inimigo Ácido");
+            Debug.Log("[COLISï¿½O] Colidiu com Inimigo ï¿½cido!");
+            TakeDamage(10, "Inimigo ï¿½cido");
         }
         // Verifica tag do Inimigo Base
         else if (collision.gameObject.CompareTag("Inimigo base"))
         {
-            Debug.Log("[COLISÃO] Colidiu com Inimigo Base!");
+            Debug.Log("[COLISï¿½O] Colidiu com Inimigo Base!");
             TakeDamage(10, "Inimigo Base");
         }
         else
         {
-            Debug.Log("[COLISÃO] Tag não reconhecida como inimigo: " + collision.gameObject.tag);
+            Debug.Log("[COLISï¿½O] Tag nï¿½o reconhecida como inimigo: " + collision.gameObject.tag);
         }
     }
 
-    // --- Detecção de trigger (caso alguns inimigos usem trigger ao invés de collision) ---
+    // --- Detecï¿½ï¿½o de trigger (caso alguns inimigos usem trigger ao invï¿½s de collision) ---
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("[TRIGGER] Detectado trigger com: " + other.gameObject.name + " (Tag: " + other.gameObject.tag + ")");
 
-        // Verifica tag do Inimigo Ácido
-        if (other.gameObject.CompareTag("Inimigo ácido"))
+        // Verifica tag do Inimigo ï¿½cido
+        if (other.gameObject.CompareTag("Inimigo ï¿½cido"))
         {
-            Debug.Log("[TRIGGER] Trigger com Inimigo Ácido!");
-            TakeDamage(10, "Inimigo Ácido");
+            Debug.Log("[TRIGGER] Trigger com Inimigo ï¿½cido!");
+            TakeDamage(10, "Inimigo ï¿½cido");
         }
         // Verifica tag do Inimigo Base
         else if (other.gameObject.CompareTag("Inimigo base"))
@@ -165,11 +165,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log("[TRIGGER] Tag não reconhecida como inimigo: " + other.gameObject.tag);
+            Debug.Log("[TRIGGER] Tag nï¿½o reconhecida como inimigo: " + other.gameObject.tag);
         }
     }
 
-    // --- Métodos públicos para debug ---
+    // --- Mï¿½todos pï¿½blicos para debug ---
     public int GetCurrentHealth()
     {
         return currentHealth;
@@ -178,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetHealth(int newHealth)
     {
         currentHealth = Mathf.Clamp(newHealth, 0, maxHealth);
-        Debug.Log("[SAÚDE ALTERADA] Nova vida: " + currentHealth + "/" + maxHealth);
+        Debug.Log("[SAï¿½DE ALTERADA] Nova vida: " + currentHealth + "/" + maxHealth);
     }
 
     public void Heal(int amount)

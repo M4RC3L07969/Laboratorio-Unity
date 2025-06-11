@@ -30,7 +30,7 @@ public class bossFollow : MonoBehaviour
 
         if (distance > attackDistance)
         {
-            
+
             Vector3 direction = (player.transform.position - transform.position).normalized;
             inimigoRb.AddForce(direction * velocidade);
 
@@ -40,11 +40,11 @@ public class bossFollow : MonoBehaviour
             Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.LookAt(lookAtPosition);
 
-            canAttack = true; 
+            canAttack = true;
         }
         else
         {
-            
+
             inimigoRb.velocity = Vector3.zero;
             animator.SetBool("isWalking", false);
 
@@ -61,19 +61,18 @@ public class bossFollow : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "bala ácido")
+        if (isDead) return;
+        if (other.CompareTag("bala ácido"))
         {
             health -= 10;
+            Destroy(other.gameObject);
         }
-        else
+        else if (other.CompareTag("bala base"))
         {
-            if(collision.gameObject.tag == "bala base")
-            {
-                health += 10;
-            }
-            
+            health += 10;
+            Destroy(other.gameObject);
         }
 
         if (health <= 0)
@@ -84,6 +83,7 @@ public class bossFollow : MonoBehaviour
             animator.SetBool("isDead", true);
         }
     }
+
 }
 
 

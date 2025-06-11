@@ -15,7 +15,7 @@ public class Target : MonoBehaviour
 
     void Update()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
+        Vector3 direction = (player.transform.position).normalized;
 
         inimigoRb.AddForce(direction * velocidade);
 
