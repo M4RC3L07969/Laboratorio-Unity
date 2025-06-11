@@ -67,63 +67,64 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
-// --- M�todo para receber dano ---
-public void TakeDamage(int amount, string enemyType = "Desconhecido")
-{
-    // Verifica se o player est� invulner�vel
-    if (isInvulnerable)
-    {
-        Debug.Log("[DANO BLOQUEADO] Player est� invulner�vel! Dano de " + amount + " foi bloqueado.");
-        return;
-    }
+//}
+//// --- M�todo para receber dano ---
+//private void TakeDamage(int amount, string enemyType = "Desconhecido")
+//{
+//    // Verifica se o player est� invulner�vel
+//    if (isInvulnerable)
+//    {
+//        Debug.Log("[DANO BLOQUEADO] Player est� invulner�vel! Dano de " + amount + " foi bloqueado.");
+//        return;
+//    }
 
-    // Debug detalhado do dano
-    Debug.Log("=== SISTEMA DE DANO ===");
-    Debug.Log("[DANO RECEBIDO] Tipo de inimigo: " + enemyType);
-    Debug.Log("[DANO RECEBIDO] Quantidade de dano: " + amount);
-    Debug.Log("[VIDA ANTES] " + currentHealth + "/" + maxHealth);
+//    // Debug detalhado do dano
+//    Debug.Log("=== SISTEMA DE DANO ===");
+//    Debug.Log("[DANO RECEBIDO] Tipo de inimigo: " + enemyType);
+//    Debug.Log("[DANO RECEBIDO] Quantidade de dano: " + amount);
+//    Debug.Log("[VIDA ANTES] " + currentHealth + "/" + maxHealth);
 
-    currentHealth -= amount;
+//    currentHealth -= amount;
 
-    Debug.Log("[VIDA DEPOIS] " + currentHealth + "/" + maxHealth);
-    Debug.Log("[DANO] Dano aplicado com sucesso!");
+//    Debug.Log("[VIDA DEPOIS] " + currentHealth + "/" + maxHealth);
+//    Debug.Log("[DANO] Dano aplicado com sucesso!");
 
-    // Ativa invencibilidade tempor�ria
-    StartCoroutine(InvulnerabilityCoroutine());
+//    // Ativa invencibilidade tempor�ria
+//    StartCoroutine(InvulnerabilityCoroutine());
 
-    if (currentHealth <= 0)
-    {
-        Die();
-    }
-    else
-    {
-        Debug.Log("[STATUS] Player ainda est� vivo. Vida restante: " + currentHealth);
-    }
+//    if (currentHealth <= 0)
+//    {
+//        Die();
+//    }
+//    else
+//    {
+//        Debug.Log("[STATUS] Player ainda est� vivo. Vida restante: " + currentHealth);
+//    }
 
-    Debug.Log("======================");
-}
+//    Debug.Log("======================");
+//}
 
-// Corrotina para controlar invencibilidade
-private IEnumerator InvulnerabilityCoroutine()
-{
-    isInvulnerable = true;
-    Debug.Log("[INVENCIBILIDADE] Ativada por " + invulnerabilityTime + " segundos");
+//// Corrotina para controlar invencibilidade
+//public IEnumerator InvulnerabilityCoroutine()
+//{
+//    isInvulnerable = true;
+//    Debug.Log("[INVENCIBILIDADE] Ativada por " + invulnerabilityTime + " segundos");
 
-    yield return new WaitForSeconds(invulnerabilityTime);
+//    yield return new WaitForSeconds(invulnerabilityTime);
 
-    isInvulnerable = false;
-    Debug.Log("[INVENCIBILIDADE] Desativada - Player pode tomar dano novamente");
-}
+//    isInvulnerable = false;
+//    Debug.Log("[INVENCIBILIDADE] Desativada - Player pode tomar dano novamente");
+//}
 
-void Die()
-{
-    Debug.Log("=== MORTE DO PLAYER ===");
-    Debug.Log("[MORTE] O jogador morreu!");
-    Debug.Log("[MORTE] Vida final: " + currentHealth + "/" + maxHealth);
-    Debug.Log("=====================");
+//void Die()
+//{
+//    Debug.Log("=== MORTE DO PLAYER ===");
+//    Debug.Log("[MORTE] O jogador morreu!");
+//    Debug.Log("[MORTE] Vida final: " + currentHealth + "/" + maxHealth);
+//    Debug.Log("=====================");
 
-    gameObject.SetActive(false); // Desativa o jogador
-}
+//    gameObject.SetActive(false); // Desativa o jogador
+//}
 
 // --- Detec��o de colis�o com inimigos ---
 //private void OnCollisionEnter(Collision collision)
