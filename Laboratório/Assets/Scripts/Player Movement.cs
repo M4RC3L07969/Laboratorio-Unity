@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -64,6 +65,25 @@ public class PlayerMovement : MonoBehaviour
                 isMoving = false;
             }
             lastPosition = gameObject.transform.position;
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if (collision.gameObject.CompareTag("PU"))
+        //{
+        //    currentHealth += 10;
+        //    Destroy(collision.gameObject);
+        //}
+        if (collision.gameObject.CompareTag("Inimigo base") || collision.gameObject.CompareTag("Inimigo ácido"))
+        {
+            currentHealth -= 10;
+            Debug.Log("[PLAYER] Vida:" + currentHealth + "/" + maxHealth);
+        }
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

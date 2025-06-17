@@ -17,8 +17,8 @@ public class InimigoMorrer : MonoBehaviour
 
     private void Start()
     {
-        tamanhoAtual = tamanhoInicial;
-        transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
+        //tamanhoAtual = tamanhoInicial;
+        //transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class InimigoMorrer : MonoBehaviour
             return;
         }
 
-        transform.localScale = new Vector3(tamanhoAtual, tamanhoAtual, tamanhoAtual);
+        //transform.localScale = new Vector3(tamanhoAtual, tamanhoAtual, tamanhoAtual);
     }
 
     private void OnCollisionEnter(Collision collision)
