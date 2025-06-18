@@ -90,7 +90,7 @@ public class bossFollow : MonoBehaviour
     void bossStatus()
     {
         //Aqui vai vir o esquema pra trocar de cor / tipo do boss.
-        // 1 - Parar animação de andar || 2 - Fazer animação de troca de cor || 3 - Fazer a troca de cor. 
+        // 1 - Parar animação de andar e de andar tambem. || 2 - Fazer animação de troca de cor. || 3 - Fazer a troca de cor. 
         switch (health)
         {
             case 300:
