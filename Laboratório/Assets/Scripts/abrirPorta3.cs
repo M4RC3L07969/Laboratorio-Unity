@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class abrirPorta3 : MonoBehaviour
 {
-    
     public Animator portaTresAnimaçao;
     public bool terceiroQuiz;
 
-    // Start is called before the first frame update
     void Start()
     {
         terceiroQuiz = false;

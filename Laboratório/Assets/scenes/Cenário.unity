@@ -4803,8 +4803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdac0f150c2858f429c94c81ebad9ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
   "portaTresAnima\xE7ao": {fileID: 1810454810}
   terceiroQuiz: 0
+  segundos: 0
 --- !u!1 &567005567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4587334026328423782, guid: 465148f16970db745a96c62dfa5ea702, type: 3}
@@ -16451,7 +16453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962164778}
-  - component: {fileID: 1962164777}
+  - component: {fileID: 1962164779}
   m_Layer: 0
   m_Name: spawnerSala3
   m_TagString: Untagged
@@ -16459,24 +16461,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1962164777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962164776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 310e948c06d21bd4a9b9c7297cb8a14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn1: {fileID: 0}
-  spawn2: {fileID: 0}
-  spawn3: {fileID: 0}
-  numAleatorio: 0
-  segundos: 15
-  enemy_prefeb: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
 --- !u!4 &1962164778
 Transform:
   m_ObjectHideFlags: 0
@@ -16495,6 +16479,25 @@ Transform:
   - {fileID: 314597317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1962164779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962164776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9444d18d12ec949be3f5cec48923c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawn1: {fileID: 1506185953}
+  spawn2: {fileID: 760885380}
+  spawn3: {fileID: 314597316}
+  numAleatorio: 0
+  enemyPrefeb1: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
+  enemyPrefeb2: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
+  enemyAtual: {fileID: 0}
 --- !u!4 &1970887443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
@@ -18571,19 +18574,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7127681
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7013998
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18591,7 +18594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -89.079
       objectReference: {fileID: 0}
     - target: {fileID: 6256566946315519023, guid: d72f6d46a78a4414e8213e5c2db9a0b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
