@@ -4,52 +4,51 @@ using UnityEngine;
 
 public class SpawnersAleatóriosSala3 : MonoBehaviour
 {
-    public GameObject spawn1;
-    public GameObject spawn2;
-    public GameObject spawn3;
-    public int numAleatorio = 0;
-    public float segundos = 0f;
+    [SerializeField] private abrirPorta3 porta3;
+
+    public GameObject spawn1Sala3;
+    public GameObject spawn2Sala3;
+    public GameObject spawn3Sala3;
+    public int spawnerAleatorio = 0;
+
     public GameObject enemyPrefeb1;
     public GameObject enemyPrefeb2;
-    public GameObject enemyAtual;
+
+    private GameObject enemyAtual;
+    private float segundos3 = 0f;
 
     void Update()
     {
-        if (segundos >= 6)
+        if (porta3 != null && porta3.terceiroQuiz)
         {
-            segundos = 0;
-            ActivateRandomSpawnerAndRandomEnemy();
+            segundos3 += Time.deltaTime;
+
+            if (segundos3 >= 6)
+            {
+                segundos3 = 0;
+                ActivateRandomSpawnerAndRandomEnemy();
+            }
         }
-
-
-        segundos += Time.deltaTime;
     }
 
-    void ActivateRandomSpawnerAndRandomEnemy()
+    public void ActivateRandomSpawnerAndRandomEnemy()
     {
-        numAleatorio = Random.Range(0, 2);
+        int inimigoAleatorio = Random.Range(0, 2);
+        enemyAtual = inimigoAleatorio == 0 ? enemyPrefeb1 : enemyPrefeb2;
 
-        switch (numAleatorio)
+
+        spawnerAleatorio = Random.Range(0, 3);
+
+        switch (spawnerAleatorio)
         {
             case 0:
-                enemyAtual = enemyPrefeb1;
+                Instantiate(enemyAtual, spawn1Sala3.transform.position, Quaternion.identity);
                 break;
             case 1:
-                enemyAtual = enemyPrefeb2;
-                break;
-        }
-        numAleatorio = Random.Range(0, 3);
-
-        switch (numAleatorio)
-        {
-            case 0:
-                Instantiate(enemyAtual, spawn1.transform.position, Quaternion.identity);
-                break;
-            case 1:
-                Instantiate(enemyAtual, spawn2.transform.position, Quaternion.identity);
+                Instantiate(enemyAtual, spawn2Sala3.transform.position, Quaternion.identity);
                 break;
             case 2:
-                Instantiate(enemyAtual, spawn3.transform.position, Quaternion.identity);
+                Instantiate(enemyAtual, spawn3Sala3.transform.position, Quaternion.identity);
                 break;
         }
     }
