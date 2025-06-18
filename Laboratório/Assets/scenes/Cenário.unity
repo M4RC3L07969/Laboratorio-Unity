@@ -4807,6 +4807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "portaTresAnima\xE7ao": {fileID: 1810454810}
   terceiroQuiz: 0
+  quiz: {fileID: 0}
 --- !u!1 &567005567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4587334026328423782, guid: 465148f16970db745a96c62dfa5ea702, type: 3}

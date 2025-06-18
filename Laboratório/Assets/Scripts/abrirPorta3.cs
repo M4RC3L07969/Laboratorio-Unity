@@ -6,6 +6,7 @@ public class abrirPorta3 : MonoBehaviour
 {
     public Animator portaTresAnimaçao;
     public bool terceiroQuiz;
+    public GameObject quiz;
 
     void Start()
     {
@@ -18,6 +19,11 @@ public class abrirPorta3 : MonoBehaviour
         {
             terceiroQuiz = true;
             portaTresAnimaçao.SetBool("terceiroQuiz", terceiroQuiz);
+
+            if (quiz != null)
+            {
+                quiz.SetActive(terceiroQuiz);
+            }
         }
     }
 }
