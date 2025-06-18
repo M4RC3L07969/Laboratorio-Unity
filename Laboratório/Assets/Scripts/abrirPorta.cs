@@ -5,10 +5,8 @@ using UnityEngine;
 public class abrirPorta : MonoBehaviour
 {
     public Animator portaoUmAnimaçao;
-    public Animator portaoDoisAnimaçao;
     public bool primeiroQuiz;
 
-    // Start is called before the first frame update
     void Start()
     {
         primeiroQuiz = false;

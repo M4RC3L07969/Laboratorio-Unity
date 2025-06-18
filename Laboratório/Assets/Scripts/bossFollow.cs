@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bossFollow : MonoBehaviour
 {
-    public int health = 90;
+    public int health = 400;
     public float velocidade = 0.5f;
     public Rigidbody inimigoRb;
     public GameObject player;
@@ -32,25 +32,26 @@ public class bossFollow : MonoBehaviour
         {
 
             Vector3 direction = (player.transform.position - transform.position).normalized;
-            inimigoRb.AddForce(direction * velocidade);
+            direction.y = 0;
 
             //animator.SetBool("isWalking", true);
             //animator.ResetTrigger("Attack");
+
+            Vector3 newPosition = transform.position + direction * velocidade * Time.fixedDeltaTime;
+            inimigoRb.MovePosition(newPosition);
 
             Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
             transform.LookAt(lookAtPosition);
 
             canAttack = true;
+
         }
         else
         {
-
             inimigoRb.velocity = Vector3.zero;
-            //animator.SetBool("isWalking", false);
 
             if (canAttack)
             {
-                //animator.SetTrigger("Attack");
                 FPSController fps = player.GetComponent<FPSController>();
                 if (fps != null)
                 {
@@ -61,12 +62,14 @@ public class bossFollow : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (isDead) return;
         if (other.CompareTag("bala ácido"))
         {
             health -= 10;
+            bossStatus();
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("bala base"))
@@ -84,6 +87,28 @@ public class bossFollow : MonoBehaviour
         }
     }
 
+    void bossStatus()
+    {
+        //Aqui vai vir o esquema pra trocar de cor / tipo do boss.
+        // 1 - Parar animação de andar e de andar tambem. || 2 - Fazer animação de troca de cor. || 3 - Fazer a troca de cor. 
+        switch (health)
+        {
+            case 300:
+                Debug.Log("state 1");
+                break;
+            case 200:
+                Debug.Log("state 2");
+                break;
+            case 100:
+                Debug.Log("state 3");
+                break;
+
+            default: break;
+
+        }
+ 
+    }
 }
+
 
 

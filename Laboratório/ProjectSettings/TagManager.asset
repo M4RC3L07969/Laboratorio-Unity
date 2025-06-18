@@ -19,6 +19,7 @@ TagManager:
   - Inimigo base
   - "Inimigo \xE1cido"
   - computador3
+  - Quiz
   layers:
   - Default
   - TransparentFX
