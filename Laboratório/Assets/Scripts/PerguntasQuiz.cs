@@ -510,6 +510,7 @@ public class PerguntasQuiz : MonoBehaviour
         ResetButtonColors();
         if (lifeQuiz <= 0)
         {
+
             SceneManager.LoadScene("TelaInicial");
         }
         button1.interactable = true;

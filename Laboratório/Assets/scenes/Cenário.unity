@@ -2157,7 +2157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259354357}
-  - component: {fileID: 259354356}
+  - component: {fileID: 259354358}
   m_Layer: 0
   m_Name: spawnerSala2
   m_TagString: Untagged
@@ -2165,24 +2165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &259354356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259354355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 310e948c06d21bd4a9b9c7297cb8a14c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawn1: {fileID: 0}
-  spawn2: {fileID: 0}
-  spawn3: {fileID: 0}
-  numAleatorio: 0
-  segundos: 15
-  enemy_prefeb: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
 --- !u!4 &259354357
 Transform:
   m_ObjectHideFlags: 0
@@ -2201,6 +2183,25 @@ Transform:
   - {fileID: 526073511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259354358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259354355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc6762e6aba29547b736c71d96fa1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  porta2: {fileID: 7833097303389229262}
+  spawn1Sala2: {fileID: 239416541}
+  spawn2Sala2: {fileID: 1677321177}
+  spawn3Sala2: {fileID: 526073510}
+  numAleatorio2: 0
+  segundos2: 0
+  enemyAcido: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
 --- !u!1001 &261283369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3630,12 +3631,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310e948c06d21bd4a9b9c7297cb8a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn1: {fileID: 882464371}
-  spawn2: {fileID: 20470411}
-  spawn3: {fileID: 197754225}
-  numAleatorio: 0
-  segundos: 15
-  enemy_prefeb: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
+  porta1: {fileID: 1050882129}
+  spawn1Sala1: {fileID: 882464371}
+  spawn2Sala1: {fileID: 20470411}
+  spawn3Sala1: {fileID: 197754225}
+  numAleatorio1: 0
+  segundos1: 0
+  enemyBase: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
 --- !u!4 &377888582
 Transform:
   m_ObjectHideFlags: 0
@@ -4803,10 +4805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdac0f150c2858f429c94c81ebad9ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 0}
   "portaTresAnima\xE7ao": {fileID: 1810454810}
   terceiroQuiz: 0
-  segundos: 0
+  quiz: {fileID: 0}
 --- !u!1 &567005567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4587334026328423782, guid: 465148f16970db745a96c62dfa5ea702, type: 3}
@@ -8357,6 +8358,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4020634139681235621, guid: 828ad3f10ce3c7444b8f53141cc495e6, type: 3}
   m_PrefabInstance: {fileID: 29375691}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1050882129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7916989067705164757, guid: 92e574079172b9a49acf599393157f73, type: 3}
+  m_PrefabInstance: {fileID: 8451470484281062150}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2657aa5ddd1f494587b931579ffb75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054920044
 GameObject:
   m_ObjectHideFlags: 0
@@ -11161,9 +11173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "portaoUmAnima\xE7ao": {fileID: 1487320860}
-  "portaoDoisAnima\xE7ao": {fileID: 4919471156108004073}
   primeiroQuiz: 0
-  segundoQuiz: 0
 --- !u!135 &1432018698
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16491,13 +16501,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9444d18d12ec949be3f5cec48923c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn1: {fileID: 1506185953}
-  spawn2: {fileID: 760885380}
-  spawn3: {fileID: 314597316}
-  numAleatorio: 0
+  porta3: {fileID: 561406810}
+  spawn1Sala3: {fileID: 1506185953}
+  spawn2Sala3: {fileID: 760885380}
+  spawn3Sala3: {fileID: 314597316}
+  spawnerAleatorio: 0
   enemyPrefeb1: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
   enemyPrefeb2: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
-  enemyAtual: {fileID: 0}
 --- !u!4 &1970887443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
@@ -19458,9 +19468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e1d2fef57f6f94d8426021aea7231c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "portaoUmAnima\xE7ao": {fileID: 1487320860}
   "portaoDoisAnima\xE7ao": {fileID: 4919471156108004073}
-  primeiroQuiz: 0
   segundoQuiz: 0
 --- !u!4 &8406668939675555831
 Transform:
