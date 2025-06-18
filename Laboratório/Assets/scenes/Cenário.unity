@@ -1204,8 +1204,8 @@ Transform:
   m_GameObject: {fileID: 165531581}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.201581, y: 2.41614, z: 1.0318937}
-  m_LocalScale: {x: 0.32336634, y: 12.13652, z: 16.886374}
+  m_LocalPosition: {x: -18.2, y: 2.42, z: -23.92}
+  m_LocalScale: {x: 0.32336634, y: 12.13652, z: 18.144407}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2001714270}
@@ -5762,7 +5762,7 @@ Transform:
   m_GameObject: {fileID: 699643246}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.70710784}
-  m_LocalPosition: {x: -18.13, y: 4.3894367, z: -24.03}
+  m_LocalPosition: {x: -18.13, y: 14.27, z: -24.03}
   m_LocalScale: {x: 0.9202172, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11101,7 +11101,7 @@ GameObject:
   - component: {fileID: 1432018700}
   - component: {fileID: 1432018699}
   - component: {fileID: 1432018698}
-  - component: {fileID: 1432018697}
+  - component: {fileID: 1432018702}
   m_Layer: 0
   m_Name: computadorBoss
   m_TagString: computador2
@@ -11109,22 +11109,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1432018697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432018696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2657aa5ddd1f494587b931579ffb75d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "portaoUmAnima\xE7ao": {fileID: 1487320860}
-  "portaoDoisAnima\xE7ao": {fileID: 4919471156108004073}
-  primeiroQuiz: 0
-  segundoQuiz: 0
 --- !u!135 &1432018698
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -11212,6 +11196,20 @@ Transform:
   - {fileID: 195714471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1432018702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432018696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accaa68e51348694ea301275ead6484a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portaBoss: {fileID: 2001714271}
+  quartoQuiz: 0
 --- !u!1 &1432832271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5540879246882266850, guid: e7e470c7ff1446d4a81c87190110efbb, type: 3}
@@ -11238,6 +11236,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014450696, y: 0.014450694, z: 0.018894633}
   m_Center: {x: 0.000000056810677, y: 0.00000005844049, z: 0.009447304}
+--- !u!1 &1440880307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440880308}
+  m_Layer: 0
+  m_Name: SpawnedHit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1440880308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440880307}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -86.354805, y: 5.4611187, z: 39.67615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1445685300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17179,7 +17208,7 @@ Transform:
   m_GameObject: {fileID: 2001714269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -104.23064, y: 50.732353, z: 29.74}
+  m_LocalPosition: {x: -104.2306, y: 50.732353, z: 29.74}
   m_LocalScale: {x: 1, y: 1.0867, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17195,9 +17224,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001714269}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb4bea4792b6b424fba277be89988a22, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8d526f49b6ee7774eab2b3bb9b431f75, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19674,3 +19703,4 @@ SceneRoots:
   - {fileID: 1114864225859543859}
   - {fileID: 1991155732}
   - {fileID: 6541390139209434388}
+  - {fileID: 1440880308}
