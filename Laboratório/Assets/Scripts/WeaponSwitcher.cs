@@ -54,7 +54,7 @@ public class WeaponSwitcher : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
-            Debug.Log("atirou");
+            //Debug.Log("atirou");
 
             Fire();
 
