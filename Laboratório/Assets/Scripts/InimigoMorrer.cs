@@ -10,15 +10,15 @@ public class InimigoMorrer : MonoBehaviour
 {
     public int vidaInimigo = 5;
     public int vidaMaxima = 10;
-    public int tamanhoInicial = 24;
+    public int tamanhoInicial = 5;
     public float aumentoTamanho = 1.5f;
     private int contadorAumentos = 0;
     private float tamanhoAtual;
 
     private void Start()
     {
-        tamanhoAtual = tamanhoInicial;
-        transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
+        //tamanhoAtual = tamanhoInicial;
+        //transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
     }
 
     void Update()
@@ -28,7 +28,7 @@ public class InimigoMorrer : MonoBehaviour
             return;
         }
 
-        transform.localScale = new Vector3(tamanhoAtual, tamanhoAtual, tamanhoAtual);
+        //transform.localScale = new Vector3(tamanhoAtual, tamanhoAtual, tamanhoAtual);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,11 +38,12 @@ public class InimigoMorrer : MonoBehaviour
             if (collision.gameObject.tag == "bala ácido")
             {
                 vidaInimigo -= 1;
-                AumentarTamanhoInimigo();
+                
             }
             else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
             {
                 vidaInimigo += 1;
+                AumentarTamanhoInimigo();
             }
         }
         else if (gameObject.tag == "Inimigo ácido")
@@ -50,11 +51,12 @@ public class InimigoMorrer : MonoBehaviour
             if (collision.gameObject.tag == "bala ácido")
             {
                 vidaInimigo -= 1;
-                AumentarTamanhoInimigo();
+                
             }
             else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
             {
                 vidaInimigo += 1;
+                AumentarTamanhoInimigo();
             }
         }
 

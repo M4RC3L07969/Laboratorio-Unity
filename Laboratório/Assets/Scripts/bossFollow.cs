@@ -46,7 +46,7 @@ public class bossFollow : MonoBehaviour
         {
 
             inimigoRb.velocity = Vector3.zero;
-            // animator.SetBool("isWalking", false);
+            //animator.SetBool("isWalking", false);
 
             if (canAttack)
             {
@@ -79,8 +79,8 @@ public class bossFollow : MonoBehaviour
         {
             isDead = true;
             inimigoRb.isKinematic = true;
-            // animator.SetBool("isWalking", false);
-            //animator.SetBool("isDead", true);
+           // animator.SetBool("isWalking", false);
+           // animator.SetBool("isDead", true);
         }
     }
 

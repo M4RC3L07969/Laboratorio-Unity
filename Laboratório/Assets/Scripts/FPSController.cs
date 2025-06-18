@@ -102,9 +102,10 @@ public class FPSController : MonoBehaviour
             life += 10;
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.CompareTag("Morrer"))
+        if (collision.gameObject.CompareTag("Inimigo base"))
         {
             life -= 10;
+            Debug.Log("-10 de vida");
         }
         if (life <= 0)
         {
