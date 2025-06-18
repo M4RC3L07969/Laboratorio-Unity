@@ -39,6 +39,7 @@ public class InimigoMorrer : MonoBehaviour
             {
                 vidaInimigo -= 1;
                 
+                
             }
             else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
             {

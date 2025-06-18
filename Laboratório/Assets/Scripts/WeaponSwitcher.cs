@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class WeaponSwitcher : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class WeaponSwitcher : MonoBehaviour
     public float bulletPrefabLife = 3f;
 
     private bool usandoBalaBase = false; // Agora usado como alternador fixo
+
+    
 
     void Start()
     {
@@ -125,4 +129,4 @@ public class WeaponSwitcher : MonoBehaviour
         }
     }
 }
-
+   
