@@ -1,6 +1,5 @@
 using UnityEngine;
-
-
+using System.Collections;
 
 public class bossFollow : MonoBehaviour
 {
@@ -13,6 +12,11 @@ public class bossFollow : MonoBehaviour
     private bool isDead = false;
     private bool canAttack = true;
 
+    private bool invulnerable = false;
+    private bool isPaused = false;
+
+
+
     //private Animator animator;
 
     void Start()
@@ -24,7 +28,7 @@ public class bossFollow : MonoBehaviour
 
     void Update()
     {
-        if (isDead || player == null) return;
+        if (isDead || player == null || isPaused) return;
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
@@ -62,10 +66,25 @@ public class bossFollow : MonoBehaviour
         }
     }
 
+    IEnumerator PauseBoss()
+    {
+        isPaused = true;
+        invulnerable = true;
+
+        inimigoRb.velocity = Vector3.zero;
+        inimigoRb.isKinematic = true;
+        yield return new WaitForSeconds(4f);
+       
+        inimigoRb.isKinematic = false;
+
+        invulnerable = false;
+        isPaused = false;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isDead) return;
+        if (isDead || invulnerable) return;
         if (other.CompareTag("bala ácido"))
         {
             health -= 10;
@@ -95,12 +114,15 @@ public class bossFollow : MonoBehaviour
         {
             case 300:
                 Debug.Log("state 1");
+                StartCoroutine(PauseBoss());
                 break;
             case 200:
                 Debug.Log("state 2");
+                StartCoroutine(PauseBoss());
                 break;
             case 100:
                 Debug.Log("state 3");
+                StartCoroutine(PauseBoss());
                 break;
 
             default: break;
