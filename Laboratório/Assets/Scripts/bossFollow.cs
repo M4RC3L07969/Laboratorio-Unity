@@ -14,7 +14,7 @@ public class bossFollow : MonoBehaviour
 
     private bool invulnerable = false;
     private bool isPaused = false;
-
+    private Renderer[] renderers;
 
 
     //private Animator animator;
@@ -23,6 +23,7 @@ public class bossFollow : MonoBehaviour
     {
         inimigoRb = GetComponent<Rigidbody>();
         //animator = GetComponent<Animator>();
+        renderers = GetComponentsInChildren<Renderer>();
         player = GameObject.Find("Player");
     }
 
@@ -63,6 +64,14 @@ public class bossFollow : MonoBehaviour
                 }
                 canAttack = false;
             }
+        }
+    }
+
+    void ChangeBossColor(Color color)
+    {
+        foreach (Renderer r in renderers)
+        {
+            r.material.color = color;
         }
     }
 
@@ -114,14 +123,17 @@ public class bossFollow : MonoBehaviour
         {
             case 300:
                 Debug.Log("state 1");
+                ChangeBossColor(Color.red);
                 StartCoroutine(PauseBoss());
                 break;
             case 200:
                 Debug.Log("state 2");
+                ChangeBossColor(Color.yellow);
                 StartCoroutine(PauseBoss());
                 break;
             case 100:
                 Debug.Log("state 3");
+                ChangeBossColor(Color.gray);
                 StartCoroutine(PauseBoss());
                 break;
 
