@@ -17,6 +17,8 @@ public class bossFollow : MonoBehaviour
     private Renderer[] renderers;
 
 
+    private int stageBoss = 0; 
+
     //private Animator animator;
 
     void Start()
@@ -96,25 +98,40 @@ public class bossFollow : MonoBehaviour
         if (isDead || invulnerable) return;
         if (other.CompareTag("bala ácido"))
         {
+            if (stageBoss == 1)
+            {
+                health += 10;
+                return;
+            }
             health -= 10;
             bossStatus();
             Destroy(other.gameObject);
+            checkDeath();
         }
         else if (other.CompareTag("bala base"))
         {
+            if (stageBoss == 1)
+            {
+                health -= 10;
+                bossStatus();
+                Destroy(other.gameObject);
+                checkDeath();
+                return;
+            }
             health += 10;
             Destroy(other.gameObject);
         }
-
+    }
+    void checkDeath()
+    {
         if (health <= 0)
         {
             isDead = true;
             inimigoRb.isKinematic = true;
-           // animator.SetBool("isWalking", false);
-           // animator.SetBool("isDead", true);
+            // animator.SetBool("isWalking", false);
+            // animator.SetBool("isDead", true);
         }
     }
-
     void bossStatus()
     {
         //Aqui vai vir o esquema pra trocar de cor / tipo do boss.
@@ -123,16 +140,19 @@ public class bossFollow : MonoBehaviour
         {
             case 300:
                 Debug.Log("state 1");
+                stageBoss = 1;
                 ChangeBossColor(Color.red);
                 StartCoroutine(PauseBoss());
                 break;
             case 200:
                 Debug.Log("state 2");
+                stageBoss = 0;
                 ChangeBossColor(Color.yellow);
                 StartCoroutine(PauseBoss());
                 break;
             case 100:
                 Debug.Log("state 3");
+                stageBoss = 1;
                 ChangeBossColor(Color.gray);
                 StartCoroutine(PauseBoss());
                 break;
