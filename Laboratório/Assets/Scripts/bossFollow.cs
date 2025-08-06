@@ -16,56 +16,63 @@ public class bossFollow : MonoBehaviour
     private Renderer[] renderers;
 
 
-    private int stageBoss = 0; 
-
-    //private Animator animator;
+    private int stageBoss = 0;
+   
 
     void Start()
     {
         inimigoRb = GetComponent<Rigidbody>();
-        //animator = GetComponent<Animator>();
         renderers = GetComponentsInChildren<Renderer>();
         player = GameObject.Find("Player");
+   
     }
 
     void Update()
     {
-        if (isDead || player == null || isPaused) return;
+        if (isDead || player == null) return;
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        if (distance > attackDistance)
+        Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(lookAtPosition);
+
+        if (!isPaused)
         {
-
-            Vector3 direction = (player.transform.position - transform.position).normalized;
-            direction.y = 0;
-
-            //animator.SetBool("isWalking", true);
-            //animator.ResetTrigger("Attack");
-
-            Vector3 newPosition = transform.position + direction * velocidade * Time.fixedDeltaTime;
-            inimigoRb.MovePosition(newPosition);
-
-            Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-            transform.LookAt(lookAtPosition);
-
-            canAttack = true;
-
-        }
-        else
-        {
-            inimigoRb.velocity = Vector3.zero;
-
-            if (canAttack)
+            if (distance > attackDistance)
             {
-                FPSController fps = player.GetComponent<FPSController>();
-                if (fps != null)
+
+                Vector3 direction = (player.transform.position - transform.position).normalized;
+                direction.y = 0;
+
+
+                //animator.SetBool("isWalking", true);
+                //animator.ResetTrigger("Attack");
+
+                Vector3 newPosition = transform.position + direction * velocidade * Time.fixedDeltaTime;
+                inimigoRb.MovePosition(newPosition);
+
+
+
+                canAttack = true;
+
+            }
+            else
+            {
+                inimigoRb.velocity = Vector3.zero;
+
+                if (canAttack)
                 {
-                    fps.life -= 5f;
+                    FPSController fps = player.GetComponent<FPSController>();
+                    if (fps != null)
+                    {
+                        fps.life -= 5f;
+                    }
+                    canAttack = false;
                 }
-                canAttack = false;
             }
         }
+        
+
     }
 
     void ChangeBossColor(Color color)
