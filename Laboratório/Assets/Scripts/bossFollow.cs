@@ -8,7 +8,6 @@ public class bossFollow : MonoBehaviour
     public Rigidbody inimigoRb;
     public GameObject player;
     public float attackDistance = 2.0f;
-
     private bool isDead = false;
     private bool canAttack = true;
 
@@ -138,19 +137,23 @@ public class bossFollow : MonoBehaviour
         // 1 - Parar animação de andar e de andar tambem. || 2 - Fazer animação de troca de cor. || 3 - Fazer a troca de cor. 
         switch (health)
         {
+            
             case 300:
+                if (stageBoss == 1) break;
                 Debug.Log("state 1");
                 stageBoss = 1;
                 ChangeBossColor(Color.red);
                 StartCoroutine(PauseBoss());
                 break;
             case 200:
+                if (stageBoss == 2) break;
                 Debug.Log("state 2");
                 stageBoss = 0;
                 ChangeBossColor(Color.yellow);
                 StartCoroutine(PauseBoss());
                 break;
             case 100:
+                if (stageBoss == 3) break;
                 Debug.Log("state 3");
                 stageBoss = 1;
                 ChangeBossColor(Color.gray);
