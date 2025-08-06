@@ -147,21 +147,21 @@ public class bossFollow : MonoBehaviour
             
             case 300:
                 if (stageBoss == 1) break;
-                Debug.Log("state 1");
+                Debug.Log("stage 1");
                 stageBoss = 1;
                 ChangeBossColor(Color.red);
                 StartCoroutine(PauseBoss());
                 break;
             case 200:
                 if (stageBoss == 0) break;
-                Debug.Log("state 2");
+                Debug.Log("stage 2");
                 stageBoss = 0;
                 ChangeBossColor(Color.yellow);
                 StartCoroutine(PauseBoss());
                 break;
             case 100:
                 if (stageBoss == 1) break;
-                Debug.Log("state 3");
+                Debug.Log("stage 3");
                 stageBoss = 1;
                 ChangeBossColor(Color.gray);
                 StartCoroutine(PauseBoss());
