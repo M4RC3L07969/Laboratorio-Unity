@@ -20,6 +20,8 @@ TagManager:
   - "Inimigo \xE1cido"
   - computador3
   - Quiz
+  - PU
+  - ShieldPU
   layers:
   - Default
   - TransparentFX
