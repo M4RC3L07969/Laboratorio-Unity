@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5716681864270162303, guid: a86e44d04076f624db72754bcd567a21, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5716681864270162303, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       propertyPath: m_CullingType
       value: 0
       objectReference: {fileID: 0}
@@ -175,7 +179,7 @@ Animator:
   m_GameObject: {fileID: 3158958769689923483}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cf74eb0b9bb784349a825fb7d0373237, type: 3}
-  m_Controller: {fileID: 9100000, guid: 96dad151632f7704f80d6cf9a42d073f, type: 2}
+  m_Controller: {fileID: 9100000, guid: bfa2b4c2c88010c40bcf0088825521de, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

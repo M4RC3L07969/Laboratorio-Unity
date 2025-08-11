@@ -14,11 +14,12 @@ public class InimigoMorrer : MonoBehaviour
     public float aumentoTamanho = 1.5f;
     private int contadorAumentos = 0;
     private float tamanhoAtual;
-
+    private Animator animator;
     private void Start()
     {
         //tamanhoAtual = tamanhoInicial;
         //transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -33,10 +34,12 @@ public class InimigoMorrer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         if (gameObject.tag == "Inimigo base")
         {
             if (collision.gameObject.tag == "bala ácido")
             {
+                animator.SetTrigger("hit");
                 vidaInimigo -= 1;
                 
                 
@@ -51,6 +54,7 @@ public class InimigoMorrer : MonoBehaviour
         {
             if (collision.gameObject.tag == "bala ácido")
             {
+                animator.SetTrigger("hit");
                 vidaInimigo -= 1;
                 
             }

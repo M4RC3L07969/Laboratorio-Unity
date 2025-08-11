@@ -416,7 +416,7 @@ ModelImporter:
     second: Head
   - first:
       74: 7400000
-    second: Take 001
+    second: run
   - first:
       95: 9500000
     second: //RootNode
@@ -459,7 +459,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: run
       takeName: Take 001
       internalID: 7400000
       firstFrame: 1
