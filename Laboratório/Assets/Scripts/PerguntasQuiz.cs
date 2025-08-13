@@ -6,9 +6,16 @@ using Random = System.Random;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 public class PerguntasQuiz : MonoBehaviour
 {
+    [Header("Portas")]
+    public abrirPorta porta1;
+    public abrirPorta2 porta2;
+    public abrirPorta3 porta3;
+    public abrirPorta4 porta4;
+
     [Header("Texts")]
 
         public Text titulo;
