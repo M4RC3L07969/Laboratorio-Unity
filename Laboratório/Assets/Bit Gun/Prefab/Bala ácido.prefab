@@ -148,4 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 5
   hitEffectPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  hitEffectPrefabExplosivo: {fileID: 2955623459812423943, guid: 72b7abb163919954d9dead10ca7c1300, type: 3}
   hitEffectLifetime: 2

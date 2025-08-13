@@ -9,7 +9,9 @@ public class Bullet : MonoBehaviour
     private bool hasCollided = false;
 
     public GameObject hitEffectPrefab;
+    public GameObject hitEffectPrefabExplosivo;
     public float hitEffectLifetime = 2f;
+    public bool tiroExplosivo = false;
 
     void Update()
     {
@@ -21,7 +23,14 @@ public class Bullet : MonoBehaviour
         ContactPoint contact = collision.contacts[0];
 
         // Instancia o efeito no ponto de impacto, olhando para a normal da superfície
-        if (hitEffectPrefab != null)
+
+        if (hitEffectPrefab != null && tiroExplosivo == true)
+        {
+            GameObject effect = Instantiate(hitEffectPrefabExplosivo, contact.point, Quaternion.LookRotation(contact.normal));
+            Destroy(effect, hitEffectLifetime);
+            Destroy(this.gameObject);
+        }
+        if (hitEffectPrefab != null && tiroExplosivo == false)
         {
             GameObject effect = Instantiate(hitEffectPrefab, contact.point, Quaternion.LookRotation(contact.normal));
             Destroy(effect, hitEffectLifetime);

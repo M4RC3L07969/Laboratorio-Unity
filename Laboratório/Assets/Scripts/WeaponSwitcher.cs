@@ -14,6 +14,7 @@ public class WeaponSwitcher : MonoBehaviour
     public GameObject bullet2Prefab;  // Bala associada � arma 2
     private bool isSwitching = false;
     private bool isTextureChanged = false;
+    public bool tiroExplosivo = false;
 
     private Vector3 originalPosition;
     public Vector3 loweredPosition = new Vector3(1.2f, -2.0f, 1.3f);
