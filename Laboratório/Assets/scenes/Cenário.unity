@@ -7278,6 +7278,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4279591195779111554, guid: 72821643c4ce24e48a1addd71cd2cd01, type: 3}
   m_PrefabInstance: {fileID: 725830424}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+  m_GameObject: {fileID: 722773536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786eca7217671cb4684033d866049aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
+  velocidade: 2
+  inimigoRb: {fileID: 722773541}
+  player: {fileID: 4525412178895481316}
+--- !u!54 &722773541 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3777655938150288339, guid: ee3309b12eb422245989d412aad1e8a9, type: 3}
+  m_PrefabInstance: {fileID: 6541390139209434388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &722773547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722773536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a473b8298826d0843ba49c913a4aa894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaInimigo: 5
+  vidaMaxima: 10
+  tamanhoInicial: 5
+  aumentoTamanho: 1.5
+>>>>>>> parent of 7296544 (InimigoAtual)
 --- !u!1001 &739666797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20555,10 +20589,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -179.984
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 4210199277144252219, guid: a299fa1a2616fb8459632400f7b73880, type: 3}
       propertyPath: m_Name
       value: armarioduasportas (11)
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 7296544 (InimigoAtual)
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
