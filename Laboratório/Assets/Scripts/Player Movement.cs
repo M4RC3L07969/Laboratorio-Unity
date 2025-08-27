@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     // --- Sistema de Vida ---
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
 
     // --- Sistema de Invencibilidade ---
     public float invulnerabilityTime = 1f;
@@ -115,6 +115,16 @@ public class PlayerMovement : MonoBehaviour
         if (!isSpeedBoosted)
         {
             StartCoroutine(SpeedBoostCoroutine());
+        }
+    }
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("morreu");
+            
         }
     }
 
