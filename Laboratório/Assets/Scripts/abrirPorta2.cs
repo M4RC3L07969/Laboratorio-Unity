@@ -6,7 +6,6 @@ public class abrirPorta2 : MonoBehaviour
 {
     public Animator portaoDoisAnimaçao;
     public bool segundoQuiz;
-    public QuizController quizController;
 
     void Start()
     {
@@ -15,15 +14,10 @@ public class abrirPorta2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "DoorCollider") ;
+        if(other.gameObject.tag == "DoorCollider");
         {
             segundoQuiz = true;
             portaoDoisAnimaçao.SetBool("segundoQuiz", segundoQuiz);
-        }
-
-        if (quizController != null)
-        {
-            quizController.AtualizarQuiz();
         }
     }
 }

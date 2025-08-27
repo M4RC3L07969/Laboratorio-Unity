@@ -6,6 +6,7 @@ public class abrirPorta3 : MonoBehaviour
 {
     public Animator portaTresAnimaçao;
     public bool terceiroQuiz;
+    public GameObject quiz;
 
     void Start()
     {
@@ -14,10 +15,15 @@ public class abrirPorta3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "DoorCollider") ;
+        if(other.gameObject.tag == "DoorCollider");
         {
             terceiroQuiz = true;
             portaTresAnimaçao.SetBool("terceiroQuiz", terceiroQuiz);
+
+            if (quiz != null)
+            {
+                quiz.SetActive(terceiroQuiz);
+            }
         }
     }
 }

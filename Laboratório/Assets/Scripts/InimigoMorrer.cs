@@ -67,7 +67,6 @@ public class InimigoMorrer : MonoBehaviour
 
         if (vidaInimigo <= 0)
         {
-            animator.SetBool("isDead", true);
             Destroy(gameObject);
             return;
         }

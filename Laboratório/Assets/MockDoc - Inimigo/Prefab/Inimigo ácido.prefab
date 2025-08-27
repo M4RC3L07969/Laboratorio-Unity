@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786eca7217671cb4684033d866049aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 5
+  health: 30
+  velocidade: 2
   inimigoRb: {fileID: 7927591619366416390}
   player: {fileID: 4525412178675800274, guid: 4635c891915c6a247ab3233051a3a5ce, type: 3}
