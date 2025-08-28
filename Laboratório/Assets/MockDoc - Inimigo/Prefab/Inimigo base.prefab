@@ -96,6 +96,10 @@ PrefabInstance:
       propertyPath: m_CullingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 13700004, guid: a86e44d04076f624db72754bcd567a21, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5b0a61e9047efe340a062a5e70e30f5b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -221,3 +225,4 @@ MonoBehaviour:
   velocidade: 5
   inimigoRb: {fileID: 7927591619366416390}
   player: {fileID: 4525412178675800274, guid: 4635c891915c6a247ab3233051a3a5ce, type: 3}
+  attackCooldown: 1
