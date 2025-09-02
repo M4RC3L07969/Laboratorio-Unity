@@ -1,25 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class abrirPorta4 : MonoBehaviour
 {
-    
     public Animator portaBoss;
-    public bool quartoQuiz;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        quartoQuiz = false;
-    }
+    public PerguntasQuiz quizManager;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "DoorCollider");
+        if (other.CompareTag("Player"))
         {
-            quartoQuiz = true;
-            portaBoss.SetBool("quartoQuiz", quartoQuiz);
+            quizManager.IniciarQuiz(this);
+            GetComponent<Collider>().enabled = false;
         }
+    }
+
+    public void AbrirPortaDefinitivamente()
+    {
+        portaBoss.SetBool("quartoQuiz", true);
     }
 }

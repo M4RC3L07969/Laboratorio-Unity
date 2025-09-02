@@ -1,29 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class abrirPorta2 : MonoBehaviour
 {
     public Animator portaoDoisAnimaçao;
-    public bool segundoQuiz;
-    public QuizController quizController;
-
-    void Start()
-    {
-        segundoQuiz = false;
-    }
+    public bool portaAberta = false;
+    public PerguntasQuiz quizManager;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "DoorCollider") ;
+        if (other.CompareTag("Player"))
         {
-            segundoQuiz = true;
-            portaoDoisAnimaçao.SetBool("segundoQuiz", segundoQuiz);
-        }
+            quizManager.IniciarQuiz(this);
 
-        if (quizController != null)
-        {
-            quizController.AtualizarQuiz();
+            GetComponent<Collider>().enabled = false;
         }
+    }
+
+    public void AbrirPortaDefinitivamente()
+    {
+        portaoDoisAnimaçao.SetBool("segundoQuiz", true);
+        portaAberta = true;
     }
 }

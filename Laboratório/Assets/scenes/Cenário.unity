@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4943,8 +4943,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdac0f150c2858f429c94c81ebad9ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "portaTresAnima\xE7ao": {fileID: 1810454810}
-  terceiroQuiz: 0
+  "portaoTresAnima\xE7ao": {fileID: 1810454810}
+  portaAberta: 0
+  quizManager: {fileID: 1665457459}
 --- !u!1 &567005567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4587334026328423782, guid: 465148f16970db745a96c62dfa5ea702, type: 3}
@@ -6076,6 +6077,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4436022710688657562, guid: 1f58549874d0c6e42a63034881391704, type: 3}
+      propertyPath: porta1
+      value: 
+      objectReference: {fileID: 1050882129}
+    - target: {fileID: 4436022710688657562, guid: 1f58549874d0c6e42a63034881391704, type: 3}
+      propertyPath: porta2
+      value: 
+      objectReference: {fileID: 7833097303389229262}
+    - target: {fileID: 4436022710688657562, guid: 1f58549874d0c6e42a63034881391704, type: 3}
+      propertyPath: porta3
+      value: 
+      objectReference: {fileID: 561406810}
+    - target: {fileID: 4436022710688657562, guid: 1f58549874d0c6e42a63034881391704, type: 3}
+      propertyPath: porta4
+      value: 
+      objectReference: {fileID: 1432018697}
     - target: {fileID: 5724354100212093560, guid: 1f58549874d0c6e42a63034881391704, type: 3}
       propertyPath: m_Name
       value: Quiz (Canvas)
@@ -6087,10 +6104,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5724354100212093560, guid: 1f58549874d0c6e42a63034881391704, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1665457459}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f58549874d0c6e42a63034881391704, type: 3}
 --- !u!4 &711912871 stripped
 Transform:
@@ -14335,27 +14349,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014450696, y: 0.014450694, z: 0.018894633}
   m_Center: {x: 0.000000056810677, y: 0.00000002863817, z: 0.009447296}
---- !u!1 &1665457458 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5724354100212093560, guid: 1f58549874d0c6e42a63034881391704, type: 3}
+--- !u!114 &1665457459 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4436022710688657562, guid: 1f58549874d0c6e42a63034881391704, type: 3}
   m_PrefabInstance: {fileID: 707068045}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1665457459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665457458}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45ba2e2bc290fb4692adbf75f93b074, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c0ba713cd769b84b9dafefe89fa8070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizPainel: {fileID: 1665457458}
-  scriptDaPorta2: {fileID: 7833097303389229262}
-  scriptDaPorta3: {fileID: 561406810}
-  scriptDaPortaBoss: {fileID: 1432018697}
 --- !u!1001 &1670068048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20042,8 +20046,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "portaoDoisAnima\xE7ao": {fileID: 4919471156108004073}
-  segundoQuiz: 0
-  quizController: {fileID: 0}
+  portaAberta: 0
+  quizManager: {fileID: 1665457459}
 --- !u!4 &8406668939675555831
 Transform:
   m_ObjectHideFlags: 0
