@@ -3,45 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class HealthUI : MonoBehaviour
 {
-    public Image healthBar;
-    public float healthAmount = 100f;
-    // Start is called before the first frame update
+    [Header("Barra de Vida")]
+    public Image healthBar; // Arrasta a Image do Canvas aqui
+    public float maxHealth = 100f;
+    public float currentHealth;
+
     void Start()
     {
-
+        currentHealth = maxHealth;
+        UpdateHealthUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    // --- Função para receber dano ---
+    public void TakeDamage(float damage)
     {
-        if (healthAmount <= 0)
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            takeDamage(20);
-        }
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (currentHealth <= 0)
         {
-            Heal(5);
+            Debug.Log("[PLAYER] Morreu!");
+            // Aqui pode recarregar a cena ou chamar tela de Game Over
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            );
         }
     }
 
-    public void takeDamage(float damage)
+    // --- Função para curar ---
+    public void Heal(float healAmount)
     {
-        healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 100f;
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
     }
 
-    public void Heal(float healingAmount)
+    // --- Atualiza o Canvas ---
+    private void UpdateHealthUI()
     {
-        healthAmount += healingAmount;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
-
-        healthBar.fillAmount = healthAmount / 100f;
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = currentHealth / maxHealth;
+        }
     }
 }

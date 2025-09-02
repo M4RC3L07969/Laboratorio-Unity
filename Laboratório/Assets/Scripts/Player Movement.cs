@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // <- Importante para mexer na UI
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,10 +17,15 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool isMoving;
     private Vector3 lastPosition = new Vector3(0f, 0f, 0f);
+    public GameManager gameManager;
+    private bool isDead;
 
     // --- Sistema de Vida ---
     public int maxHealth = 100;
     public int currentHealth;
+
+    [Header("UI de Vida")]
+    public Image healthBar; // Arrasta a imagem da barra no Canvas aqui
 
     // --- Sistema de Invencibilidade ---
     public float invulnerabilityTime = 1f;
@@ -31,15 +37,19 @@ public class PlayerMovement : MonoBehaviour
     private bool isSpeedBoosted = false;
 
     // --- Power-Up de Escudo ---
-    public GameObject shieldVisual; // Objeto visual do escudo
+    public GameObject shieldVisual;
     public float shieldDuration = 5f;
     private bool isShieldActive = false;
+
+    // --- Power-Up de Cura ---
+    public int healAmount = 30;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         currentHealth = maxHealth;
         if (shieldVisual != null) shieldVisual.SetActive(false);
+        UpdateHealthUI(); // Inicia a UI correta
         Debug.Log("[PLAYER] Vida inicial: " + currentHealth + "/" + maxHealth);
     }
 
@@ -91,22 +101,22 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        if (other.CompareTag("HealPU"))
+        {
+            HealPlayer(healAmount);
+            Destroy(other.gameObject);
+        }
+
         if (other.CompareTag("Inimigo base") || other.CompareTag("Inimigo ácido"))
         {
             if (!isShieldActive)
             {
-                currentHealth -= 10;
-                Debug.Log("[PLAYER] Vida:" + currentHealth + "/" + maxHealth);
+                TakeDamage(10);
             }
             else
             {
                 Debug.Log("[ESCUDO] Dano bloqueado pelo escudo!");
             }
-        }
-
-        if (currentHealth <= 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -117,16 +127,51 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(SpeedBoostCoroutine());
         }
     }
+
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
+        if (isDead) return;
 
-        if (currentHealth <= 0)
+        currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
+
+        Debug.Log("[PLAYER] Vida:" + currentHealth + "/" + maxHealth);
+
+        if (currentHealth <= 0 && !isDead)
         {
-            Debug.Log("morreu");
-            
+            isDead = true;
+
+            // Desativa o movimento do player
+            GetComponent<CharacterController>().enabled = false;
+            this.enabled = false; // desativa PlayerMovement
+
+            // Desativa MouseMovement
+            MouseMovement mouseScript = GetComponentInChildren<MouseMovement>();
+            if (mouseScript != null)
+            {
+                mouseScript.enabled = false;
+            }
+
+            // Desativa WeaponSwitcher
+            WeaponSwitcher weaponScript = GetComponentInChildren<WeaponSwitcher>();
+            if (weaponScript != null)
+            {
+                weaponScript.enabled = false;
+            }
+
+            // Chama tela de Game Over
+            if (gameManager != null)
+            {
+                gameManager.gameOver();
+            }
+
+            Debug.Log("[PLAYER] morreu");
         }
     }
+
+
+
 
     private IEnumerator SpeedBoostCoroutine()
     {
@@ -165,5 +210,24 @@ public class PlayerMovement : MonoBehaviour
         if (shieldVisual != null) shieldVisual.SetActive(false);
 
         Debug.Log("[ESCUDO] Escudo desativado!");
+    }
+
+    // --- Função de Cura ---
+    public void HealPlayer(int amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
+
+        Debug.Log("[HEAL] Vida curada! Atual: " + currentHealth + "/" + maxHealth);
+    }
+
+    // --- Atualiza a barra de vida no Canvas ---
+    private void UpdateHealthUI()
+    {
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = (float)currentHealth / maxHealth;
+        }
     }
 }

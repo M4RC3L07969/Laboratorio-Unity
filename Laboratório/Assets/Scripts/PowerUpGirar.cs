@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpeedPowerUp : MonoBehaviour
+public class PowerUpGirar : MonoBehaviour
 {
     public float rotationSpeed = 60f;
 
