@@ -434,6 +434,8 @@ public class PerguntasQuiz : MonoBehaviour
         lifeQuiz = maxLife;
         random = new Random();
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         CarregarPergunta();
     }
 
