@@ -14,7 +14,7 @@ public class bossFollow : MonoBehaviour
     private bool invulnerable = false;
     private bool isPaused = false;
     private Renderer[] renderers;
-
+    private Animator animator;
 
     private int stageBoss = 0;
    
@@ -23,54 +23,55 @@ public class bossFollow : MonoBehaviour
     {
         inimigoRb = GetComponent<Rigidbody>();
         renderers = GetComponentsInChildren<Renderer>();
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player 1");
    
     }
 
     void Update()
     {
-        if (isDead || player == null) return;
+        
+        //if (isDead || player == null) return;
 
-        float distance = Vector3.Distance(transform.position, player.transform.position);
+        //float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        transform.LookAt(lookAtPosition);
+        //Vector3 lookAtPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        //transform.LookAt(lookAtPosition);
 
-        if (!isPaused)
-        {
-            if (distance > attackDistance)
-            {
+        //if (!isPaused)
+        //{
+        //    if (distance > attackDistance)
+        //    {
 
-                Vector3 direction = (player.transform.position - transform.position).normalized;
-                direction.y = 0;
-
-
-                //animator.SetBool("isWalking", true);
-                //animator.ResetTrigger("Attack");
-
-                Vector3 newPosition = transform.position + direction * velocidade * Time.fixedDeltaTime;
-                inimigoRb.MovePosition(newPosition);
+        //        Vector3 direction = (player.transform.position - transform.position).normalized;
+        //        direction.y = 0;
 
 
+        //        animator.SetBool("isWalking", true);
+        //        animator.ResetTrigger("Attack");
 
-                canAttack = true;
+        //        Vector3 newPosition = transform.position + direction * velocidade * Time.fixedDeltaTime;
+        //        inimigoRb.MovePosition(newPosition);
 
-            }
-            else
-            {
-                inimigoRb.velocity = Vector3.zero;
 
-                if (canAttack)
-                {
-                    FPSController fps = player.GetComponent<FPSController>();
-                    if (fps != null)
-                    {
-                        fps.life -= 5f;
-                    }
-                    canAttack = false;
-                }
-            }
-        }
+
+        //        canAttack = true;
+
+        //    }
+        //    else
+        //    {
+        //        inimigoRb.velocity = Vector3.zero;
+
+        //        if (canAttack)
+        //        {
+        //            PlayerMovement fps = player.GetComponent<PlayerMovement>();
+        //            if (fps != null)
+        //            {
+        //                fps.currentHealth -= 5;
+        //            }
+        //            canAttack = false;
+        //        }
+        //    }
+        //}
         
 
     }
@@ -134,8 +135,8 @@ public class bossFollow : MonoBehaviour
         {
             isDead = true;
             inimigoRb.isKinematic = true;
-            // animator.SetBool("isWalking", false);
-            // animator.SetBool("isDead", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isDead", true);
         }
     }
     void bossStatus()
