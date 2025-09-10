@@ -18,7 +18,7 @@ public class TelaInicial : MonoBehaviour
 
     void IniciarJogo()
     {
-        SceneManager.LoadScene("SceneQuiz");
+        SceneManager.LoadScene("Cenário");
     }
 
     void SairJogo()
