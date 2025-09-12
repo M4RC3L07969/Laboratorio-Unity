@@ -17,7 +17,7 @@ public class SpawnersAleatóriosSala2 : MonoBehaviour
 
     void Update()
     {
-        if (porta2 != null && porta2.segundoQuiz)
+        if (porta2.portaAberta)
         {
             segundos2 += Time.deltaTime;
 

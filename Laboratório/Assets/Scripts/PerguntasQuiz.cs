@@ -6,33 +6,25 @@ using Random = System.Random;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.GraphView;
+using System.Diagnostics;
 
 public class PerguntasQuiz : MonoBehaviour
 {
-    [Header("Portas")]
-    public abrirPorta porta1;
-    public abrirPorta2 porta2;
-    public abrirPorta3 porta3;
-    public abrirPorta4 porta4;
-
     [Header("Texts")]
+    public UnityEngine.UI.Text titulo;
+    public UnityEngine.UI.Text acertos;
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public Button button4;
 
-        public Text titulo;
-        public Button button1;
-        public Button button2;
-        public Button button3;
-        public Button button4;
-        public Text acertos;
-
-    public Color correctColor = Color.green; 
-    public Color wrongColor = Color.red;     
-    public Color normalColor = Color.white;  
-
+    public Color correctColor = Color.green;
+    public Color wrongColor = Color.red;
+    public Color normalColor = Color.white;
 
     [Header("Player's Quiz Life")]
-
     public int lifeQuiz = 3;
+    private int maxLife;
 
     private String[] listaDePerguntas = new String[45] {"O que são átomos e moléculas?",
             "Qual a diferença entre substâncias puras e misturas?",
@@ -405,12 +397,45 @@ public class PerguntasQuiz : MonoBehaviour
     public string respostaSelecionada;
     private int vezesMostrada = 0;
     private int vezesAcertada = 0;
-    private const int MinAcertos= 4;
+    private const int MinAcertos = 4;
+    private object portaQueChamou;
 
 
-
-    void Start()
+    void Awake()
     {
+        gameObject.SetActive(false);
+        maxLife = lifeQuiz;
+    }
+
+    public void IniciarQuiz(abrirPorta2 porta)
+    {
+        portaQueChamou = porta;
+        Comecar();
+    }
+    public void IniciarQuiz(abrirPorta3 porta)
+    {
+        portaQueChamou = porta;
+        Comecar();
+    }
+
+    public void IniciarQuiz(abrirPorta4 porta)
+    {
+        portaQueChamou = porta;
+        Comecar();
+    }
+
+    private void Comecar()
+    {
+        gameObject.SetActive(true);
+        Time.timeScale = 0f;
+
+        vezesAcertada = 0;
+        vezesMostrada = 0;
+        lifeQuiz = maxLife;
+        random = new Random();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         CarregarPergunta();
     }
 
@@ -418,10 +443,11 @@ public class PerguntasQuiz : MonoBehaviour
     {
         if (vezesAcertada >= MinAcertos)
         {
-            SceneManager.LoadScene("Cenário");
+            FinalizarQuiz(true);
+            return;
         }
 
-        
+
 
         random = new Random();
 
@@ -456,6 +482,8 @@ public class PerguntasQuiz : MonoBehaviour
         button4.onClick.AddListener(() => VerificarResposta(respostas[3],button4));
         
     }
+
+
     private void Update()
     {
         acertos.text = "" + vezesAcertada + "/4";
@@ -465,23 +493,20 @@ public class PerguntasQuiz : MonoBehaviour
     {
         if (respostaSelecionada == listaDeRespostas[indicePerguntaAtual][0])
         {
-            Debug.Log("Acertou!");
             vezesAcertada++;
-            vezesMostrada++;
             SetButtonColor(clickedButton, correctColor);
-            CarregarPergunta();
         }
         else
-        {      
-            Debug.Log("Errou!");
+        {
             lifeQuiz--;
-            vezesMostrada++;
             SetButtonColor(clickedButton, wrongColor);
             SetButtonColor(FindCorrectButton(), correctColor);
-            CarregarPergunta();
         }
-        StartCoroutine(EsperarEResetarCores(2f));
+
+        vezesMostrada++;
+        StartCoroutine(EsperarEResetarCores(1.5f));
     }
+
     private Button FindCorrectButton()
     {
 
@@ -513,19 +538,43 @@ public class PerguntasQuiz : MonoBehaviour
         button3.interactable = false;
         button4.interactable = false;
 
-        yield return new WaitForSeconds(tempo);
+        yield return new WaitForSecondsRealtime(tempo);
+
         ResetButtonColors();
+
         if (lifeQuiz <= 0)
         {
+            FinalizarQuiz(false);
+        }
+        else
+        {
+            button1.interactable = true;
+            button2.interactable = true;
+            button3.interactable = true;
+            button4.interactable = true;
+            CarregarPergunta();
+        }
+    }
 
+    void FinalizarQuiz(bool venceu)
+    {
+        Time.timeScale = 1f;
+        gameObject.SetActive(false);
+
+        if (venceu)
+        {
+            if (portaQueChamou is abrirPorta2 p2) p2.AbrirPortaDefinitivamente();
+            else if (portaQueChamou is abrirPorta3 p3) p3.AbrirPortaDefinitivamente();
+            else if (portaQueChamou is abrirPorta4 p4) p4.AbrirPortaDefinitivamente();
+        }
+        else
+        {
             SceneManager.LoadScene("TelaInicial");
         }
-        button1.interactable = true;
-        button2.interactable = true;
-        button3.interactable = true;
-        button4.interactable = true;
-        CarregarPergunta(); 
+
+        portaQueChamou = null;
     }
+
     private void SetButtonColor(Button button, Color color)
     {
         button.GetComponent<Image>().color = color;
