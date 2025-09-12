@@ -39,6 +39,6 @@ public class GameManager : MonoBehaviour
 
     public void mainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("TelaInicial");
     }
 }
