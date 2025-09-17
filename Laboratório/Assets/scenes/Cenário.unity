@@ -2455,13 +2455,14 @@ Transform:
   m_GameObject: {fileID: 259354355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100.23, y: 4.42, z: -2.95}
+  m_LocalPosition: {x: -100.23, y: 4.42, z: 2.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 239416542}
   - {fileID: 1677321178}
   - {fileID: 526073511}
+  - {fileID: 680250294}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &259354358
@@ -2480,9 +2481,11 @@ MonoBehaviour:
   spawn1Sala2: {fileID: 239416541}
   spawn2Sala2: {fileID: 1677321177}
   spawn3Sala2: {fileID: 526073510}
-  numAleatorio2: 0
-  segundos2: 0
+  spawn4Sala2: {fileID: 680250293}
   enemyAcido: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
+  tempoTotalSpawnerInicial: 150
+  tempoEntreSpawns: 2
+  podeAbrirQuiz: 0
 --- !u!1001 &261283369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3158,7 +3161,7 @@ Transform:
   m_GameObject: {fileID: 314597316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.14, y: 0, z: 32.02}
+  m_LocalPosition: {x: -3.14, y: 0, z: 21.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4012,9 +4015,10 @@ MonoBehaviour:
   spawn1Sala1: {fileID: 882464371}
   spawn2Sala1: {fileID: 20470411}
   spawn3Sala1: {fileID: 197754225}
-  numAleatorio1: 0
-  segundos1: 0
   enemyBase: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
+  tempoTotalSpawnerInicial: 20
+  tempoEntreSpawns: 2
+  podeAbrirQuiz: 0
 --- !u!4 &377888582
 Transform:
   m_ObjectHideFlags: 0
@@ -5408,9 +5412,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdac0f150c2858f429c94c81ebad9ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "portaoTresAnima\xE7ao": {fileID: 1810454810}
+  "portaoTresAnima\xE7ao": {fileID: 0}
   portaAberta: 0
   quizManager: {fileID: 1665457459}
+  spawner: {fileID: 259354358}
 --- !u!1 &567005567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4587334026328423782, guid: 465148f16970db745a96c62dfa5ea702, type: 3}
@@ -6198,6 +6203,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231049063400783400, guid: 4814b97f853e449489474bb6be667a91, type: 3}
   m_PrefabInstance: {fileID: 680203657}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &680250293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680250294}
+  m_Layer: 0
+  m_Name: 'spawn4sala2 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680250294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680250293}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.18, y: -1.08, z: 14.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 259354357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &681875358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
@@ -6707,14 +6743,14 @@ PrefabInstance:
     - target: {fileID: 4436022710688657562, guid: 1f58549874d0c6e42a63034881391704, type: 3}
       propertyPath: porta4
       value: 
-      objectReference: {fileID: 1432018697}
+      objectReference: {fileID: 0}
     - target: {fileID: 5724354100212093560, guid: 1f58549874d0c6e42a63034881391704, type: 3}
       propertyPath: m_Name
       value: Quiz (Canvas)
       objectReference: {fileID: 0}
     - target: {fileID: 5724354100212093560, guid: 1f58549874d0c6e42a63034881391704, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7346,7 +7382,7 @@ Transform:
   m_GameObject: {fileID: 760885380}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.78, y: 0.492, z: 27.56}
+  m_LocalPosition: {x: -16.34, y: 2.22, z: 35.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13687,7 +13723,7 @@ GameObject:
   - component: {fileID: 1432018700}
   - component: {fileID: 1432018699}
   - component: {fileID: 1432018698}
-  - component: {fileID: 1432018697}
+  - component: {fileID: 1432018702}
   m_Layer: 0
   m_Name: computadorBoss
   m_TagString: computador2
@@ -13695,20 +13731,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1432018697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1432018696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2657aa5ddd1f494587b931579ffb75d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  "portaoUmAnima\xE7ao": {fileID: 2001714271}
-  primeiroQuiz: 0
 --- !u!135 &1432018698
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13796,6 +13818,22 @@ Transform:
   - {fileID: 195714471}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1432018702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432018696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accaa68e51348694ea301275ead6484a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portaBoss: {fileID: 0}
+  portaAberta: 0
+  quizManager: {fileID: 0}
+  spawner: {fileID: 0}
 --- !u!1 &1432832271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5540879246882266850, guid: e7e470c7ff1446d4a81c87190110efbb, type: 3}
@@ -15220,7 +15258,7 @@ Transform:
   m_GameObject: {fileID: 1506185953}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.81, y: 0, z: 2.47}
+  m_LocalPosition: {x: -17.02, y: 0, z: 1.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20118,6 +20156,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6231049063400783400, guid: 4814b97f853e449489474bb6be667a91, type: 3}
   m_PrefabInstance: {fileID: 1948808762}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1952579957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952579958}
+  m_Layer: 0
+  m_Name: spawn4sala3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1952579958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952579957}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.14, y: 0, z: 36.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1962164778}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1960902236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20210,13 +20279,15 @@ Transform:
   m_GameObject: {fileID: 1962164776}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -154.562, y: 3.08, z: -5.546}
+  m_LocalPosition: {x: -171.34, y: 3.08, z: -3.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1506185954}
   - {fileID: 760885381}
   - {fileID: 314597317}
+  - {fileID: 1952579958}
+  - {fileID: 2063517982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962164779
@@ -20235,9 +20306,12 @@ MonoBehaviour:
   spawn1Sala3: {fileID: 1506185953}
   spawn2Sala3: {fileID: 760885380}
   spawn3Sala3: {fileID: 314597316}
-  spawnerAleatorio: 0
+  spawn4Sala3: {fileID: 0}
+  spawn5Sala3: {fileID: 0}
   enemyPrefeb1: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
   enemyPrefeb2: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
+  tempoTotalSpawnerInicial: 150
+  tempoEntreSpawns: 6
 --- !u!4 &1970887443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
@@ -20262,7 +20336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952824403932259079, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5059796888958416057, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21752,6 +21826,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4814b97f853e449489474bb6be667a91, type: 3}
+--- !u!1 &2063517981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063517982}
+  m_Layer: 0
+  m_Name: spawn5sala3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2063517982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063517981}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.51, y: 0, z: 23.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1962164778}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2065569203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22773,7 +22878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952824403932259079, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5059796888958416057, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23768,6 +23873,7 @@ MonoBehaviour:
   "portaoDoisAnima\xE7ao": {fileID: 4919471156108004073}
   portaAberta: 0
   quizManager: {fileID: 1665457459}
+  spawner: {fileID: 377888581}
 --- !u!4 &8406668939675555831
 Transform:
   m_ObjectHideFlags: 0

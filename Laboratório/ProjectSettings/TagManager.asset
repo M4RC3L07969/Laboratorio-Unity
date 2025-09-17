@@ -22,6 +22,8 @@ TagManager:
   - Quiz
   - PU
   - ShieldPU
+  - HealPU
+  - quiz1
   layers:
   - Default
   - TransparentFX

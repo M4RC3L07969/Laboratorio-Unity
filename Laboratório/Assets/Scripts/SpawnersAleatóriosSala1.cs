@@ -1,26 +1,55 @@
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RandomSpawner : MonoBehaviour
 {
+    [Header("Referência da Porta")]
     [SerializeField] private abrirPorta porta1;
 
+    [Header("Spawn Points")]
     public GameObject spawn1Sala1;
     public GameObject spawn2Sala1;
     public GameObject spawn3Sala1;
-    public int numAleatorio1 = 0;
-    public float segundos1 = 0f;
     public GameObject enemyBase;
+
+    [Header("Configurações de Tempo")]
+    [Tooltip("Tempo total em segundos para spawnar inimigos")]
+    public float tempoTotalSpawnerInicial = 150f;
+
+    [Tooltip("Intervalo em segundos entre um spawn e outro")]
+    public float tempoEntreSpawns = 6f;
+
+    private float tempoTotalSpawnerAtual;
+    private float tempoAcumulado = 0f;
+
+    public bool podeAbrirQuiz = false;
+    private bool spawnerAtivo = true;
+
+    void Start()
+    {
+        tempoTotalSpawnerAtual = tempoTotalSpawnerInicial;
+    }
 
     void Update()
     {
-        if (porta1 != null && porta1.primeiroQuiz)
+        if (porta1 != null && porta1.primeiroQuiz && spawnerAtivo)
         {
-            segundos1 += Time.deltaTime;
+            tempoTotalSpawnerAtual -= Time.deltaTime;
 
-            if (segundos1 >= 6)
+            if (tempoTotalSpawnerAtual <= 0f)
             {
-                segundos1 = 0;
+                spawnerAtivo = false;
+                tempoTotalSpawnerAtual = 0f;
+
+                podeAbrirQuiz = true;
+                Debug.Log("Tempo encerrado. Quiz liberado!");
+                return;
+            }
+
+            tempoAcumulado += Time.deltaTime;
+
+            if (tempoAcumulado >= tempoEntreSpawns)
+            {
+                tempoAcumulado = 0f;
                 ActivateRandomSpawner();
             }
         }
@@ -28,21 +57,24 @@ public class RandomSpawner : MonoBehaviour
 
     void ActivateRandomSpawner()
     {
-        numAleatorio1 = Random.Range(0, 3);
+        int numAleatorio1 = Random.Range(0, 3);
+        Vector3 pos;
 
         switch (numAleatorio1)
         {
             case 0:
-                Instantiate(enemyBase, spawn1Sala1.transform.position, Quaternion.identity);
+                pos = spawn1Sala1.transform.position;
                 break;
             case 1:
-                Instantiate(enemyBase, spawn2Sala1.transform.position, Quaternion.identity);
+                pos = spawn2Sala1.transform.position;
                 break;
             case 2:
-                Instantiate(enemyBase, spawn3Sala1.transform.position, Quaternion.identity);
+                pos = spawn3Sala1.transform.position;
                 break;
+            default:
+                return;
         }
 
+        Instantiate(enemyBase, pos, Quaternion.identity);
     }
-
 }
