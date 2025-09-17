@@ -1,18 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class slimeBoss : MonoBehaviour
 {
+    // Flash de dano
+    Renderer rend;
+    MaterialPropertyBlock mpb;
+    public Color hitColor = Color.red;
+    public float flashDuration = 0.15f;
+    private Color originalColor;
+
+    // Movimento / status
     public float velocidade = 4f;
     public GameObject player;
+    public int health = 400;
+    private float fixedY;
+    private int stageBoss = 0;
 
-    private float fixedY; 
+    void Awake()
+    {
+        rend = GetComponent<Renderer>();
+        mpb = new MaterialPropertyBlock();
+        originalColor = rend.sharedMaterial.color;
+    }
 
     void Start()
     {
         player = GameObject.Find("Player 1");
-        fixedY = transform.position.y; 
+        fixedY = transform.position.y;
     }
 
     void Update()
@@ -20,15 +35,12 @@ public class slimeBoss : MonoBehaviour
         if (player == null) return;
 
         Vector3 targetPosition = new Vector3(player.transform.position.x, fixedY, player.transform.position.z);
-
         float distance = Vector3.Distance(transform.position, targetPosition);
 
         if (distance < 35f)
-
         {
             Vector3 direction = (targetPosition - transform.position).normalized;
             transform.position += direction * velocidade * Time.deltaTime;
-
             LookAtPlayer(targetPosition);
         }
     }
@@ -37,5 +49,64 @@ public class slimeBoss : MonoBehaviour
     {
         Vector3 lookAtPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
         transform.LookAt(lookAtPosition);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("bala ácido"))
+        {
+            Flash();
+            health--;
+        }
+    }
+
+    public void Flash()
+    {
+        StopCoroutine("FlashRoutine");
+        StartCoroutine("FlashRoutine");
+    }
+
+    IEnumerator FlashRoutine()
+    {
+        float t = 0f;
+
+        while (t < flashDuration)
+        {
+            float lerp = Mathf.Sin((t / flashDuration) * Mathf.PI);
+
+            rend.GetPropertyBlock(mpb);
+            mpb.SetColor("_Color", Color.Lerp(originalColor, hitColor, lerp));
+            rend.SetPropertyBlock(mpb);
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        rend.GetPropertyBlock(mpb);
+        mpb.SetColor("_Color", originalColor);
+        rend.SetPropertyBlock(mpb);
+    }
+
+    public void BossStatus()
+    {
+        // Troca de fase/escala
+        if (health < 400 && stageBoss == 0)
+        {
+            stageBoss = 1;
+            StartCoroutine(PauseBoss());
+            transform.localScale *= 3f;
+        }
+        else if (health <= 150 && stageBoss == 1)
+        {
+            stageBoss = 2;
+            StartCoroutine(PauseBoss());
+            transform.localScale *= 1.5f;
+        }
+    }
+
+    IEnumerator PauseBoss()
+    {
+        // exemplo simples
+        yield return new WaitForSeconds(2f);
     }
 }
