@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class slimeBoss : MonoBehaviour
@@ -17,6 +17,9 @@ public class slimeBoss : MonoBehaviour
     private float fixedY;
     private int stageBoss = 0;
 
+    public Material Material1; // arrastar o material verde da bala ácido
+    public Material Material2;   // arrastar o material roxo da bala base
+
     void Awake()
     {
         rend = GetComponent<Renderer>();
@@ -26,7 +29,7 @@ public class slimeBoss : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player 1");
+        player = GameObject.Find("Player");
         fixedY = transform.position.y;
     }
 
@@ -37,7 +40,7 @@ public class slimeBoss : MonoBehaviour
         Vector3 targetPosition = new Vector3(player.transform.position.x, fixedY, player.transform.position.z);
         float distance = Vector3.Distance(transform.position, targetPosition);
 
-        if (distance < 35f)
+        if (distance < 50f)
         {
             Vector3 direction = (targetPosition - transform.position).normalized;
             transform.position += direction * velocidade * Time.deltaTime;
@@ -51,14 +54,51 @@ public class slimeBoss : MonoBehaviour
         transform.LookAt(lookAtPosition);
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("bala ácido"))
+    //    {
+    //        Flash();
+    //        health--;
+    //    }
+    //    else
+    //    {
+    //        health++;
+    //    }
+    //}
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("bala �cido"))
+        Material bossMaterial = rend.sharedMaterial; // pega o material atual do boss
+
+        if (collision.gameObject.CompareTag("bala ácido"))
         {
-            Flash();
-            health--;
+            HandleProjectileHit(collision, Material1, bossMaterial);
+        }
+        else if (collision.gameObject.CompareTag("bala base"))
+        {
+            HandleProjectileHit(collision, Material2, bossMaterial);
         }
     }
+
+    private void HandleProjectileHit(Collision collision, Material projectileMaterial, Material bossMaterial)
+    {
+        if (bossMaterial == projectileMaterial)
+        {
+            health += 10; // cura
+            Debug.Log("Boss curou!");
+        }
+        else
+        {
+            health -= 10; // dano
+            Flash();
+            Debug.Log("Boss tomou dano!");
+        }
+
+        Destroy(collision.gameObject);
+        BossStatus();
+    }
+
 
     public void Flash()
     {
