@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class slimeBoss : MonoBehaviour
 {
+    public Transform firepoint;
+    public GameObject projetilBossBase;
+    public GameObject projetilBossAcido;
+
+    public float shootInterval = 20f;
+
+
+    [Header("Weapon Controller")]
+    public float bulletVelocity = 20f;
+    public float bulletPrefabLife = 3f;
+
     // Flash de dano
     Renderer rend;
     MaterialPropertyBlock mpb;
@@ -29,8 +40,10 @@ public class slimeBoss : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player 1");
         fixedY = transform.position.y;
+        StartCoroutine(AttackTimer());
+
     }
 
     void Update()
@@ -126,7 +139,18 @@ public class slimeBoss : MonoBehaviour
         mpb.SetColor("_Color", originalColor);
         rend.SetPropertyBlock(mpb);
     }
+    IEnumerator AttackTimer()
+    {
+        // Wait for the first attack
+        yield return new WaitForSeconds(shootInterval);
 
+        // Loop indefinitely to keep attacking
+        while (true)
+        {
+            Fire();
+            yield return new WaitForSeconds(shootInterval);
+        }
+    }
     public void BossStatus()
     {
         // Troca de fase/escala
@@ -148,5 +172,27 @@ public class slimeBoss : MonoBehaviour
     {
         // exemplo simples
         yield return new WaitForSeconds(2f);
+    }
+
+    private void Fire()
+    {
+        // Make sure the player object exists before trying to shoot
+        if (player == null)
+        {
+            return;
+        }
+
+        // Determine the direction from the firepoint to the player's position
+        Vector3 directionToPlayer = (player.transform.position - firepoint.position).normalized;
+
+        GameObject projetil = Instantiate(projetilBossAcido, firepoint.position, Quaternion.identity);
+        Rigidbody rb = projetil.GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            // Use the calculated direction to shoot the projectile
+            rb.AddForce(directionToPlayer * bulletVelocity, ForceMode.Impulse);
+        }
+        Destroy(projetil, bulletPrefabLife);
     }
 }
