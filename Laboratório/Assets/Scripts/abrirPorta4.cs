@@ -1,12 +1,14 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class abrirPorta4 : MonoBehaviour
 {
-    [Header("ReferÍncias")]
-    public Animator portaBoss; // ReferÍncia para o Animator da porta do boss
-    public bool portaAberta = false; // Controla se a porta foi aberta ou n„o
-    public PerguntasQuiz quizManager; // ReferÍncia para o manager do quiz
-    public RandomSpawner spawner; // ReferÍncia para o spawner, caso precise verificar se o quiz pode ser aberto
+    [Header("Refer√™ncias")]
+    public Animator portaBoss; // Animator da porta do boss
+    public bool portaAberta = false; // Controla se a porta foi aberta
+    public PerguntasQuiz quizManager; // Manager do quiz
+
+    [Header("Spawner que libera o quiz")]
+    public SpawnersAleat√≥riosSala3 spawner; // ‚Üê tipo do spawner correto
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,19 +16,20 @@ public class abrirPorta4 : MonoBehaviour
         {
             if (spawner != null && spawner.podeAbrirQuiz)
             {
+                Debug.Log("Quiz 4 iniciado.");
                 quizManager.IniciarQuiz(this);
-                GetComponent<Collider>().enabled = false; // Desabilita o collider para evitar m˙ltiplas interaÁıes
+                GetComponent<Collider>().enabled = false; // Desabilita para n√£o reativar
             }
             else
             {
-                Debug.Log("O quiz ainda n„o pode ser iniciado. Aguarde o tempo acabar.");
+                Debug.Log("Quiz 4 ainda n√£o pode ser iniciado. Aguarde o tempo acabar.");
             }
         }
     }
 
     public void AbrirPortaDefinitivamente()
     {
-        portaBoss.SetBool("quartoQuiz", true); // Aciona a animaÁ„o para abrir a porta do boss
-        portaAberta = true; // Marca que a porta foi aberta
+        portaBoss.SetBool("quartoQuiz", true); // Aciona a anima√ß√£o da porta
+        portaAberta = true;
     }
 }

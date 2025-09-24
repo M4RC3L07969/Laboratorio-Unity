@@ -2474,18 +2474,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc6762e6aba29547b736c71d96fa1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  porta2: {fileID: 7833097303389229262}
   spawn1Sala2: {fileID: 239416541}
   spawn2Sala2: {fileID: 1677321177}
   spawn3Sala2: {fileID: 526073510}
   spawn4Sala2: {fileID: 680250293}
   enemyAcido: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
-  objetoParaMudarCor: {fileID: 7592966062584303270}
-  corNova: {r: 0, g: 1, b: 0, a: 1}
-  duracaoTransicao: 2
-  quantidadeInimigosParaSpawnar: 10
+  quantidadeInimigosParaSpawnar: 5
   tempoEntreSpawns: 2
   podeAbrirQuiz: 0
+  inimigosVivos: []
 --- !u!1001 &261283369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4018,7 +4015,7 @@ MonoBehaviour:
   enemyBase: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
   objetoParaMudarCor: {fileID: 7592966062990328827}
   corNova: {r: 0, g: 1, b: 0, a: 1}
-  quantidadeInimigosParaSpawnar: 10
+  quantidadeInimigosParaSpawnar: 5
   tempoEntreSpawns: 2
   podeAbrirQuiz: 0
 --- !u!4 &377888582
@@ -5416,10 +5413,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdac0f150c2858f429c94c81ebad9ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "portaoTresAnima\xE7ao": {fileID: 0}
+  "portaoTresAnima\xE7ao": {fileID: 1810454810}
   portaAberta: 0
   quizManager: {fileID: 1665457459}
   spawner: {fileID: 259354358}
+  objetoParaMudarCor: {fileID: 7592966062584303270}
+  corNova: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &573624774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13904,10 +13903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: accaa68e51348694ea301275ead6484a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portaBoss: {fileID: 0}
+  portaBoss: {fileID: 2001714271}
   portaAberta: 0
-  quizManager: {fileID: 0}
-  spawner: {fileID: 0}
+  quizManager: {fileID: 1665457459}
+  spawner: {fileID: 1962164779}
 --- !u!1 &1432832271 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5540879246882266850, guid: e7e470c7ff1446d4a81c87190110efbb, type: 3}
@@ -20390,15 +20389,15 @@ MonoBehaviour:
   spawn1Sala3: {fileID: 1506185953}
   spawn2Sala3: {fileID: 760885380}
   spawn3Sala3: {fileID: 314597316}
-  spawn4Sala3: {fileID: 0}
-  spawn5Sala3: {fileID: 0}
+  spawn4Sala3: {fileID: 1952579957}
+  spawn5Sala3: {fileID: 2063517981}
   enemyPrefeb1: {fileID: 3158958769689923483, guid: d337860c3ea7cc446ab453a58d987c23, type: 3}
   enemyPrefeb2: {fileID: 3158958769689923483, guid: b591271b5178b0145870caa223c72c1c, type: 3}
   objetoParaMudarCor: {fileID: 699643246}
   corNova: {r: 0, g: 1, b: 0, a: 1}
   duracaoTransicao: 2
-  quantidadeInimigosParaSpawnar: 10
-  tempoEntreSpawns: 6
+  quantidadeInimigosParaSpawnar: 5
+  tempoEntreSpawns: 2
   podeAbrirQuiz: 0
 --- !u!4 &1970887443 stripped
 Transform:
@@ -20424,7 +20423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952824403932259079, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5059796888958416057, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23032,7 +23031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2952824403932259079, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5059796888958416057, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_LocalPosition.x
