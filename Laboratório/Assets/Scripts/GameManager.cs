@@ -5,18 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("UI")]
     public GameObject gameOverUI;
-    // Start is called before the first frame update
+
+    [Header("Flags de controle")]
+    public bool isInUI = false; // True quando está em menu ou quiz
+    public bool isGameOver = false;
+
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        UpdateCursor();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameOverUI.activeInHierarchy)
+        // Sempre atualiza o cursor conforme o estado atual
+        UpdateCursor();
+    }
+
+    private void UpdateCursor()
+    {
+        if (isGameOver || isInUI)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -27,18 +36,32 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-    public void gameOver()
+
+    // Chamado quando o jogador morre
+    public void GameOver()
     {
+        isGameOver = true;
         gameOverUI.SetActive(true);
+        Time.timeScale = 0f; // pausa o jogo
     }
 
-    public void restart()
+    public void Restart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void mainMenu()
+    public void MainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("TelaInicial");
+    }
+
+    // Chamado pelo quiz para ativar/desativar o cursor
+    public void SetUIActive(bool active)
+    {
+        isInUI = active;
+        Time.timeScale = active ? 0f : 1f; // pausa se estiver no UI
+        UpdateCursor();
     }
 }

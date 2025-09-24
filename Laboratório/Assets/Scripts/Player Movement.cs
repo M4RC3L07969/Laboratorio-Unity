@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
             // Chama tela de Game Over
             if (gameManager != null)
             {
-                gameManager.gameOver();
+                gameManager.GameOver();
             }
 
             Debug.Log("[PLAYER] morreu");

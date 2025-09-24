@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,369 +26,369 @@ public class PerguntasQuiz : MonoBehaviour
     public int lifeQuiz = 3;
     private int maxLife;
 
-    private String[] listaDePerguntas = new String[45] {"O que são átomos e moléculas?",
-            "Qual a diferença entre substâncias puras e misturas?",
-            "O que caracteriza uma mudança física e uma mudança química?",
-            "Quais são os estados físicos da matéria?",
-            "O que é a tabela periódica e como ela está organizada?",
-            "O que são metais, ametais e gases nobres?",
-            "Qual a diferença entre substâncias simples e compostas?",
-            "O que são reações químicas? Dê um exemplo.",
-            "O que é um elemento químico?",
-            "O que são ácidos e bases?",
-            "O que são ligações iônicas e covalentes?",
-            "Como ocorre a ligação metálica?",
-            "O que é eletronegatividade e como ela influencia as ligações químicas?",
-            "Qual a diferença entre reações endotérmicas e exotérmicas?",
-            "O que são coeficientes estequiométricos?",
-            "O que é um mol e qual sua relação com a constante de Avogadro?",
-            "Como se classificam as funções inorgânicas (ácidos, bases, sais e óxidos)?",
-            "O que são soluções e quais são suas classificações?",
-            "Como calcular a concentração de uma solução?",
-            "O que é a lei da conservação da massa de Lavoisier?",
-            "Como balancear uma equação química?",
-            "Qual a importância do pH e como ele é calculado?",
-            "O que são reações de oxidação e redução?",
-            "O que é cinética química e quais fatores influenciam a velocidade de uma reação?",
-            "O que é catalisador e qual seu papel nas reações químicas?",
-            "Como funcionam os equilíbrios químicos?",
-            "O que é a constante de equilíbrio (Kc)?",
-            "Como a pressão e a temperatura afetam um equilíbrio químico?",
-            "O que diz o princípio de Le Chatelier?",
-            "O que são reações reversíveis e irreversíveis?",
-            "O que é solubilidade e quais fatores a influenciam?",
-            "O que é eletroquímica e como funcionam as pilhas eletroquímicas?",
-            "Qual a diferença entre eletrólise ígnea e eletrólise aquosa?",
-            "O que é química orgânica e qual sua importância?",
-            "O que são hidrocarbonetos e como são classificados?",
-            "O que são grupos funcionais na química orgânica?",
-            "O que é isomeria e quais são seus tipos?",
-            "Como funcionam as reações de substituição, adição e eliminação?",
-            "O que é polimerização e quais são os principais tipos de polímeros?",
-            "O que são biomoléculas e qual sua importância para a vida?",
-            "O que é a radioatividade e como ela foi descoberta?",
-            "Como funcionam as reações nucleares de fissão e fusão?",
-            "O que são os gases do efeito estufa e qual seu impacto ambiental?",
-            "Como os combustíveis fósseis afetam o meio ambiente?",
-            "O que são energias renováveis e como a química contribui para seu desenvolvimento?"};
+    private String[] listaDePerguntas = new String[45] {"O que sÃ£o Ã¡tomos e molÃ©culas?",
+            "Qual a diferenÃ§a entre substÃ¢ncias puras e misturas?",
+            "O que caracteriza uma mudanÃ§a fÃ­sica e uma mudanÃ§a quÃ­mica?",
+            "Quais sÃ£o os estados fÃ­sicos da matÃ©ria?",
+            "O que Ã© a tabela periÃ³dica e como ela estÃ¡ organizada?",
+            "O que sÃ£o metais, ametais e gases nobres?",
+            "Qual a diferenÃ§a entre substÃ¢ncias simples e compostas?",
+            "O que sÃ£o reaÃ§Ãµes quÃ­micas? DÃª um exemplo.",
+            "O que Ã© um elemento quÃ­mico?",
+            "O que sÃ£o Ã¡cidos e bases?",
+            "O que sÃ£o ligaÃ§Ãµes iÃ´nicas e covalentes?",
+            "Como ocorre a ligaÃ§Ã£o metÃ¡lica?",
+            "O que Ã© eletronegatividade e como ela influencia as ligaÃ§Ãµes quÃ­micas?",
+            "Qual a diferenÃ§a entre reaÃ§Ãµes endotÃ©rmicas e exotÃ©rmicas?",
+            "O que sÃ£o coeficientes estequiomÃ©tricos?",
+            "O que Ã© um mol e qual sua relaÃ§Ã£o com a constante de Avogadro?",
+            "Como se classificam as funÃ§Ãµes inorgÃ¢nicas (Ã¡cidos, bases, sais e Ã³xidos)?",
+            "O que sÃ£o soluÃ§Ãµes e quais sÃ£o suas classificaÃ§Ãµes?",
+            "Como calcular a concentraÃ§Ã£o de uma soluÃ§Ã£o?",
+            "O que Ã© a lei da conservaÃ§Ã£o da massa de Lavoisier?",
+            "Como balancear uma equaÃ§Ã£o quÃ­mica?",
+            "Qual a importÃ¢ncia do pH e como ele Ã© calculado?",
+            "O que sÃ£o reaÃ§Ãµes de oxidaÃ§Ã£o e reduÃ§Ã£o?",
+            "O que Ã© cinÃ©tica quÃ­mica e quais fatores influenciam a velocidade de uma reaÃ§Ã£o?",
+            "O que Ã© catalisador e qual seu papel nas reaÃ§Ãµes quÃ­micas?",
+            "Como funcionam os equilÃ­brios quÃ­micos?",
+            "O que Ã© a constante de equilÃ­brio (Kc)?",
+            "Como a pressÃ£o e a temperatura afetam um equilÃ­brio quÃ­mico?",
+            "O que diz o princÃ­pio de Le Chatelier?",
+            "O que sÃ£o reaÃ§Ãµes reversÃ­veis e irreversÃ­veis?",
+            "O que Ã© solubilidade e quais fatores a influenciam?",
+            "O que Ã© eletroquÃ­mica e como funcionam as pilhas eletroquÃ­micas?",
+            "Qual a diferenÃ§a entre eletrÃ³lise Ã­gnea e eletrÃ³lise aquosa?",
+            "O que Ã© quÃ­mica orgÃ¢nica e qual sua importÃ¢ncia?",
+            "O que sÃ£o hidrocarbonetos e como sÃ£o classificados?",
+            "O que sÃ£o grupos funcionais na quÃ­mica orgÃ¢nica?",
+            "O que Ã© isomeria e quais sÃ£o seus tipos?",
+            "Como funcionam as reaÃ§Ãµes de substituiÃ§Ã£o, adiÃ§Ã£o e eliminaÃ§Ã£o?",
+            "O que Ã© polimerizaÃ§Ã£o e quais sÃ£o os principais tipos de polÃ­meros?",
+            "O que sÃ£o biomolÃ©culas e qual sua importÃ¢ncia para a vida?",
+            "O que Ã© a radioatividade e como ela foi descoberta?",
+            "Como funcionam as reaÃ§Ãµes nucleares de fissÃ£o e fusÃ£o?",
+            "O que sÃ£o os gases do efeito estufa e qual seu impacto ambiental?",
+            "Como os combustÃ­veis fÃ³sseis afetam o meio ambiente?",
+            "O que sÃ£o energias renovÃ¡veis e como a quÃ­mica contribui para seu desenvolvimento?"};
 
         
         string[][] listaDeRespostas = new string[][]
     {
         new string[]
         {
-            "Átomos são as menores unidades de elementos químicos, compostos por prótons, nêutrons e elétrons. Moléculas são formadas por átomos ligados entre si, podendo ser compostos por átomos do mesmo ou de diferentes elementos.",
-            "Átomos são partículas indivisíveis que formam as moléculas. Moléculas são átomos que não podem ser divididos.",
-            "Átomos são partículas que se ligam a outros átomos para formar moléculas. Moléculas podem existir sozinhas ou em grupos.",
-            "Átomos e moléculas são a mesma coisa, sendo apenas diferentes em tamanho."
+            "Ãtomos sÃ£o as menores unidades de elementos quÃ­micos, compostos por prÃ³tons, nÃªutrons e elÃ©trons. MolÃ©culas sÃ£o formadas por Ã¡tomos ligados entre si, podendo ser compostos por Ã¡tomos do mesmo ou de diferentes elementos.",
+            "Ãtomos sÃ£o partÃ­culas indivisÃ­veis que formam as molÃ©culas. MolÃ©culas sÃ£o Ã¡tomos que nÃ£o podem ser divididos.",
+            "Ãtomos sÃ£o partÃ­culas que se ligam a outros Ã¡tomos para formar molÃ©culas. MolÃ©culas podem existir sozinhas ou em grupos.",
+            "Ãtomos e molÃ©culas sÃ£o a mesma coisa, sendo apenas diferentes em tamanho."
         },
         new string[]
         {
-            "Substâncias puras são compostas por apenas um tipo de átomo ou molécula. As misturas são formadas por dois ou mais componentes diferentes.",
-            "Substâncias puras podem ser compostas por vários tipos de moléculas, enquanto misturas contêm apenas um tipo de átomo.",
-            "As substâncias puras podem ser alteradas em suas propriedades, mas as misturas sempre mantêm as propriedades do material original.",
-            "Substâncias puras podem ser separadas em misturas, mas misturas não podem ser formadas a partir de substâncias puras."
+            "SubstÃ¢ncias puras sÃ£o compostas por apenas um tipo de Ã¡tomo ou molÃ©cula. As misturas sÃ£o formadas por dois ou mais componentes diferentes.",
+            "SubstÃ¢ncias puras podem ser compostas por vÃ¡rios tipos de molÃ©culas, enquanto misturas contÃªm apenas um tipo de Ã¡tomo.",
+            "As substÃ¢ncias puras podem ser alteradas em suas propriedades, mas as misturas sempre mantÃªm as propriedades do material original.",
+            "SubstÃ¢ncias puras podem ser separadas em misturas, mas misturas nÃ£o podem ser formadas a partir de substÃ¢ncias puras."
         },
         new string[]
         {
-            "Mudanças físicas alteram as características de uma substância sem modificar sua composição química. Já as mudanças químicas alteram a estrutura molecular da substância, resultando em novos produtos.",
-            "Mudanças físicas resultam na formação de novas substâncias, enquanto mudanças químicas não alteram a substância original.",
-            "Mudanças físicas não alteram a substância, mas mudanças químicas alteram as propriedades físicas também.",
-            "Mudanças físicas envolvem apenas a alteração de temperatura e pressão, enquanto mudanças químicas ocorrem apenas em substâncias líquidas."
+            "MudanÃ§as fÃ­sicas alteram as caracterÃ­sticas de uma substÃ¢ncia sem modificar sua composiÃ§Ã£o quÃ­mica. JÃ¡ as mudanÃ§as quÃ­micas alteram a estrutura molecular da substÃ¢ncia, resultando em novos produtos.",
+            "MudanÃ§as fÃ­sicas resultam na formaÃ§Ã£o de novas substÃ¢ncias, enquanto mudanÃ§as quÃ­micas nÃ£o alteram a substÃ¢ncia original.",
+            "MudanÃ§as fÃ­sicas nÃ£o alteram a substÃ¢ncia, mas mudanÃ§as quÃ­micas alteram as propriedades fÃ­sicas tambÃ©m.",
+            "MudanÃ§as fÃ­sicas envolvem apenas a alteraÃ§Ã£o de temperatura e pressÃ£o, enquanto mudanÃ§as quÃ­micas ocorrem apenas em substÃ¢ncias lÃ­quidas."
         },
         new string[]
         {
-            "Os estados físicos da matéria são sólido, líquido e gasoso. O plasma é considerado o quarto estado da matéria.",
-            "Os estados físicos da matéria são sólidos, líquidos, gasosos e radioativos.",
-            "Os estados físicos da matéria incluem apenas os sólidos e líquidos.",
-            "Os estados da matéria não incluem o gasoso, pois as moléculas sempre se encontram unidas."
+            "Os estados fÃ­sicos da matÃ©ria sÃ£o sÃ³lido, lÃ­quido e gasoso. O plasma Ã© considerado o quarto estado da matÃ©ria.",
+            "Os estados fÃ­sicos da matÃ©ria sÃ£o sÃ³lidos, lÃ­quidos, gasosos e radioativos.",
+            "Os estados fÃ­sicos da matÃ©ria incluem apenas os sÃ³lidos e lÃ­quidos.",
+            "Os estados da matÃ©ria nÃ£o incluem o gasoso, pois as molÃ©culas sempre se encontram unidas."
         },
         new string[]
         {
-            "A tabela periódica organiza os elementos químicos de acordo com suas propriedades e suas massas atômicas, com os elementos semelhantes dispostos em colunas chamadas grupos.",
-            "A tabela periódica organiza os elementos químicos pela ordem de descoberta, sem levar em consideração suas propriedades.",
-            "A tabela periódica é organizada apenas pelos elementos metálicos e seus compostos.",
-            "A tabela periódica é organizada por cor e formato das moléculas."
+            "A tabela periÃ³dica organiza os elementos quÃ­micos de acordo com suas propriedades e suas massas atÃ´micas, com os elementos semelhantes dispostos em colunas chamadas grupos.",
+            "A tabela periÃ³dica organiza os elementos quÃ­micos pela ordem de descoberta, sem levar em consideraÃ§Ã£o suas propriedades.",
+            "A tabela periÃ³dica Ã© organizada apenas pelos elementos metÃ¡licos e seus compostos.",
+            "A tabela periÃ³dica Ã© organizada por cor e formato das molÃ©culas."
         },
         new string[]
         {
-            "Metais são bons condutores de eletricidade e calor, enquanto ametais são isolantes. Gases nobres são elementos estáveis, encontrados na última coluna da tabela periódica.",
-            "Metais são sólidos que não conduzem eletricidade, ametais são líquidos e gases nobres são altamente reativos.",
-            "Metais e ametais possuem as mesmas propriedades e os gases nobres não fazem parte da tabela periódica.",
-            "Metais são elementos radioativos, ametais são compostos orgânicos e gases nobres são compostos de hidrogênio e oxigênio."
+            "Metais sÃ£o bons condutores de eletricidade e calor, enquanto ametais sÃ£o isolantes. Gases nobres sÃ£o elementos estÃ¡veis, encontrados na Ãºltima coluna da tabela periÃ³dica.",
+            "Metais sÃ£o sÃ³lidos que nÃ£o conduzem eletricidade, ametais sÃ£o lÃ­quidos e gases nobres sÃ£o altamente reativos.",
+            "Metais e ametais possuem as mesmas propriedades e os gases nobres nÃ£o fazem parte da tabela periÃ³dica.",
+            "Metais sÃ£o elementos radioativos, ametais sÃ£o compostos orgÃ¢nicos e gases nobres sÃ£o compostos de hidrogÃªnio e oxigÃªnio."
         },
         new string[]
         {
-            "Substâncias simples são formadas por átomos de um único elemento, enquanto substâncias compostas são formadas por átomos de dois ou mais elementos.",
-            "Substâncias simples são compostas apenas por elementos metálicos, enquanto compostas podem ter apenas não metais.",
-            "Substâncias simples têm mais de um átomo, enquanto compostas têm apenas um.",
-            "Substâncias simples são aquelas que não podem ser combinadas para formar compostos."
+            "SubstÃ¢ncias simples sÃ£o formadas por Ã¡tomos de um Ãºnico elemento, enquanto substÃ¢ncias compostas sÃ£o formadas por Ã¡tomos de dois ou mais elementos.",
+            "SubstÃ¢ncias simples sÃ£o compostas apenas por elementos metÃ¡licos, enquanto compostas podem ter apenas nÃ£o metais.",
+            "SubstÃ¢ncias simples tÃªm mais de um Ã¡tomo, enquanto compostas tÃªm apenas um.",
+            "SubstÃ¢ncias simples sÃ£o aquelas que nÃ£o podem ser combinadas para formar compostos."
         },
         new string[]
         {
-            "Reações químicas são processos em que os reagentes se transformam em produtos, com a quebra ou formação de novas ligações. Exemplo: a queima de combustível.",
-            "Reações químicas ocorrem apenas em substâncias líquidas, sem a formação de novos compostos.",
-            "Reações químicas são processos físicos em que os produtos mantêm as mesmas propriedades dos reagentes.",
-            "Reações químicas não alteram a estrutura das moléculas envolvidas, apenas as suas propriedades físicas."
+            "ReaÃ§Ãµes quÃ­micas sÃ£o processos em que os reagentes se transformam em produtos, com a quebra ou formaÃ§Ã£o de novas ligaÃ§Ãµes. Exemplo: a queima de combustÃ­vel.",
+            "ReaÃ§Ãµes quÃ­micas ocorrem apenas em substÃ¢ncias lÃ­quidas, sem a formaÃ§Ã£o de novos compostos.",
+            "ReaÃ§Ãµes quÃ­micas sÃ£o processos fÃ­sicos em que os produtos mantÃªm as mesmas propriedades dos reagentes.",
+            "ReaÃ§Ãµes quÃ­micas nÃ£o alteram a estrutura das molÃ©culas envolvidas, apenas as suas propriedades fÃ­sicas."
         },
         new string[]
         {
-            "Um elemento químico é uma substância que não pode ser decomposta em substâncias mais simples. Cada elemento é definido pelo número de prótons no núcleo de seus átomos.",
-            "Um elemento químico é um tipo de substância composta por dois ou mais átomos.",
-            "Elementos químicos são formados apenas por moléculas que contêm o mesmo número de átomos.",
-            "Elementos químicos são substâncias que podem ser decompostas em outras substâncias mais simples."
+            "Um elemento quÃ­mico Ã© uma substÃ¢ncia que nÃ£o pode ser decomposta em substÃ¢ncias mais simples. Cada elemento Ã© definido pelo nÃºmero de prÃ³tons no nÃºcleo de seus Ã¡tomos.",
+            "Um elemento quÃ­mico Ã© um tipo de substÃ¢ncia composta por dois ou mais Ã¡tomos.",
+            "Elementos quÃ­micos sÃ£o formados apenas por molÃ©culas que contÃªm o mesmo nÃºmero de Ã¡tomos.",
+            "Elementos quÃ­micos sÃ£o substÃ¢ncias que podem ser decompostas em outras substÃ¢ncias mais simples."
         },
         new string[]
         {
-            "Ácidos são substâncias que liberam íons de hidrogênio (H+) em solução, enquanto bases liberam íons hidróxido (OH-).",
-            "Ácidos são substâncias que liberam íons de oxigênio (O-) em solução, enquanto bases liberam apenas íons negativos.",
-            "Ácidos e bases são substâncias neutras e não reagem entre si.",
-            "Ácidos são substâncias que liberam íons de hidrogênio (H-) e bases liberam cátions."
+            "Ãcidos sÃ£o substÃ¢ncias que liberam Ã­ons de hidrogÃªnio (H+) em soluÃ§Ã£o, enquanto bases liberam Ã­ons hidrÃ³xido (OH-).",
+            "Ãcidos sÃ£o substÃ¢ncias que liberam Ã­ons de oxigÃªnio (O-) em soluÃ§Ã£o, enquanto bases liberam apenas Ã­ons negativos.",
+            "Ãcidos e bases sÃ£o substÃ¢ncias neutras e nÃ£o reagem entre si.",
+            "Ãcidos sÃ£o substÃ¢ncias que liberam Ã­ons de hidrogÃªnio (H-) e bases liberam cÃ¡tions."
         },
         new string[]
         {
-            "Ligações iônicas ocorrem entre metais e ametais, com transferência de elétrons. Ligações covalentes ocorrem entre ametais, com o compartilhamento de elétrons.",
-            "Ligações iônicas ocorrem entre dois ametais e envolvem o compartilhamento de elétrons.",
-            "Ligações covalentes ocorrem entre metais e ametais, e envolvem a troca de elétrons.",
-            "Ligações covalentes não envolvem átomos, mas sim a união de partículas de diferentes substâncias."
+            "LigaÃ§Ãµes iÃ´nicas ocorrem entre metais e ametais, com transferÃªncia de elÃ©trons. LigaÃ§Ãµes covalentes ocorrem entre ametais, com o compartilhamento de elÃ©trons.",
+            "LigaÃ§Ãµes iÃ´nicas ocorrem entre dois ametais e envolvem o compartilhamento de elÃ©trons.",
+            "LigaÃ§Ãµes covalentes ocorrem entre metais e ametais, e envolvem a troca de elÃ©trons.",
+            "LigaÃ§Ãµes covalentes nÃ£o envolvem Ã¡tomos, mas sim a uniÃ£o de partÃ­culas de diferentes substÃ¢ncias."
         },
         new string[]
         {
-            "A ligação metálica é formada por átomos de metais que compartilham seus elétrons de forma livre, formando uma rede de cátions.",
-            "A ligação metálica é formada por átomos não metálicos que se unem através de uma camada densa de elétrons.",
-            "A ligação metálica ocorre apenas em compostos orgânicos.",
-            "A ligação metálica é a interação entre prótons e elétrons em compostos gasosos."
+            "A ligaÃ§Ã£o metÃ¡lica Ã© formada por Ã¡tomos de metais que compartilham seus elÃ©trons de forma livre, formando uma rede de cÃ¡tions.",
+            "A ligaÃ§Ã£o metÃ¡lica Ã© formada por Ã¡tomos nÃ£o metÃ¡licos que se unem atravÃ©s de uma camada densa de elÃ©trons.",
+            "A ligaÃ§Ã£o metÃ¡lica ocorre apenas em compostos orgÃ¢nicos.",
+            "A ligaÃ§Ã£o metÃ¡lica Ã© a interaÃ§Ã£o entre prÃ³tons e elÃ©trons em compostos gasosos."
         },
         new string[]
         {
-            "Eletronegatividade é a tendência de um átomo atrair elétrons em uma ligação química. Quanto maior a eletronegatividade, mais forte é a atração pelos elétrons compartilhados.",
-            "Eletronegatividade é a capacidade de um átomo doar elétrons em uma ligação.",
-            "Eletronegatividade é a tendência de um átomo repulsar outros átomos, dificultando a formação de ligações.",
-            "Eletronegatividade é uma propriedade que só afeta as reações químicas de átomos metálicos."
+            "Eletronegatividade Ã© a tendÃªncia de um Ã¡tomo atrair elÃ©trons em uma ligaÃ§Ã£o quÃ­mica. Quanto maior a eletronegatividade, mais forte Ã© a atraÃ§Ã£o pelos elÃ©trons compartilhados.",
+            "Eletronegatividade Ã© a capacidade de um Ã¡tomo doar elÃ©trons em uma ligaÃ§Ã£o.",
+            "Eletronegatividade Ã© a tendÃªncia de um Ã¡tomo repulsar outros Ã¡tomos, dificultando a formaÃ§Ã£o de ligaÃ§Ãµes.",
+            "Eletronegatividade Ã© uma propriedade que sÃ³ afeta as reaÃ§Ãµes quÃ­micas de Ã¡tomos metÃ¡licos."
         },
         new string[]
         {
-            "Reações endotérmicas absorvem calor do ambiente, enquanto reações exotérmicas liberam calor.",
-            "Reações endotérmicas liberam calor, enquanto as exotérmicas absorvem calor.",
-            "As reações endotérmicas e exotérmicas são as mesmas, apenas com nomes diferentes.",
-            "Reações endotérmicas são reações que não alteram a temperatura do ambiente."
+            "ReaÃ§Ãµes endotÃ©rmicas absorvem calor do ambiente, enquanto reaÃ§Ãµes exotÃ©rmicas liberam calor.",
+            "ReaÃ§Ãµes endotÃ©rmicas liberam calor, enquanto as exotÃ©rmicas absorvem calor.",
+            "As reaÃ§Ãµes endotÃ©rmicas e exotÃ©rmicas sÃ£o as mesmas, apenas com nomes diferentes.",
+            "ReaÃ§Ãµes endotÃ©rmicas sÃ£o reaÃ§Ãµes que nÃ£o alteram a temperatura do ambiente."
         },
         new string[]
         {
-            "Coeficientes estequiométricos indicam a quantidade de reagentes e produtos em uma equação química balanceada, garantindo a conservação de átomos.",
-            "Coeficientes estequiométricos indicam a quantidade de energia necessária para uma reação ocorrer.",
-            "Coeficientes estequiométricos indicam apenas a temperatura necessária para que a reação aconteça.",
-            "Coeficientes estequiométricos referem-se apenas à concentração de reagentes em uma reação."
+            "Coeficientes estequiomÃ©tricos indicam a quantidade de reagentes e produtos em uma equaÃ§Ã£o quÃ­mica balanceada, garantindo a conservaÃ§Ã£o de Ã¡tomos.",
+            "Coeficientes estequiomÃ©tricos indicam a quantidade de energia necessÃ¡ria para uma reaÃ§Ã£o ocorrer.",
+            "Coeficientes estequiomÃ©tricos indicam apenas a temperatura necessÃ¡ria para que a reaÃ§Ã£o aconteÃ§a.",
+            "Coeficientes estequiomÃ©tricos referem-se apenas Ã  concentraÃ§Ã£o de reagentes em uma reaÃ§Ã£o."
         },
         new string[]
         {
-            "Um mol é a quantidade de substância que contém o número de Avogadro (aproximadamente 6,022 x 10^23 unidades), que corresponde a um número fixo de entidades elementares.",
-            "Um mol é a quantidade de uma substância que tem massa igual a 1 grama.",
-            "Um mol é o número de moléculas de uma substância que interage em uma reação química.",
-            "Um mol corresponde à quantidade de elementos em uma molécula de água."
+            "Um mol Ã© a quantidade de substÃ¢ncia que contÃ©m o nÃºmero de Avogadro (aproximadamente 6,022 x 10^23 unidades), que corresponde a um nÃºmero fixo de entidades elementares.",
+            "Um mol Ã© a quantidade de uma substÃ¢ncia que tem massa igual a 1 grama.",
+            "Um mol Ã© o nÃºmero de molÃ©culas de uma substÃ¢ncia que interage em uma reaÃ§Ã£o quÃ­mica.",
+            "Um mol corresponde Ã  quantidade de elementos em uma molÃ©cula de Ã¡gua."
         },
         new string[]
         {
-            "As funções inorgânicas são classificadas em ácidos, bases, sais e óxidos, de acordo com suas propriedades químicas e sua composição.",
-            "As funções inorgânicas são classificadas apenas em ácidos e bases.",
-            "As funções inorgânicas envolvem apenas a combinação de gases.",
-            "As funções inorgânicas não incluem os óxidos ou sais em sua classificação."
+            "As funÃ§Ãµes inorgÃ¢nicas sÃ£o classificadas em Ã¡cidos, bases, sais e Ã³xidos, de acordo com suas propriedades quÃ­micas e sua composiÃ§Ã£o.",
+            "As funÃ§Ãµes inorgÃ¢nicas sÃ£o classificadas apenas em Ã¡cidos e bases.",
+            "As funÃ§Ãµes inorgÃ¢nicas envolvem apenas a combinaÃ§Ã£o de gases.",
+            "As funÃ§Ãµes inorgÃ¢nicas nÃ£o incluem os Ã³xidos ou sais em sua classificaÃ§Ã£o."
         },
         new string[]
         {
-            "Soluções são misturas homogêneas compostas por um soluto e um solvente. Elas podem ser classificadas como saturadas ou insaturadas, dependendo da quantidade de soluto dissolvido.",
-            "Soluções são sempre compostos por apenas um tipo de soluto.",
-            "Soluções podem ser formadas apenas em estado sólido.",
-            "Soluções são misturas onde os solutos podem ser facilmente separados por filtração."
+            "SoluÃ§Ãµes sÃ£o misturas homogÃªneas compostas por um soluto e um solvente. Elas podem ser classificadas como saturadas ou insaturadas, dependendo da quantidade de soluto dissolvido.",
+            "SoluÃ§Ãµes sÃ£o sempre compostos por apenas um tipo de soluto.",
+            "SoluÃ§Ãµes podem ser formadas apenas em estado sÃ³lido.",
+            "SoluÃ§Ãµes sÃ£o misturas onde os solutos podem ser facilmente separados por filtraÃ§Ã£o."
         },
         new string[]
         {
-            "A concentração de uma solução é calculada dividindo-se a quantidade de soluto pela quantidade de solução. Pode ser expressa em mol/L (molaridade), entre outras unidades.",
-            "A concentração de uma solução é calculada dividindo-se a quantidade de solvente pela quantidade de soluto.",
-            "A concentração de uma solução é sempre 1 mol/L, independentemente da quantidade de soluto.",
-            "A concentração de uma solução depende apenas da temperatura e pressão."
+            "A concentraÃ§Ã£o de uma soluÃ§Ã£o Ã© calculada dividindo-se a quantidade de soluto pela quantidade de soluÃ§Ã£o. Pode ser expressa em mol/L (molaridade), entre outras unidades.",
+            "A concentraÃ§Ã£o de uma soluÃ§Ã£o Ã© calculada dividindo-se a quantidade de solvente pela quantidade de soluto.",
+            "A concentraÃ§Ã£o de uma soluÃ§Ã£o Ã© sempre 1 mol/L, independentemente da quantidade de soluto.",
+            "A concentraÃ§Ã£o de uma soluÃ§Ã£o depende apenas da temperatura e pressÃ£o."
         },
         new string[]
         {
-            "A Lei da Conservação da Massa de Lavoisier afirma que a massa total dos reagentes em uma reação química é igual à massa total dos produtos.",
-            "A Lei da Conservação da Massa de Lavoisier afirma que a massa dos produtos é sempre maior do que a dos reagentes.",
-            "A Lei de Lavoisier afirma que a massa total é perdida em reações químicas.",
-            "A Lei da Conservação da Massa de Lavoisier só se aplica a reações que ocorrem a temperatura constante."
+            "A Lei da ConservaÃ§Ã£o da Massa de Lavoisier afirma que a massa total dos reagentes em uma reaÃ§Ã£o quÃ­mica Ã© igual Ã  massa total dos produtos.",
+            "A Lei da ConservaÃ§Ã£o da Massa de Lavoisier afirma que a massa dos produtos Ã© sempre maior do que a dos reagentes.",
+            "A Lei de Lavoisier afirma que a massa total Ã© perdida em reaÃ§Ãµes quÃ­micas.",
+            "A Lei da ConservaÃ§Ã£o da Massa de Lavoisier sÃ³ se aplica a reaÃ§Ãµes que ocorrem a temperatura constante."
         },
         new string[]
         {
-            "Balancear uma equação química envolve ajustar os coeficientes para garantir que o número de átomos de cada elemento seja o mesmo dos dois lados da equação.",
-            "Balancear uma equação química envolve alterar os números de átomos, mas sem se preocupar com a quantidade de cada substância.",
-            "Balancear uma equação química envolve apenas equilibrar as massas das substâncias.",
-            "Balanceamento de equações químicas é feito alterando os valores das massas, mas não o número de átomos."
+            "Balancear uma equaÃ§Ã£o quÃ­mica envolve ajustar os coeficientes para garantir que o nÃºmero de Ã¡tomos de cada elemento seja o mesmo dos dois lados da equaÃ§Ã£o.",
+            "Balancear uma equaÃ§Ã£o quÃ­mica envolve alterar os nÃºmeros de Ã¡tomos, mas sem se preocupar com a quantidade de cada substÃ¢ncia.",
+            "Balancear uma equaÃ§Ã£o quÃ­mica envolve apenas equilibrar as massas das substÃ¢ncias.",
+            "Balanceamento de equaÃ§Ãµes quÃ­micas Ã© feito alterando os valores das massas, mas nÃ£o o nÃºmero de Ã¡tomos."
         },
         new string[]
         {
-            "O pH é uma medida da acidez ou basicidade de uma solução. Ele é calculado com a fórmula pH = -log[H+], onde [H+] representa a concentração de íons de hidrogênio na solução.",
-            "O pH é calculado com base na concentração de moléculas de oxigênio em uma solução.",
-            "O pH é uma medida de temperatura, não relacionada à concentração de íons em uma solução.",
-            "O pH é calculado com a fórmula pH = -log[OH-], que representa a concentração de íons hidróxido."
+            "O pH Ã© uma medida da acidez ou basicidade de uma soluÃ§Ã£o. Ele Ã© calculado com a fÃ³rmula pH = -log[H+], onde [H+] representa a concentraÃ§Ã£o de Ã­ons de hidrogÃªnio na soluÃ§Ã£o.",
+            "O pH Ã© calculado com base na concentraÃ§Ã£o de molÃ©culas de oxigÃªnio em uma soluÃ§Ã£o.",
+            "O pH Ã© uma medida de temperatura, nÃ£o relacionada Ã  concentraÃ§Ã£o de Ã­ons em uma soluÃ§Ã£o.",
+            "O pH Ã© calculado com a fÃ³rmula pH = -log[OH-], que representa a concentraÃ§Ã£o de Ã­ons hidrÃ³xido."
         },
         new string[]
         {
-            "Reações de oxidação envolvem a perda de elétrons, enquanto reações de redução envolvem o ganho de elétrons.",
-            "Reações de oxidação e redução não envolvem elétrons, mas apenas variações nas temperaturas das substâncias.",
-            "Reações de oxidação e redução não afetam as ligações químicas, apenas as propriedades físicas.",
-            "Reações de oxidação e redução ocorrem apenas com compostos orgânicos."
+            "ReaÃ§Ãµes de oxidaÃ§Ã£o envolvem a perda de elÃ©trons, enquanto reaÃ§Ãµes de reduÃ§Ã£o envolvem o ganho de elÃ©trons.",
+            "ReaÃ§Ãµes de oxidaÃ§Ã£o e reduÃ§Ã£o nÃ£o envolvem elÃ©trons, mas apenas variaÃ§Ãµes nas temperaturas das substÃ¢ncias.",
+            "ReaÃ§Ãµes de oxidaÃ§Ã£o e reduÃ§Ã£o nÃ£o afetam as ligaÃ§Ãµes quÃ­micas, apenas as propriedades fÃ­sicas.",
+            "ReaÃ§Ãµes de oxidaÃ§Ã£o e reduÃ§Ã£o ocorrem apenas com compostos orgÃ¢nicos."
         },
         new string[]
         {
-            "A cinética química estuda a velocidade das reações químicas e os fatores que influenciam essa velocidade, como temperatura, concentração dos reagentes e presença de catalisadores.",
-            "A cinética química estuda apenas a formação de produtos, sem considerar a velocidade das reações.",
-            "A cinética química trata da quantidade de energia liberada durante as reações, sem considerar os fatores que alteram a velocidade.",
-            "A cinética química é relacionada apenas ao equilíbrio das reações, não às reações em si."
+            "A cinÃ©tica quÃ­mica estuda a velocidade das reaÃ§Ãµes quÃ­micas e os fatores que influenciam essa velocidade, como temperatura, concentraÃ§Ã£o dos reagentes e presenÃ§a de catalisadores.",
+            "A cinÃ©tica quÃ­mica estuda apenas a formaÃ§Ã£o de produtos, sem considerar a velocidade das reaÃ§Ãµes.",
+            "A cinÃ©tica quÃ­mica trata da quantidade de energia liberada durante as reaÃ§Ãµes, sem considerar os fatores que alteram a velocidade.",
+            "A cinÃ©tica quÃ­mica Ã© relacionada apenas ao equilÃ­brio das reaÃ§Ãµes, nÃ£o Ã s reaÃ§Ãµes em si."
         },
         new string[]
         {
-            "Catalisadores são substâncias que aceleram as reações químicas, proporcionando um caminho alternativo de menor energia de ativação, sem serem consumidos no processo.",
-            "Catalisadores são substâncias que diminuem a velocidade das reações químicas, tornando-as mais estáveis.",
-            "Catalisadores aumentam a quantidade de energia necessária para a reação ocorrer.",
-            "Catalisadores reagem com os produtos, transformando-os em novas substâncias durante o processo."
+            "Catalisadores sÃ£o substÃ¢ncias que aceleram as reaÃ§Ãµes quÃ­micas, proporcionando um caminho alternativo de menor energia de ativaÃ§Ã£o, sem serem consumidos no processo.",
+            "Catalisadores sÃ£o substÃ¢ncias que diminuem a velocidade das reaÃ§Ãµes quÃ­micas, tornando-as mais estÃ¡veis.",
+            "Catalisadores aumentam a quantidade de energia necessÃ¡ria para a reaÃ§Ã£o ocorrer.",
+            "Catalisadores reagem com os produtos, transformando-os em novas substÃ¢ncias durante o processo."
         },
         new string[]
         {
-            "Equilíbrios químicos ocorrem quando as reações químicas reversíveis atingem uma situação onde as concentrações dos reagentes e produtos permanecem constantes.",
-            "Equilíbrios químicos são situações em que as reações param de ocorrer, e não há mais interação entre os reagentes.",
-            "Equilíbrios químicos são processos onde os reagentes se convertem completamente em produtos.",
-            "Equilíbrios químicos só ocorrem em soluções aquosas, e não em reações gasosas ou sólidas."
+            "EquilÃ­brios quÃ­micos ocorrem quando as reaÃ§Ãµes quÃ­micas reversÃ­veis atingem uma situaÃ§Ã£o onde as concentraÃ§Ãµes dos reagentes e produtos permanecem constantes.",
+            "EquilÃ­brios quÃ­micos sÃ£o situaÃ§Ãµes em que as reaÃ§Ãµes param de ocorrer, e nÃ£o hÃ¡ mais interaÃ§Ã£o entre os reagentes.",
+            "EquilÃ­brios quÃ­micos sÃ£o processos onde os reagentes se convertem completamente em produtos.",
+            "EquilÃ­brios quÃ­micos sÃ³ ocorrem em soluÃ§Ãµes aquosas, e nÃ£o em reaÃ§Ãµes gasosas ou sÃ³lidas."
         },
         new string[]
         {
-            "A constante de equilíbrio (Kc) é uma constante que descreve a relação entre as concentrações dos produtos e reagentes em equilíbrio, para uma reação específica a uma temperatura constante.",
-            "A constante de equilíbrio (Kc) descreve a quantidade de calor liberado durante uma reação.",
-            "A constante de equilíbrio (Kc) refere-se apenas à quantidade de catalisadores presentes em uma reação.",
-            "A constante de equilíbrio (Kc) é determinada apenas pela pressão e não pela concentração dos reagentes."
+            "A constante de equilÃ­brio (Kc) Ã© uma constante que descreve a relaÃ§Ã£o entre as concentraÃ§Ãµes dos produtos e reagentes em equilÃ­brio, para uma reaÃ§Ã£o especÃ­fica a uma temperatura constante.",
+            "A constante de equilÃ­brio (Kc) descreve a quantidade de calor liberado durante uma reaÃ§Ã£o.",
+            "A constante de equilÃ­brio (Kc) refere-se apenas Ã  quantidade de catalisadores presentes em uma reaÃ§Ã£o.",
+            "A constante de equilÃ­brio (Kc) Ã© determinada apenas pela pressÃ£o e nÃ£o pela concentraÃ§Ã£o dos reagentes."
         },
         new string[]
         {
-            "A pressão e a temperatura afetam um equilíbrio químico, pois mudanças nessas variáveis podem favorecer a formação de produtos ou reagentes, alterando as concentrações no equilíbrio.",
-            "A pressão e a temperatura não afetam o equilíbrio químico, pois os reagentes sempre se transformam em produtos na mesma proporção.",
-            "A pressão e a temperatura apenas afetam a quantidade de catalisadores em uma reação de equilíbrio.",
-            "A pressão e a temperatura alteram a velocidade de uma reação, mas não o equilíbrio entre os reagentes e produtos."
+            "A pressÃ£o e a temperatura afetam um equilÃ­brio quÃ­mico, pois mudanÃ§as nessas variÃ¡veis podem favorecer a formaÃ§Ã£o de produtos ou reagentes, alterando as concentraÃ§Ãµes no equilÃ­brio.",
+            "A pressÃ£o e a temperatura nÃ£o afetam o equilÃ­brio quÃ­mico, pois os reagentes sempre se transformam em produtos na mesma proporÃ§Ã£o.",
+            "A pressÃ£o e a temperatura apenas afetam a quantidade de catalisadores em uma reaÃ§Ã£o de equilÃ­brio.",
+            "A pressÃ£o e a temperatura alteram a velocidade de uma reaÃ§Ã£o, mas nÃ£o o equilÃ­brio entre os reagentes e produtos."
         },
         new string[]
         {
-            "O princípio de Le Chatelier afirma que, quando um sistema em equilíbrio é perturbado, ele tende a se ajustar para minimizar a mudança e restabelecer o equilíbrio.",
-            "O princípio de Le Chatelier afirma que, quando um sistema em equilíbrio é perturbado, ele tende a acelerar a reação até que a mudança seja maximizada.",
-            "O princípio de Le Chatelier só se aplica a reações reversíveis e não a processos que envolvem catalisadores.",
-            "O princípio de Le Chatelier não afeta o equilíbrio entre os reagentes, apenas a concentração dos produtos."
+            "O princÃ­pio de Le Chatelier afirma que, quando um sistema em equilÃ­brio Ã© perturbado, ele tende a se ajustar para minimizar a mudanÃ§a e restabelecer o equilÃ­brio.",
+            "O princÃ­pio de Le Chatelier afirma que, quando um sistema em equilÃ­brio Ã© perturbado, ele tende a acelerar a reaÃ§Ã£o atÃ© que a mudanÃ§a seja maximizada.",
+            "O princÃ­pio de Le Chatelier sÃ³ se aplica a reaÃ§Ãµes reversÃ­veis e nÃ£o a processos que envolvem catalisadores.",
+            "O princÃ­pio de Le Chatelier nÃ£o afeta o equilÃ­brio entre os reagentes, apenas a concentraÃ§Ã£o dos produtos."
         },
         new string[]
         {
-            "Reações reversíveis são aquelas que podem ocorrer nos dois sentidos, enquanto reações irreversíveis são aquelas que vão de reagentes a produtos e não podem retornar.",
-            "Reações reversíveis podem ocorrer apenas em soluções líquidas e nunca em estados sólidos.",
-            "Reações reversíveis e irreversíveis são o mesmo tipo de reação, com apenas uma diferença na velocidade.",
-            "Reações reversíveis são aquelas em que os produtos não podem se transformar novamente em reagentes."
+            "ReaÃ§Ãµes reversÃ­veis sÃ£o aquelas que podem ocorrer nos dois sentidos, enquanto reaÃ§Ãµes irreversÃ­veis sÃ£o aquelas que vÃ£o de reagentes a produtos e nÃ£o podem retornar.",
+            "ReaÃ§Ãµes reversÃ­veis podem ocorrer apenas em soluÃ§Ãµes lÃ­quidas e nunca em estados sÃ³lidos.",
+            "ReaÃ§Ãµes reversÃ­veis e irreversÃ­veis sÃ£o o mesmo tipo de reaÃ§Ã£o, com apenas uma diferenÃ§a na velocidade.",
+            "ReaÃ§Ãµes reversÃ­veis sÃ£o aquelas em que os produtos nÃ£o podem se transformar novamente em reagentes."
         },
         new string[]
         {
-            "Solubilidade é a capacidade de uma substância se dissolver em um solvente. Fatores como temperatura, pressão e natureza do solvente afetam a solubilidade.",
-            "Solubilidade é uma propriedade constante e não é influenciada por temperatura ou pressão.",
-            "Solubilidade depende apenas do tipo de solvente, independentemente das características da substância.",
-            "Solubilidade é a quantidade de gás que uma substância pode liberar na forma sólida."
+            "Solubilidade Ã© a capacidade de uma substÃ¢ncia se dissolver em um solvente. Fatores como temperatura, pressÃ£o e natureza do solvente afetam a solubilidade.",
+            "Solubilidade Ã© uma propriedade constante e nÃ£o Ã© influenciada por temperatura ou pressÃ£o.",
+            "Solubilidade depende apenas do tipo de solvente, independentemente das caracterÃ­sticas da substÃ¢ncia.",
+            "Solubilidade Ã© a quantidade de gÃ¡s que uma substÃ¢ncia pode liberar na forma sÃ³lida."
         },
         new string[]
         {
-            "Eletroquímica é a área da química que estuda as reações que envolvem a transferência de elétrons, como as pilhas e as reações de eletrólise.",
-            "Eletroquímica estuda apenas as reações gasosas, sem envolvimento de eletricidade.",
-            "Eletroquímica não se refere a pilhas ou reações redox, mas ao estudo de compostos com alta condutividade elétrica.",
-            "Eletroquímica estuda apenas reações que ocorrem em temperaturas muito altas."
+            "EletroquÃ­mica Ã© a Ã¡rea da quÃ­mica que estuda as reaÃ§Ãµes que envolvem a transferÃªncia de elÃ©trons, como as pilhas e as reaÃ§Ãµes de eletrÃ³lise.",
+            "EletroquÃ­mica estuda apenas as reaÃ§Ãµes gasosas, sem envolvimento de eletricidade.",
+            "EletroquÃ­mica nÃ£o se refere a pilhas ou reaÃ§Ãµes redox, mas ao estudo de compostos com alta condutividade elÃ©trica.",
+            "EletroquÃ­mica estuda apenas reaÃ§Ãµes que ocorrem em temperaturas muito altas."
         },
         new string[]
         {
-            "A eletrólise ígnea ocorre quando compostos sólidos fundidos são decompostos por corrente elétrica, enquanto a eletrólise aquosa ocorre em soluções líquidas de compostos.",
-            "A eletrólise ígnea ocorre em soluções aquosas, enquanto a eletrólise aquosa é realizada em substâncias sólidas.",
-            "A eletrólise ígnea não envolve corrente elétrica, mas apenas alta pressão.",
-            "A eletrólise aquosa envolve a decomposição de gases nobres, enquanto a ígnea envolve apenas metais."
+            "A eletrÃ³lise Ã­gnea ocorre quando compostos sÃ³lidos fundidos sÃ£o decompostos por corrente elÃ©trica, enquanto a eletrÃ³lise aquosa ocorre em soluÃ§Ãµes lÃ­quidas de compostos.",
+            "A eletrÃ³lise Ã­gnea ocorre em soluÃ§Ãµes aquosas, enquanto a eletrÃ³lise aquosa Ã© realizada em substÃ¢ncias sÃ³lidas.",
+            "A eletrÃ³lise Ã­gnea nÃ£o envolve corrente elÃ©trica, mas apenas alta pressÃ£o.",
+            "A eletrÃ³lise aquosa envolve a decomposiÃ§Ã£o de gases nobres, enquanto a Ã­gnea envolve apenas metais."
         },
         new string[]
         {
-            "A química orgânica estuda os compostos de carbono e suas reações, sendo essencial para a produção de plásticos, medicamentos, alimentos e combustíveis.",
-            "A química orgânica estuda os compostos inorgânicos e suas propriedades físicas.",
-            "A química orgânica é a área que estuda apenas os ácidos e bases.",
-            "A química orgânica se concentra apenas em substâncias sólidas e não líquidas ou gasosas."
+            "A quÃ­mica orgÃ¢nica estuda os compostos de carbono e suas reaÃ§Ãµes, sendo essencial para a produÃ§Ã£o de plÃ¡sticos, medicamentos, alimentos e combustÃ­veis.",
+            "A quÃ­mica orgÃ¢nica estuda os compostos inorgÃ¢nicos e suas propriedades fÃ­sicas.",
+            "A quÃ­mica orgÃ¢nica Ã© a Ã¡rea que estuda apenas os Ã¡cidos e bases.",
+            "A quÃ­mica orgÃ¢nica se concentra apenas em substÃ¢ncias sÃ³lidas e nÃ£o lÃ­quidas ou gasosas."
         },
         new string[]
         {
-            "Hidrocarbonetos são compostos formados exclusivamente por carbono e hidrogênio. Eles são classificados como alcanos, alcenos, alcinos e aromáticos, dependendo das ligações entre os átomos.",
-            "Hidrocarbonetos são compostos formados apenas por carbono, oxigênio e hidrogênio.",
-            "Hidrocarbonetos são compostos que contêm apenas átomos de carbono.",
-            "Hidrocarbonetos são compostos encontrados exclusivamente em combustíveis fósseis, sem outras fontes."
+            "Hidrocarbonetos sÃ£o compostos formados exclusivamente por carbono e hidrogÃªnio. Eles sÃ£o classificados como alcanos, alcenos, alcinos e aromÃ¡ticos, dependendo das ligaÃ§Ãµes entre os Ã¡tomos.",
+            "Hidrocarbonetos sÃ£o compostos formados apenas por carbono, oxigÃªnio e hidrogÃªnio.",
+            "Hidrocarbonetos sÃ£o compostos que contÃªm apenas Ã¡tomos de carbono.",
+            "Hidrocarbonetos sÃ£o compostos encontrados exclusivamente em combustÃ­veis fÃ³sseis, sem outras fontes."
         },
         new string[]
         {
-            "Grupos funcionais são grupos específicos de átomos em moléculas orgânicas que determinam suas propriedades e reatividade, como os ácidos carboxílicos, álcoois, ésteres, etc.",
-            "Grupos funcionais são partes de moléculas que não influenciam suas reações químicas.",
-            "Grupos funcionais são os compostos formados durante a reação de substituição.",
-            "Grupos funcionais são apenas combinações de átomos de carbono em moléculas."
+            "Grupos funcionais sÃ£o grupos especÃ­ficos de Ã¡tomos em molÃ©culas orgÃ¢nicas que determinam suas propriedades e reatividade, como os Ã¡cidos carboxÃ­licos, Ã¡lcoois, Ã©steres, etc.",
+            "Grupos funcionais sÃ£o partes de molÃ©culas que nÃ£o influenciam suas reaÃ§Ãµes quÃ­micas.",
+            "Grupos funcionais sÃ£o os compostos formados durante a reaÃ§Ã£o de substituiÃ§Ã£o.",
+            "Grupos funcionais sÃ£o apenas combinaÃ§Ãµes de Ã¡tomos de carbono em molÃ©culas."
         },
         new string[]
         {
-            "Isomeria é a propriedade que permite a existência de compostos com a mesma fórmula molecular, mas com arranjos diferentes de átomos. Existem isômeros estruturais e espaciais.",
-            "Isomeria é a diferença entre dois compostos com diferentes fórmulas químicas, mas com propriedades físicas semelhantes.",
-            "Isomeria ocorre apenas entre substâncias que têm a mesma fórmula estrutural.",
-            "Isomeria é a formação de moléculas com a mesma fórmula, mas que não têm propriedades químicas similares."
+            "Isomeria Ã© a propriedade que permite a existÃªncia de compostos com a mesma fÃ³rmula molecular, mas com arranjos diferentes de Ã¡tomos. Existem isÃ´meros estruturais e espaciais.",
+            "Isomeria Ã© a diferenÃ§a entre dois compostos com diferentes fÃ³rmulas quÃ­micas, mas com propriedades fÃ­sicas semelhantes.",
+            "Isomeria ocorre apenas entre substÃ¢ncias que tÃªm a mesma fÃ³rmula estrutural.",
+            "Isomeria Ã© a formaÃ§Ã£o de molÃ©culas com a mesma fÃ³rmula, mas que nÃ£o tÃªm propriedades quÃ­micas similares."
         },
         new string[]
         {
-            "Reações de substituição, adição e eliminação são tipos de reações orgânicas. Na substituição, um átomo ou grupo é substituído; na adição, dois átomos ou grupos são adicionados; na eliminação, um grupo é removido.",
-            "Reações de substituição e adição não envolvem a quebra de ligações, enquanto reações de eliminação não envolvem a formação de novas ligações.",
-            "Reações de substituição e eliminação sempre envolvem a formação de compostos mais estáveis.",
-            "Reações de substituição, adição e eliminação não são comuns em reações orgânicas."
+            "ReaÃ§Ãµes de substituiÃ§Ã£o, adiÃ§Ã£o e eliminaÃ§Ã£o sÃ£o tipos de reaÃ§Ãµes orgÃ¢nicas. Na substituiÃ§Ã£o, um Ã¡tomo ou grupo Ã© substituÃ­do; na adiÃ§Ã£o, dois Ã¡tomos ou grupos sÃ£o adicionados; na eliminaÃ§Ã£o, um grupo Ã© removido.",
+            "ReaÃ§Ãµes de substituiÃ§Ã£o e adiÃ§Ã£o nÃ£o envolvem a quebra de ligaÃ§Ãµes, enquanto reaÃ§Ãµes de eliminaÃ§Ã£o nÃ£o envolvem a formaÃ§Ã£o de novas ligaÃ§Ãµes.",
+            "ReaÃ§Ãµes de substituiÃ§Ã£o e eliminaÃ§Ã£o sempre envolvem a formaÃ§Ã£o de compostos mais estÃ¡veis.",
+            "ReaÃ§Ãµes de substituiÃ§Ã£o, adiÃ§Ã£o e eliminaÃ§Ã£o nÃ£o sÃ£o comuns em reaÃ§Ãµes orgÃ¢nicas."
         },
         new string[]
         {
-            "Polimerização é o processo de formação de polímeros a partir de monômeros, podendo ser do tipo adição ou condensação.",
-            "Polimerização é o processo de decomposição de polímeros em monômeros.",
-            "Polimerização ocorre apenas em compostos de carbono, sem envolver outros átomos.",
-            "Polimerização é a reação entre metais e ácidos, sem envolver moléculas orgânicas."
+            "PolimerizaÃ§Ã£o Ã© o processo de formaÃ§Ã£o de polÃ­meros a partir de monÃ´meros, podendo ser do tipo adiÃ§Ã£o ou condensaÃ§Ã£o.",
+            "PolimerizaÃ§Ã£o Ã© o processo de decomposiÃ§Ã£o de polÃ­meros em monÃ´meros.",
+            "PolimerizaÃ§Ã£o ocorre apenas em compostos de carbono, sem envolver outros Ã¡tomos.",
+            "PolimerizaÃ§Ã£o Ã© a reaÃ§Ã£o entre metais e Ã¡cidos, sem envolver molÃ©culas orgÃ¢nicas."
         },
         new string[]
         {
-            "Biomoléculas são moléculas essenciais para os processos biológicos, como carboidratos, lipídios, proteínas e ácidos nucleicos. Elas são fundamentais para a vida.",
-            "Biomoléculas são moléculas formadas apenas por elementos metálicos, como ferro e cobre.",
-            "Biomoléculas são compostos que se formam durante as reações de combustão.",
-            "Biomoléculas não são fundamentais para os seres vivos, mas são encontradas em substâncias sintéticas."
+            "BiomolÃ©culas sÃ£o molÃ©culas essenciais para os processos biolÃ³gicos, como carboidratos, lipÃ­dios, proteÃ­nas e Ã¡cidos nucleicos. Elas sÃ£o fundamentais para a vida.",
+            "BiomolÃ©culas sÃ£o molÃ©culas formadas apenas por elementos metÃ¡licos, como ferro e cobre.",
+            "BiomolÃ©culas sÃ£o compostos que se formam durante as reaÃ§Ãµes de combustÃ£o.",
+            "BiomolÃ©culas nÃ£o sÃ£o fundamentais para os seres vivos, mas sÃ£o encontradas em substÃ¢ncias sintÃ©ticas."
         },
         new string[]
         {
-            "Radioatividade é a emissão espontânea de radiação por átomos instáveis, como o urânio e o rádio. Ela foi descoberta por Marie e Pierre Curie.",
-            "Radioatividade é a radiação emitida apenas por átomos de oxigênio.",
-            "Radioatividade é a capacidade dos átomos de emitir luz visível.",
-            "Radioatividade é um fenômeno que ocorre apenas em materiais sólidos."
+            "Radioatividade Ã© a emissÃ£o espontÃ¢nea de radiaÃ§Ã£o por Ã¡tomos instÃ¡veis, como o urÃ¢nio e o rÃ¡dio. Ela foi descoberta por Marie e Pierre Curie.",
+            "Radioatividade Ã© a radiaÃ§Ã£o emitida apenas por Ã¡tomos de oxigÃªnio.",
+            "Radioatividade Ã© a capacidade dos Ã¡tomos de emitir luz visÃ­vel.",
+            "Radioatividade Ã© um fenÃ´meno que ocorre apenas em materiais sÃ³lidos."
         },
         new string[]
         {
-            "Fissão nuclear é o processo em que o núcleo de um átomo se divide, liberando energia, enquanto a fusão nuclear é a junção de dois núcleos para formar um mais pesado, também liberando energia.",
-            "A fissão nuclear não libera energia, enquanto a fusão é responsável pela produção de radiação.",
-            "A fissão nuclear é a junção de átomos, e a fusão é a divisão dos átomos.",
-            "A fissão e fusão nuclear não têm relação com a liberação de energia, mas apenas com a separação de átomos."
+            "FissÃ£o nuclear Ã© o processo em que o nÃºcleo de um Ã¡tomo se divide, liberando energia, enquanto a fusÃ£o nuclear Ã© a junÃ§Ã£o de dois nÃºcleos para formar um mais pesado, tambÃ©m liberando energia.",
+            "A fissÃ£o nuclear nÃ£o libera energia, enquanto a fusÃ£o Ã© responsÃ¡vel pela produÃ§Ã£o de radiaÃ§Ã£o.",
+            "A fissÃ£o nuclear Ã© a junÃ§Ã£o de Ã¡tomos, e a fusÃ£o Ã© a divisÃ£o dos Ã¡tomos.",
+            "A fissÃ£o e fusÃ£o nuclear nÃ£o tÃªm relaÃ§Ã£o com a liberaÃ§Ã£o de energia, mas apenas com a separaÃ§Ã£o de Ã¡tomos."
         },
         new string[]
         {
-            "Os gases do efeito estufa, como dióxido de carbono, metano e óxidos de nitrogênio, contribuem para o aquecimento global ao prenderem calor na atmosfera.",
-            "Os gases do efeito estufa são inofensivos, pois não alteram a temperatura do planeta.",
-            "Os gases do efeito estufa só afetam os oceanos e não têm impacto sobre o clima.",
-            "Gases do efeito estufa são formados por elementos como oxigênio e nitrogênio, que ajudam na resfriamento da atmosfera."
+            "Os gases do efeito estufa, como diÃ³xido de carbono, metano e Ã³xidos de nitrogÃªnio, contribuem para o aquecimento global ao prenderem calor na atmosfera.",
+            "Os gases do efeito estufa sÃ£o inofensivos, pois nÃ£o alteram a temperatura do planeta.",
+            "Os gases do efeito estufa sÃ³ afetam os oceanos e nÃ£o tÃªm impacto sobre o clima.",
+            "Gases do efeito estufa sÃ£o formados por elementos como oxigÃªnio e nitrogÃªnio, que ajudam na resfriamento da atmosfera."
         },
         new string[]
         {
-            "Combustíveis fósseis, como petróleo e carvão, liberam gases de efeito estufa, como dióxido de carbono, que contribuem para o aquecimento global e mudanças climáticas.",
-            "Combustíveis fósseis não afetam o meio ambiente, pois são compostos apenas por gases naturais.",
-            "Combustíveis fósseis liberam gás oxigênio, o que ajuda na preservação ambiental.",
-            "Combustíveis fósseis não contribuem para a poluição, já que não emitem substâncias tóxicas para a atmosfera."
+            "CombustÃ­veis fÃ³sseis, como petrÃ³leo e carvÃ£o, liberam gases de efeito estufa, como diÃ³xido de carbono, que contribuem para o aquecimento global e mudanÃ§as climÃ¡ticas.",
+            "CombustÃ­veis fÃ³sseis nÃ£o afetam o meio ambiente, pois sÃ£o compostos apenas por gases naturais.",
+            "CombustÃ­veis fÃ³sseis liberam gÃ¡s oxigÃªnio, o que ajuda na preservaÃ§Ã£o ambiental.",
+            "CombustÃ­veis fÃ³sseis nÃ£o contribuem para a poluiÃ§Ã£o, jÃ¡ que nÃ£o emitem substÃ¢ncias tÃ³xicas para a atmosfera."
         },
         new string[]
         {
-            "Energias renováveis são fontes de energia que podem ser reabastecidas naturalmente, como solar, eólica e hidrelétrica. A química contribui para o desenvolvimento dessas fontes ao criar materiais eficientes para conversão de energia.",
-            "Energias renováveis são fontes de energia derivadas de combustíveis fósseis, como carvão e petróleo.",
-            "Energias renováveis não possuem impacto ambiental, pois são fontes de energia infinitas.",
-            "Energias renováveis não podem ser melhoradas pela química, pois envolvem apenas fontes naturais e não dependem de tecnologias."
+            "Energias renovÃ¡veis sÃ£o fontes de energia que podem ser reabastecidas naturalmente, como solar, eÃ³lica e hidrelÃ©trica. A quÃ­mica contribui para o desenvolvimento dessas fontes ao criar materiais eficientes para conversÃ£o de energia.",
+            "Energias renovÃ¡veis sÃ£o fontes de energia derivadas de combustÃ­veis fÃ³sseis, como carvÃ£o e petrÃ³leo.",
+            "Energias renovÃ¡veis nÃ£o possuem impacto ambiental, pois sÃ£o fontes de energia infinitas.",
+            "Energias renovÃ¡veis nÃ£o podem ser melhoradas pela quÃ­mica, pois envolvem apenas fontes naturais e nÃ£o dependem de tecnologias."
         }
     };
 
@@ -437,6 +437,10 @@ public class PerguntasQuiz : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         CarregarPergunta();
+
+        GameManager gm = FindObjectOfType<GameManager>();
+        gm.SetUIActive(true);
+
     }
 
     void CarregarPergunta()
@@ -571,6 +575,9 @@ public class PerguntasQuiz : MonoBehaviour
         {
             SceneManager.LoadScene("TelaInicial");
         }
+
+        GameManager gm = FindObjectOfType<GameManager>();
+        gm.SetUIActive(false);
 
         portaQueChamou = null;
     }

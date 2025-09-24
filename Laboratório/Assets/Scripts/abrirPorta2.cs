@@ -1,12 +1,14 @@
 using UnityEngine;
 
+using UnityEngine;
+
 public class abrirPorta2 : MonoBehaviour
 {
     public Animator portaoDoisAnimaçao;
     public bool portaAberta = false;
     public PerguntasQuiz quizManager;
 
-    public RandomSpawner spawner; // <- arraste no Inspector!
+    public RandomSpawner spawner;
 
     private void OnTriggerEnter(Collider other)
     {
