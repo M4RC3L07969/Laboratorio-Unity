@@ -24,6 +24,7 @@ TagManager:
   - ShieldPU
   - HealPU
   - quiz1
+  - balaSlime
   layers:
   - Default
   - TransparentFX
