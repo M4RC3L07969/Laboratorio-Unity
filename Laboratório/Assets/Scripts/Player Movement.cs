@@ -118,6 +118,22 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("[ESCUDO] Dano bloqueado pelo escudo!");
             }
         }
+        if (other.CompareTag("balaSlime"))
+        {
+            if (!isShieldActive)
+            {
+
+                TakeDamage(15);
+                Debug.Log("[BOSS] Dano de projétil recebido!");
+            }
+            else
+            {
+                Debug.Log("[ESCUDO] Projétil do Boss bloqueado!");
+            }
+
+
+            Destroy(other.gameObject);
+        }
     }
 
     public void ApplySpeedBoost()
@@ -211,6 +227,7 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("[ESCUDO] Escudo desativado!");
     }
+
 
     // --- Função de Cura ---
     public void HealPlayer(int amount)
