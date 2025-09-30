@@ -49,7 +49,7 @@ public class Target : MonoBehaviour
             LookAtPlayer();
         }
         
-        else if (distance < 25f)
+        else if (distance < 50f)
         {
             animator.SetBool("isNear", true);
 
