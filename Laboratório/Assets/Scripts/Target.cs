@@ -34,8 +34,8 @@ public class Target : MonoBehaviour
         if (distance < 5f)
         {
             inimigoRb.velocity = Vector3.zero;
+            animator.SetBool("isNear", false);
 
-            
             if (Time.time >= lastAttackTime + attackCooldown)
             {
                 string actualAction = action[Random.Range(0, action.Length)];

@@ -35,50 +35,42 @@ public class InimigoMorrer : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (gameObject.tag == "Inimigo base")
+        if (gameObject.CompareTag("Inimigo base"))
         {
-            if (collision.gameObject.tag == "bala ácido")
+            if (collision.gameObject.CompareTag("bala ácido"))
             {
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
                 
                 
             }
-            else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
+            else if (collision.gameObject.CompareTag("bala base") && vidaInimigo <= vidaMaxima)
             {
-                vidaInimigo += 1;
-                AumentarTamanhoInimigo();
+                vidaInimigo += 0;
+                
             }
         }
-        else if (gameObject.tag == "Inimigo ácido")
+        else if (gameObject.CompareTag("Inimigo ácido"))
         {
-            if (collision.gameObject.tag == "bala ácido")
+            if (collision.gameObject.CompareTag("bala base"))
             {
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
                 
             }
-            else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
+            else if (collision.gameObject.CompareTag("bala ácido") && vidaInimigo <= vidaMaxima)
             {
-                vidaInimigo += 1;
-                AumentarTamanhoInimigo();
+                vidaInimigo += 0;
+                
             }
         }
 
         if (vidaInimigo <= 0)
         {
             animator.SetBool("isDead", true);
-            Destroy(gameObject);
+ 
             return;
         }
     }
 
-    private void AumentarTamanhoInimigo()
-    {
-        if (contadorAumentos < 5)
-        {
-            tamanhoAtual *= aumentoTamanho;
-            contadorAumentos++;
-        }
     }
-}
