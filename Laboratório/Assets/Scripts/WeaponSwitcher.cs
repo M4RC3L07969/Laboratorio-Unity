@@ -29,7 +29,7 @@ public class WeaponSwitcher : MonoBehaviour
     public Transform firePoint;
 
     [Header("Weapon Controller")]
-    public float bulletVelocity = 20f;
+    public float bulletVelocity = 300f;
     public float bulletPrefabLife = 3f;
 
     private bool usandoBalaBase = false; // Agora usado como alternador fixo
