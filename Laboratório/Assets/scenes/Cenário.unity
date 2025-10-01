@@ -11229,6 +11229,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7bec7f5a53115504c837c7f1e14a777e, type: 3}
   m_PrefabInstance: {fileID: 130899838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &685905661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4275267042983051788, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
+  m_PrefabInstance: {fileID: 1978540240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &685905667
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685905661}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 03276cdd354f21c499e569cc8dc29175, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 03276cdd354f21c499e569cc8dc29175, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!4 &689865808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
@@ -27479,8 +27500,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.045752235, y: 0.022182183, z: 0.018059388}
-  m_Center: {x: -0.000000009075419, y: -0.0010910644, z: 0.009029691}
+  m_Size: {x: 0.045752235, y: 0.022828346, z: 0.01843321}
+  m_Center: {x: -0.000000009075419, y: -0.0014141472, z: 0.009216601}
 --- !u!1001 &1294687818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35511,6 +35532,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2500952074048844914, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 114328f217b74d848aa9ca84af28a39c, type: 2}
     - target: {fileID: 2952824403932259079, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: m_Name
       value: Player 1
@@ -35566,7 +35591,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4275267042983051788, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 685905667}
   m_SourcePrefab: {fileID: 100100000, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
 --- !u!1001 &1981190288
 PrefabInstance:
@@ -38039,6 +38067,10 @@ PrefabInstance:
       propertyPath: m_FillMethod
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2500952074048844914, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 114328f217b74d848aa9ca84af28a39c, type: 2}
     - target: {fileID: 2514105213260148077, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: healthBar
       value: 
@@ -38120,10 +38152,15 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9053500492245370835, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
+      propertyPath: nextFireTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053500492245370835, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: bulletVelocity
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2500952074048844914, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 628325663833716726, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
