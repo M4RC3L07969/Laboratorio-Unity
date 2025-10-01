@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class slimeBoss : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class slimeBoss : MonoBehaviour
 
     public Material Material1; // arrastar o material verde da bala ácido
     public Material Material2;   // arrastar o material roxo da bala base
+
+    public Image healthbar;
+    public float healthAmount = 100f;
 
     void Awake()
     {
@@ -93,17 +97,33 @@ public class slimeBoss : MonoBehaviour
             HandleProjectileHit(collision, Material2, bossMaterial);
         }
     }
+    public void TakeDamage(float damage)
+    {
+        healthAmount = damage;
+        healthbar.fillAmount = healthAmount / 100;
+    }
+
+    public void Heal(float healingAmount)
+    {
+
+        healthAmount += healingAmount;
+        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
+
+        healthbar.fillAmount = healthAmount / 100;
+    }
 
     private void HandleProjectileHit(Collision collision, Material projectileMaterial, Material bossMaterial)
     {
         if (bossMaterial == projectileMaterial)
         {
             health += 10; // cura
+            Heal(10);
             Debug.Log("Boss curou!");
         }
         else
         {
             health -= 10; // dano
+            TakeDamage(10);
             Flash();
             Debug.Log("Boss tomou dano!");
         }

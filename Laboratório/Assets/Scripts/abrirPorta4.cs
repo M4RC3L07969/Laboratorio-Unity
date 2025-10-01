@@ -29,7 +29,8 @@ public class abrirPorta4 : MonoBehaviour
 
     public void AbrirPortaDefinitivamente()
     {
-        portaBoss.SetBool("quartoQuiz", true); // Aciona a animação da porta
+        portaBoss.SetBool("quartoQuiz", true);
         portaAberta = true;
+
     }
 }
