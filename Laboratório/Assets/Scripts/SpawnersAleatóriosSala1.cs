@@ -11,6 +11,7 @@ public class RandomSpawner : MonoBehaviour
     public GameObject spawn3Sala1;
     public GameObject enemyBase;
 
+
     [Header("Objeto que muda de cor")]
     public GameObject objetoParaMudarCor;
     public Color corNova = Color.green; // Cor que vai mudar quando todos inimigos morrerem
@@ -28,6 +29,8 @@ public class RandomSpawner : MonoBehaviour
 
     [Header("Controle do Quiz")]
     public bool podeAbrirQuiz = false;
+
+    public GameObject particleSystemObject;
 
     void Start()
     {
@@ -63,6 +66,7 @@ public class RandomSpawner : MonoBehaviour
                     Renderer rend = objetoParaMudarCor.GetComponent<Renderer>();
                     if (rend != null)
                         rend.material.color = corNova;
+                    particleSystemObject.SetActive(true);
                 }
             }
         }
