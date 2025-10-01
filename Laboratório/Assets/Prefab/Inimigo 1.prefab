@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       propertyPath: m_TagString
-      value: Matar
+      value: bala base
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: a86e44d04076f624db72754bcd567a21, type: 3}
       propertyPath: m_LocalScale.x
@@ -149,11 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 786eca7217671cb4684033d866049aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
   velocidade: 1
   inimigoRb: {fileID: 3777655938150288339}
   player: {fileID: 0}
-  animator: {fileID: 0}
+  attackCooldown: 1
 --- !u!65 &2413050875617406547
 BoxCollider:
   m_ObjectHideFlags: 0

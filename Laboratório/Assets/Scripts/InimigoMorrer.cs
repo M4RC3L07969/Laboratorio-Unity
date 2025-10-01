@@ -1,55 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
+using UnityEngine;
+
 using UnityEngine;
 
 public class InimigoMorrer : MonoBehaviour
 {
     public int vidaInimigo = 5;
     public int vidaMaxima = 10;
+    public int tamanhoInicial = 5;
+    public float aumentoTamanho = 1.5f;
+    private int contadorAumentos = 0;
+    private float tamanhoAtual;
     private Animator animator;
-
     private void Start()
     {
+        //tamanhoAtual = tamanhoInicial;
+        //transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        
+        if (contadorAumentos >= 5)
+        {
+            return;
+        }
+
+        //transform.localScale = new Vector3(tamanhoAtual, tamanhoAtual, tamanhoAtual);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.tag == "Inimigo base")
+        
+        if (gameObject.CompareTag("Inimigo base"))
         {
-            if (collision.gameObject.tag == "bala ácido")
+            if (collision.gameObject.CompareTag("bala ácido"))
             {
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
+                
+                
             }
-            else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
+            else if (collision.gameObject.CompareTag("bala base") && vidaInimigo <= vidaMaxima)
             {
-                vidaInimigo += 1;
+                vidaInimigo += 0;
+                
             }
         }
-        else if (gameObject.tag == "Inimigo ácido")
+        else if (gameObject.CompareTag("Inimigo ácido"))
         {
-            if (collision.gameObject.tag == "bala ácido")
+            if (collision.gameObject.CompareTag("bala base"))
             {
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
+                
             }
-            else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
+            else if (collision.gameObject.CompareTag("bala ácido") && vidaInimigo <= vidaMaxima)
             {
-                vidaInimigo += 1;
+                vidaInimigo += 0;
+                
             }
         }
 
         if (vidaInimigo <= 0)
         {
             animator.SetBool("isDead", true);
-            Destroy(gameObject);
+ 
             return;
         }
     }
-}
+
+    }
