@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class WeaponSwitcher : MonoBehaviour
 {
     public float fireRate;       // Tempo entre os tiros
-    public float nextFireTime = 1f;    // Pr�ximo momento em que pode atirar
+    public float nextFireTime = 4f;    // Pr�ximo momento em que pode atirar
 
     public GameObject weapon;  // A arma que voc� est� usando
     public GameObject bullet1Prefab;  // Bala associada � arma 1
@@ -29,12 +29,19 @@ public class WeaponSwitcher : MonoBehaviour
     public Transform firePoint;
 
     [Header("Weapon Controller")]
-    public float bulletVelocity = 20f;
+    public float bulletVelocity = 300f;
     public float bulletPrefabLife = 3f;
+
+    [Header("Recoil Settings")]
+    public Vector3 recoilRotation = new Vector3(-10f, 0f, 0f); // quanto gira quando atira
+    public float recoilTime = 0.1f; // tempo até a posição máxima do recoil
+    public float returnTime = 0.15f; // tempo de retorno ao original
+
+
 
     private bool usandoBalaBase = false; // Agora usado como alternador fixo
 
-    
+    private Animation anim;
 
     void Start()
     {
@@ -44,6 +51,7 @@ public class WeaponSwitcher : MonoBehaviour
         // Come�a com a bala �cida
         usandoBalaBase = false;
         balaAtual = bullet1Prefab;
+        anim = gameObject.GetComponent<Animation>();
     }
 
     void Update()
@@ -74,6 +82,7 @@ public class WeaponSwitcher : MonoBehaviour
         }
 
         GameObject bullet = Instantiate(balaAtual, firePoint.position, Quaternion.identity);
+        StartCoroutine(Recoil());
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -128,5 +137,30 @@ public class WeaponSwitcher : MonoBehaviour
             renderer.material.mainTexture = texture;
         }
     }
+
+    private IEnumerator Recoil()
+    {
+        Quaternion startRotation = weapon.transform.localRotation;
+        Quaternion recoilRot = startRotation * Quaternion.Euler(recoilRotation);
+
+        // Movimento até a rotação de recoil
+        float elapsed = 0f;
+        while (elapsed < recoilTime)
+        {
+            weapon.transform.localRotation = Quaternion.Slerp(startRotation, recoilRot, elapsed / recoilTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        weapon.transform.localRotation = recoilRot;
+
+        // Movimento de volta ao original
+        elapsed = 0f;
+        while (elapsed < returnTime)
+        {
+            weapon.transform.localRotation = Quaternion.Slerp(recoilRot, originalRotation, elapsed / returnTime);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        weapon.transform.localRotation = originalRotation;
+    }
 }
-   

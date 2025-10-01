@@ -34,6 +34,8 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
     private float tempoAcumulado = 0f;
     private int inimigosRestantesParaSpawnar;
     private bool spawnerAtivo = true;
+    public GameObject particleSystemObject;
+
 
     // Controle da transição de cor
     private bool iniciarTransicao = false;
@@ -80,6 +82,7 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
         // Atualiza a transição de cor se necessário
         if (iniciarTransicao && objetoParaMudarCor != null)
         {
+
             Renderer rend = objetoParaMudarCor.GetComponent<Renderer>();
             if (rend != null)
             {
@@ -89,6 +92,7 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
                 if (tempoTransicao >= duracaoTransicao)
                     iniciarTransicao = false; // termina a transição
             }
+            particleSystemObject.SetActive(true);
         }
     }
 
