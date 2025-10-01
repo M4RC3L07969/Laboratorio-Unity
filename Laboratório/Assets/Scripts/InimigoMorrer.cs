@@ -8,14 +8,12 @@ public class InimigoMorrer : MonoBehaviour
     public int vidaMaxima = 10;
     private Animator animator;
 
+    private PowerUpSpawner powerUpSpawner;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
-    }
-
-    void Update()
-    {
-        
+        powerUpSpawner = FindObjectOfType<PowerUpSpawner>(); 
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -27,7 +25,7 @@ public class InimigoMorrer : MonoBehaviour
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
             }
-            else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
+            else if (collision.gameObject.tag == "bala base" && vidaInimigo < vidaMaxima)
             {
                 vidaInimigo += 1;
             }
@@ -39,7 +37,7 @@ public class InimigoMorrer : MonoBehaviour
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
             }
-            else if (collision.gameObject.tag == "bala base" && vidaInimigo <= vidaMaxima)
+            else if (collision.gameObject.tag == "bala base" && vidaInimigo < vidaMaxima)
             {
                 vidaInimigo += 1;
             }
@@ -48,8 +46,13 @@ public class InimigoMorrer : MonoBehaviour
         if (vidaInimigo <= 0)
         {
             animator.SetBool("isDead", true);
+
+            if (powerUpSpawner != null)
+            {
+                powerUpSpawner.RegisterKill(transform.position);
+            }
+
             Destroy(gameObject);
-            return;
         }
     }
 }
