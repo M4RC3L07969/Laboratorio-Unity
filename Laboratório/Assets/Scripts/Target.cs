@@ -12,6 +12,7 @@ public class Target : MonoBehaviour
     
     public float attackCooldown = 1f;            
     private float lastAttackTime = 0f;
+    bool isDead;
 
     void Start()
     {
@@ -27,10 +28,12 @@ public class Target : MonoBehaviour
     void FixedUpdate()
     {
         if (player == null) return;
+        if (isDead == true) return;
 
         float distance = Vector3.Distance(transform.position, player.transform.position);
+        isDead = animator.GetBool("isDead");
 
-        
+
         if (distance < 5f)
         {
             inimigoRb.velocity = Vector3.zero;

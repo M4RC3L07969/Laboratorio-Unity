@@ -67,10 +67,16 @@ public class InimigoMorrer : MonoBehaviour
 
         if (vidaInimigo <= 0)
         {
+            StartCoroutine(Morrer());
+        }
+
+        IEnumerator Morrer()
+        {
             animator.SetBool("isDead", true);
- 
-            return;
+            yield return new WaitForSeconds(5f);
+            Destroy(gameObject);
         }
     }
+
 
     }
