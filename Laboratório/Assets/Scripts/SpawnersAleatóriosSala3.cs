@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SpawnersAleatóriosSala3 : MonoBehaviour
 {
-    [Header("Referência da Porta")]
-    [SerializeField] private abrirPorta3 porta3;
+    // [Header("Referência da Porta")] // REMOVIDO: Não é mais necessário para ativar o spawn
+    // [SerializeField] private abrirPorta3 porta3; // REMOVIDO: Não é mais necessário
 
     [Header("Pontos de Spawn")]
     public GameObject spawn1Sala3;
@@ -18,8 +18,8 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
 
     [Header("Objeto que muda de cor")]
     public GameObject objetoParaMudarCor;
-    public Color corNova = Color.green; 
-    public float duracaoTransicao = 2f; 
+    public Color corNova = Color.green;
+    public float duracaoTransicao = 2f;
 
     [Header("Configurações de Spawn")]
     [Tooltip("Quantidade total de inimigos que serão spawnados")]
@@ -33,7 +33,8 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
 
     private float tempoAcumulado = 0f;
     private int inimigosRestantesParaSpawnar;
-    private bool spawnerAtivo = true;
+    // ALTERADO: Começa como 'false' para ser ativado pelo colisor.
+    private bool spawnerAtivo = false;
     public GameObject particleSystemObject;
 
 
@@ -56,7 +57,8 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
 
     void Update()
     {
-        if (porta3 != null && porta3.portaAberta && spawnerAtivo)
+        // NOVO CHECK: Só executa se o spawner estiver ativo (ativado pelo colisor)
+        if (spawnerAtivo)
         {
             tempoAcumulado += Time.deltaTime;
 
@@ -79,18 +81,18 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
             }
         }
 
-        // Atualiza a transição de cor se necessário
+        // Lógica da Transição de Cor (Mantida)
         if (iniciarTransicao && objetoParaMudarCor != null)
         {
-
             Renderer rend = objetoParaMudarCor.GetComponent<Renderer>();
             if (rend != null)
             {
                 tempoTransicao += Time.deltaTime;
-                rend.material.color = Color.Lerp(corInicial, corNova, tempoTransicao / duracaoTransicao);
+                float t = Mathf.Min(tempoTransicao / duracaoTransicao, 1f);
+                rend.material.color = Color.Lerp(corInicial, corNova, t);
 
                 if (tempoTransicao >= duracaoTransicao)
-                    iniciarTransicao = false; // termina a transição
+                    iniciarTransicao = false;
             }
             particleSystemObject.SetActive(true);
         }
@@ -114,5 +116,18 @@ public class SpawnersAleatóriosSala3 : MonoBehaviour
         }
 
         Instantiate(enemyAtual, pos, Quaternion.identity);
+    }
+
+    /// <summary>
+    /// Método público para ser chamado pelo script do colisor (trigger).
+    /// Inicia o ciclo de spawn.
+    /// </summary>
+    public void AtivarSpawner()
+    {
+        if (!spawnerAtivo)
+        {
+            spawnerAtivo = true;
+            Debug.Log("Spawner da Sala 3 Ativado pelo Colisor!");
+        }
     }
 }

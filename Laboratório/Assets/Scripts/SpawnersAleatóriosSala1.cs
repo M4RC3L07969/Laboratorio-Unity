@@ -54,7 +54,7 @@ public class RandomSpawner : MonoBehaviour
 
             // Libera quiz e muda cor quando todos foram spawnados e mortos
             if (inimigosRestantesParaSpawnar <= 0 &&
-                GameObject.FindGameObjectsWithTag("Inimigo base").Length == 0)
+                GameObject.FindGameObjectsWithTag("Inimigo base").Length == 0) // Atenção: Todos os seus inimigos precisam ter a tag correta
             {
                 podeAbrirQuiz = true;
                 spawnerAtivo = false;
@@ -66,7 +66,9 @@ public class RandomSpawner : MonoBehaviour
                     Renderer rend = objetoParaMudarCor.GetComponent<Renderer>();
                     if (rend != null)
                         rend.material.color = corNova;
-                    particleSystemObject.SetActive(true);
+
+                    if (particleSystemObject != null)
+                        particleSystemObject.SetActive(true);
                 }
             }
         }
@@ -87,4 +89,7 @@ public class RandomSpawner : MonoBehaviour
 
         Instantiate(enemyBase, pos, Quaternion.identity);
     }
+
+    // NOTA: Os outros scripts de Spawner (Sala 2 e Sala 3) não precisam de alterações, 
+    // pois eles já não continham a lógica do Power-Up.
 }

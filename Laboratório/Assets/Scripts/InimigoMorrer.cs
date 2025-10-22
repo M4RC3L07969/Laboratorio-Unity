@@ -1,9 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.ConstrainedExecution;
-using UnityEngine;
-
 using UnityEngine;
 
 public class InimigoMorrer : MonoBehaviour
@@ -15,10 +11,9 @@ public class InimigoMorrer : MonoBehaviour
     private int contadorAumentos = 0;
     private float tamanhoAtual;
     private Animator animator;
+
     private void Start()
     {
-        //tamanhoAtual = tamanhoInicial;
-        //transform.localScale = new Vector3(tamanhoInicial, tamanhoInicial, tamanhoInicial);
         animator = GetComponent<Animator>();
     }
 
@@ -28,26 +23,20 @@ public class InimigoMorrer : MonoBehaviour
         {
             return;
         }
-
-        //transform.localScale = new Vector3(tamanhoAtual, tamanhoAtual, tamanhoAtual);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
         if (gameObject.CompareTag("Inimigo base"))
         {
             if (collision.gameObject.CompareTag("bala ácido"))
             {
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
-                
-                
             }
             else if (collision.gameObject.CompareTag("bala base") && vidaInimigo <= vidaMaxima)
             {
                 vidaInimigo += 0;
-                
             }
         }
         else if (gameObject.CompareTag("Inimigo ácido"))
@@ -56,27 +45,31 @@ public class InimigoMorrer : MonoBehaviour
             {
                 animator.SetTrigger("hit");
                 vidaInimigo -= 1;
-                
             }
             else if (collision.gameObject.CompareTag("bala ácido") && vidaInimigo <= vidaMaxima)
             {
                 vidaInimigo += 0;
-                
             }
         }
 
         if (vidaInimigo <= 0)
         {
+            enabled = false;
             StartCoroutine(Morrer());
         }
+    }
 
-        IEnumerator Morrer()
+    IEnumerator Morrer()
+    {
+        animator.SetBool("isDead", true);
+
+        if (PowerUpManager.Instance != null)
         {
-            animator.SetBool("isDead", true);
-            yield return new WaitForSeconds(5f);
-            Destroy(gameObject);
+            PowerUpManager.Instance.InimigoDerrotado();
         }
-    }
 
+        yield return new WaitForSeconds(5f);
 
+        Destroy(gameObject);
     }
+}
