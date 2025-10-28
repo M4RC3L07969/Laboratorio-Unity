@@ -11,10 +11,11 @@ public class InimigoMorrer : MonoBehaviour
     private int contadorAumentos = 0;
     private float tamanhoAtual;
     private Animator animator;
-
+    private BoxCollider colisor;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        colisor = GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -68,8 +69,28 @@ public class InimigoMorrer : MonoBehaviour
             PowerUpManager.Instance.InimigoDerrotado();
         }
 
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // 1. Zera a velocidade e o momento
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            // 2. Torna o Rigidbody Kinematic. Isso congela o objeto no lugar e ignora a gravidade.
+            rb.isKinematic = true;
+        }
+
+        // 3. Agora que o Rigidbody está Kinematic e não será afetado pela gravidade, 
+        // desativamos o colisor para que o player e os tiros o atravessem.
+        if (colisor != null)
+        {
+            colisor.enabled = false;
+            Debug.Log(gameObject.name + " Collider desativado para permitir passagem.");
+        }
+
         yield return new WaitForSeconds(5f);
 
+        // Destrói o objeto
         Destroy(gameObject);
     }
 }

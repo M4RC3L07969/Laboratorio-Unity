@@ -72,10 +72,6 @@ public class SpawnersAleatóriosSala2 : MonoBehaviour
         inimigosVivos.Add(inimigo); // adiciona à lista
     }
 
-    /// <summary>
-    /// Método público para ser chamado pelo script do colisor da porta.
-    /// Inicia o ciclo de spawn.
-    /// </summary>
     public void AtivarSpawner()
     {
         if (!spawnerAtivo)

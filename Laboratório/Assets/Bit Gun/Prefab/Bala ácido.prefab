@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384157a28691a1941af6042dc87a13ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 5
-  hitEffectPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  hitEffectPrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  hitEffectPrefabBoss: {fileID: 4021103657954561961, guid: 33e2b860755d86d4b92c42201b5a290c, type: 3}
   hitEffectLifetime: 2

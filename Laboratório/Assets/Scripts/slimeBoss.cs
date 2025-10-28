@@ -70,20 +70,6 @@ public class slimeBoss : MonoBehaviour
         Vector3 lookAtPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
         transform.LookAt(lookAtPosition);
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("bala ácido"))
-    //    {
-    //        Flash();
-    //        health--;
-    //    }
-    //    else
-    //    {
-    //        health++;
-    //    }
-    //}
-
     private void OnCollisionEnter(Collision collision)
     {
         Material bossMaterial = rend.sharedMaterial; // pega o material atual do boss
@@ -124,40 +110,11 @@ public class slimeBoss : MonoBehaviour
         {
             health -= 10; // dano
             TakeDamage(10);
-            Flash();
             Debug.Log("Boss tomou dano!");
         }
 
         Destroy(collision.gameObject);
         BossStatus();
-    }
-
-
-    public void Flash()
-    {
-        StopCoroutine("FlashRoutine");
-        StartCoroutine("FlashRoutine");
-    }
-
-    IEnumerator FlashRoutine()
-    {
-        float t = 0f;
-
-        while (t < flashDuration)
-        {
-            float lerp = Mathf.Sin((t / flashDuration) * Mathf.PI);
-
-            rend.GetPropertyBlock(mpb);
-            mpb.SetColor("_Color", Color.Lerp(originalColor, hitColor, lerp));
-            rend.SetPropertyBlock(mpb);
-
-            t += Time.deltaTime;
-            yield return null;
-        }
-
-        rend.GetPropertyBlock(mpb);
-        mpb.SetColor("_Color", originalColor);
-        rend.SetPropertyBlock(mpb);
     }
     IEnumerator AttackTimer()
     {

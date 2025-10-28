@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class abrirPorta2 : MonoBehaviour
 {
     public Animator portaoDoisAnimaçao;
