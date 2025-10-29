@@ -44,6 +44,14 @@ public class PlayerMovement : MonoBehaviour
     // --- Power-Up de Cura ---
     public int healAmount = 30;
 
+    public AudioSource footstepSource;
+    public AudioSource playerHitSource;
+    public AudioSource lowHPSource;
+
+    public AudioClip lowHP;
+    public AudioClip footstepClip;
+    public AudioClip playerHit;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -51,6 +59,34 @@ public class PlayerMovement : MonoBehaviour
         if (shieldVisual != null) shieldVisual.SetActive(false);
         UpdateHealthUI(); // Inicia a UI correta
         Debug.Log("[PLAYER] Vida inicial: " + currentHealth + "/" + maxHealth);
+        if (footstepSource == null)
+        {
+            footstepSource = gameObject.AddComponent<AudioSource>();
+            Debug.Log("[AUDIO] Nenhum AudioSource encontrado — criando um novo.");
+        }
+        if (playerHitSource == null)
+            playerHitSource = gameObject.AddComponent<AudioSource>();
+
+        if (lowHPSource == null)
+            lowHPSource = gameObject.AddComponent<AudioSource>();
+
+
+        footstepSource.clip = footstepClip;
+
+        playerHitSource.clip = playerHit;
+        playerHitSource.playOnAwake = false;
+
+
+
+        lowHPSource.clip = lowHP;
+        lowHPSource.playOnAwake = false;
+
+        footstepSource.loop = true;
+        footstepSource.playOnAwake = false;
+
+        footstepSource.volume = 0.1f;   
+        playerHitSource.volume = 0.1f;   
+        lowHPSource.volume = 0.3f;       
     }
 
     void Update()
@@ -79,10 +115,15 @@ public class PlayerMovement : MonoBehaviour
         if (lastPosition != gameObject.transform.position && isGrounded == true)
         {
             isMoving = true;
+            if (!footstepSource.isPlaying)
+                footstepSource.Play();
+
         }
         else
         {
             isMoving = false;
+            if (footstepSource.isPlaying)
+                footstepSource.Pause();
         }
         lastPosition = gameObject.transform.position;
     }
@@ -142,6 +183,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(SpeedBoostCoroutine());
         }
+
     }
 
     public void TakeDamage(int amount)
@@ -150,41 +192,39 @@ public class PlayerMovement : MonoBehaviour
 
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        playerHitSource.Play();
         UpdateHealthUI();
 
         Debug.Log("[PLAYER] Vida:" + currentHealth + "/" + maxHealth);
 
+        // Corrigido — sem loop infinito
+        if (currentHealth < 30 && !lowHPSource.isPlaying)
+        {
+            lowHPSource.Play();
+        }
+        else if (currentHealth >= 30 && lowHPSource.isPlaying)
+        {
+            lowHPSource.Stop();
+        }
+
         if (currentHealth <= 0 && !isDead)
         {
             isDead = true;
+            controller.enabled = false;
+            this.enabled = false;
 
-            // Desativa o movimento do player
-            GetComponent<CharacterController>().enabled = false;
-            this.enabled = false; // desativa PlayerMovement
+            var mouseScript = GetComponentInChildren<MouseMovement>();
+            if (mouseScript != null) mouseScript.enabled = false;
 
-            // Desativa MouseMovement
-            MouseMovement mouseScript = GetComponentInChildren<MouseMovement>();
-            if (mouseScript != null)
-            {
-                mouseScript.enabled = false;
-            }
+            var weaponScript = GetComponentInChildren<WeaponSwitcher>();
+            if (weaponScript != null) weaponScript.enabled = false;
 
-            // Desativa WeaponSwitcher
-            WeaponSwitcher weaponScript = GetComponentInChildren<WeaponSwitcher>();
-            if (weaponScript != null)
-            {
-                weaponScript.enabled = false;
-            }
-
-            // Chama tela de Game Over
-            if (gameManager != null)
-            {
-                gameManager.GameOver();
-            }
+            gameManager?.GameOver();
 
             Debug.Log("[PLAYER] morreu");
         }
     }
+
 
 
 

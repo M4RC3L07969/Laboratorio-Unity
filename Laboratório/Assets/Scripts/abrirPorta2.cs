@@ -8,6 +8,22 @@ public class abrirPorta2 : MonoBehaviour
 
     public RandomSpawner spawner;
 
+    public AudioSource somPortaSource;
+
+    public AudioClip somPortaClip;
+    public bool AudioTocou = false;
+
+    void Start()
+    {
+
+        if (somPortaSource == null)
+            somPortaSource = gameObject.AddComponent<AudioSource>();
+
+        somPortaSource.clip = somPortaClip;
+        somPortaSource.playOnAwake = false;
+        somPortaSource.volume = 0.2f;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
