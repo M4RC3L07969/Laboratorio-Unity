@@ -16,10 +16,41 @@ public class abrirPorta3 : MonoBehaviour
     private bool quizLiberado = false;
     private bool corMudada = false;
 
+    public AudioSource somPortaSource;
+
+    public AudioClip somPortaClip;
+    public bool AudioTocou = false;
+
+    public AudioClip quizLiberadoClip;
+    public AudioSource quizLiberadoSource;
+
+
+    void Start()
+    {
+
+        if (somPortaSource == null)
+            somPortaSource = gameObject.AddComponent<AudioSource>();
+
+        somPortaSource.clip = somPortaClip;
+        somPortaSource.playOnAwake = false;
+        somPortaSource.volume = 0.2f;
+
+        if (quizLiberadoSource == null)
+            quizLiberadoSource = gameObject.AddComponent<AudioSource>();
+
+
+
+        quizLiberadoSource.clip = quizLiberadoClip;
+        quizLiberadoSource.playOnAwake = false;
+        quizLiberadoSource.volume = 0.2f;
+    }
+
+
     private void Update()
     {
         if (spawner != null && !quizLiberado && spawner.podeAbrirQuiz)
         {
+            quizLiberadoSource.Play();
             quizLiberado = true;
             Debug.Log("Todos inimigos da Sala 2 mortos! Quiz liberado.");
 
@@ -39,6 +70,11 @@ public class abrirPorta3 : MonoBehaviour
         {
             if (quizLiberado)
             {
+                if (!AudioTocou)
+                {
+                    somPortaSource.Play();
+                    AudioTocou = true;
+                }
                 Debug.Log("Quiz 3 iniciado.");
                 quizManager.IniciarQuiz(this);
                 GetComponent<Collider>().enabled = false;

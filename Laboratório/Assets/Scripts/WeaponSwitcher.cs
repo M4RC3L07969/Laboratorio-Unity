@@ -37,6 +37,10 @@ public class WeaponSwitcher : MonoBehaviour
     public float recoilTime = 0.1f; // tempo até a posição máxima do recoil
     public float returnTime = 0.15f; // tempo de retorno ao original
 
+    public AudioSource somArmaSource;
+
+    public AudioClip somArmaClip;
+
 
 
     private bool usandoBalaBase = false; // Agora usado como alternador fixo
@@ -52,6 +56,13 @@ public class WeaponSwitcher : MonoBehaviour
         usandoBalaBase = false;
         balaAtual = bullet1Prefab;
         anim = gameObject.GetComponent<Animation>();
+
+        if (somArmaSource == null)
+            somArmaSource = gameObject.AddComponent<AudioSource>();
+
+        somArmaSource.clip = somArmaClip;
+        somArmaSource.playOnAwake = false;
+        somArmaSource.volume = 0.2f;
     }
 
     void Update()
@@ -80,7 +91,7 @@ public class WeaponSwitcher : MonoBehaviour
             Debug.LogWarning("Bala atual n�o foi atribu�da!");
             return;
         }
-
+        somArmaSource.Play();
         GameObject bullet = Instantiate(balaAtual, firePoint.position, Quaternion.identity);
         StartCoroutine(Recoil());
         Rigidbody rb = bullet.GetComponent<Rigidbody>();

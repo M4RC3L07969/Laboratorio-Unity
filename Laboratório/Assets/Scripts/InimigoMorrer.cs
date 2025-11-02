@@ -12,10 +12,23 @@ public class InimigoMorrer : MonoBehaviour
     private float tamanhoAtual;
     private Animator animator;
     private BoxCollider colisor;
+
+    public AudioClip inimigoMorrendoClip;
+    public AudioSource inimigoMorrendoSource;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         colisor = GetComponent<BoxCollider>();
+
+        if (inimigoMorrendoSource == null)
+            inimigoMorrendoSource = gameObject.AddComponent<AudioSource>();
+
+
+
+        inimigoMorrendoSource.clip = inimigoMorrendoClip;
+        inimigoMorrendoSource.playOnAwake = false;
+        inimigoMorrendoSource.volume = 0.6f;
     }
 
     void Update()
@@ -62,6 +75,7 @@ public class InimigoMorrer : MonoBehaviour
 
     IEnumerator Morrer()
     {
+        inimigoMorrendoSource.Play();
         animator.SetBool("isDead", true);
 
         if (PowerUpManager.Instance != null)

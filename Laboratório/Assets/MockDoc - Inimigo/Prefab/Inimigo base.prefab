@@ -208,11 +208,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaInimigo: 5
   vidaMaxima: 10
-  powerUps:
-  - {fileID: 2094988469379380957, guid: 4363f293ab8416e4c8aa84866a97ff8c, type: 3}
-  - {fileID: 1952534443325600474, guid: 23de15e20c0eb614f8311e784d16a27c, type: 3}
-  - {fileID: 1667901670600326253, guid: 6f6020b2ee33c2c4798e6188bb306947, type: 3}
-  chanceDeDrop: 0.5
+  tamanhoInicial: 5
+  aumentoTamanho: 1.5
+  inimigoMorrendoClip: {fileID: 8300000, guid: c63625b7cb8c04d4dba16768332a051e, type: 3}
+  inimigoMorrendoSource: {fileID: 0}
 --- !u!114 &3090695989391671637
 MonoBehaviour:
   m_ObjectHideFlags: 0
