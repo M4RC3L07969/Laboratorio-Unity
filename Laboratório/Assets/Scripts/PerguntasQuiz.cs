@@ -440,7 +440,6 @@ public class PerguntasQuiz : MonoBehaviour
 
         GameManager gm = FindObjectOfType<GameManager>();
         gm.SetUIActive(true);
-
     }
 
     void CarregarPergunta()

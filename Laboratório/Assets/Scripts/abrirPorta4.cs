@@ -71,11 +71,21 @@ public class abrirPorta4 : MonoBehaviour
             }
         }
     }
-
     public void AbrirPortaDefinitivamente()
     {
+        // TESTE 1: Isso nos diz se o Quiz chamou esta função
+        Debug.Log("### TESTE 1: A FUNÇÃO 'AbrirPortaDefinitivamente' FOI CHAMADA! ###");
+
+        // TESTE 2: Isso verifica se você arrastou o Animator para o campo no Inspector
+        if (portaBoss == null)
+        {
+            Debug.LogError("### ERRO: A VARIÁVEL 'portaBoss' ESTÁ VAZIA (None) NO INSPECTOR! ###");
+            return; // Para de executar se estiver vazia
+        }
+
+        // TESTE 3: Se chegamos aqui, o script está enviando o comando
+        Debug.Log("### TESTE 3: Enviando 'quartoQuiz' = true para o Animator: " + portaBoss.name + " ###");
         portaBoss.SetBool("quartoQuiz", true);
         portaAberta = true;
-
     }
 }
