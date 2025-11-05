@@ -1,12 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // Garante que o Image seja reconhecido
+// using static UnityEditor.FilePathAttribute; // Removido
+// using UnityEngine.UIElements; // Removido
 
 public class slimeBoss : MonoBehaviour
 {
+    // --- Prefabs e Efeitos ---
     public Transform firepoint;
     public GameObject projetilBossBase;
     public GameObject projetilBossAcido;
+    public GameObject efeitoPrefab; // Deve aparecer no Inspector agora que os 'using' problemáticos foram removidos.
+    public float effectLifetime = 2f;
 
     public float shootInterval = 20f;
 
@@ -15,39 +21,41 @@ public class slimeBoss : MonoBehaviour
     public float bulletVelocity = 20f;
     public float bulletPrefabLife = 3f;
 
-    // Flash de dano
-    Renderer rend;
-    MaterialPropertyBlock mpb;
-    public Color hitColor = Color.red;
-    public float flashDuration = 0.15f;
-    private Color originalColor;
+    // // Flash de dano - REMOVIDO
+    // Renderer rend;
+    // MaterialPropertyBlock mpb;
+    // public Color hitColor = Color.red;
+    // public float flashDuration = 0.15f;
+    // private Color originalColor;
 
     // Movimento / status
     public float velocidade = 4f;
     public GameObject player;
-    public int health = 400;
+    public int health = 400; // Vida principal
+    private readonly int maxHealth = 400; // Adicionado para cálculo de barra de vida
     private float fixedY;
     private int stageBoss = 0;
+    private bool morto = false;
 
     public Material Material1; // arrastar o material verde da bala ácido
-    public Material Material2;   // arrastar o material roxo da bala base
+    public Material Material2; // arrastar o material roxo da bala base
 
     public Image healthbar;
-    public float healthAmount = 100f;
+    // public float healthAmount = 100f; // Removido, usando 'health' principal
 
     void Awake()
     {
-        rend = GetComponent<Renderer>();
-        mpb = new MaterialPropertyBlock();
-        originalColor = rend.sharedMaterial.color;
+        // Rendere e Flash de Dano removidos do Awake
+        // rend = GetComponent<Renderer>();
+        // mpb = new MaterialPropertyBlock();
+        // originalColor = rend.material.color; 
     }
 
     void Start()
     {
-        player = GameObject.Find("Player 1");
+        player = GameObject.Find("Player (1)");
         fixedY = transform.position.y;
         StartCoroutine(AttackTimer());
-
     }
 
     void Update()
@@ -63,6 +71,23 @@ public class slimeBoss : MonoBehaviour
             transform.position += direction * velocidade * Time.deltaTime;
             LookAtPlayer(targetPosition);
         }
+
+        // Unificado a verificação de morte no Update
+        if (health <= 0 || morto == true)
+        { 
+                if (efeitoPrefab != null)
+                {
+                    GameObject effect = Instantiate(
+                        efeitoPrefab,
+                        transform.position,
+                        Quaternion.identity
+                    );
+                    Destroy(effect, effectLifetime);
+                }
+                Destroy(gameObject);
+                morto = false;
+            
+        }
     }
 
     private void LookAtPlayer(Vector3 targetPosition)
@@ -70,9 +95,15 @@ public class slimeBoss : MonoBehaviour
         Vector3 lookAtPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
         transform.LookAt(lookAtPosition);
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        Material bossMaterial = rend.sharedMaterial; // pega o material atual do boss
+        // NOTA: Para este método funcionar corretamente, o Boss precisa ter um Renderer
+        // e o material que você deseja comparar deve ser obtido de forma segura (e ser o material de "cor" do slime).
+        Renderer rend = GetComponent<Renderer>(); // Pega o Renderer na colisão, se necessário
+        if (rend == null) return;
+
+        Material bossMaterial = rend.sharedMaterial;
 
         if (collision.gameObject.CompareTag("bala ácido"))
         {
@@ -83,83 +114,97 @@ public class slimeBoss : MonoBehaviour
             HandleProjectileHit(collision, Material2, bossMaterial);
         }
     }
-    public void TakeDamage(float damage)
+
+    public void TakeDamage(int damage)
     {
-        healthAmount = damage;
-        healthbar.fillAmount = healthAmount / 100;
+        health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+
+        if (healthbar != null)
+        {
+            healthbar.fillAmount = (float)health / (float)maxHealth;
+        }
+
+        // Flash de Dano REMOVIDO daqui
     }
 
-    public void Heal(float healingAmount)
+    public void Heal(int healingAmount)
     {
+        health += healingAmount;
+        health = Mathf.Clamp(health, 0, maxHealth);
 
-        healthAmount += healingAmount;
-        healthAmount = Mathf.Clamp(healthAmount, 0, 100);
-
-        healthbar.fillAmount = healthAmount / 100;
+        if (healthbar != null)
+        {
+            healthbar.fillAmount = (float)health / (float)maxHealth;
+        }
     }
 
     private void HandleProjectileHit(Collision collision, Material projectileMaterial, Material bossMaterial)
     {
         if (bossMaterial == projectileMaterial)
         {
-            health += 10; // cura
-            Heal(10);
+            Heal(10); // cura
             Debug.Log("Boss curou!");
         }
         else
         {
-            health -= 10; // dano
-            TakeDamage(10);
+            TakeDamage(10); // dano
             Debug.Log("Boss tomou dano!");
         }
 
         Destroy(collision.gameObject);
         BossStatus();
     }
+
+    // Corrotina de Flash de Dano REMOVIDA
+
     IEnumerator AttackTimer()
     {
-        // Wait for the first attack
         yield return new WaitForSeconds(shootInterval);
 
-        // Loop indefinitely to keep attacking
         while (true)
         {
-            Fire();
+            if (!morto)
+            {
+                Fire();
+            }
             yield return new WaitForSeconds(shootInterval);
         }
     }
+
     public void BossStatus()
     {
         // Troca de fase/escala
-        if (health < 400 && stageBoss == 0)
+        if (health < maxHealth && stageBoss == 0)
         {
             stageBoss = 1;
             StartCoroutine(PauseBoss());
             transform.localScale *= 3f;
         }
-        else if (health <= 150 && stageBoss == 1)
+        else if (health <= (maxHealth / 2) && stageBoss == 1)
         {
             stageBoss = 2;
             StartCoroutine(PauseBoss());
             transform.localScale *= 1.5f;
         }
+        else if (health <= 0)
+        {
+            morto = true;
+        }
     }
 
     IEnumerator PauseBoss()
     {
-        // exemplo simples
         yield return new WaitForSeconds(2f);
     }
 
     private void Fire()
     {
-        // Make sure the player object exists before trying to shoot
-        if (player == null)
+        if (player == null || firepoint == null)
         {
             return;
         }
 
-        // Determine the direction from the firepoint to the player's position
         Vector3 directionToPlayer = (player.transform.position - firepoint.position).normalized;
 
         GameObject projetil = Instantiate(projetilBossAcido, firepoint.position, Quaternion.identity);
@@ -167,7 +212,6 @@ public class slimeBoss : MonoBehaviour
 
         if (rb != null)
         {
-            // Use the calculated direction to shoot the projectile
             rb.AddForce(directionToPlayer * bulletVelocity, ForceMode.Impulse);
         }
         Destroy(projetil, bulletPrefabLife);
