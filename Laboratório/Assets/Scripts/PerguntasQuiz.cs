@@ -6,7 +6,7 @@ using Random = System.Random;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Diagnostics;
+
 
 public class PerguntasQuiz : MonoBehaviour
 {
@@ -391,7 +391,6 @@ public class PerguntasQuiz : MonoBehaviour
             "Energias renováveis não podem ser melhoradas pela química, pois envolvem apenas fontes naturais e não dependem de tecnologias."
         }
     };
-
     private Random random;
     private int indicePerguntaAtual;
     public string respostaSelecionada;
@@ -400,32 +399,36 @@ public class PerguntasQuiz : MonoBehaviour
     private const int MinAcertos = 4;
     private object portaQueChamou;
 
-
     void Awake()
     {
         gameObject.SetActive(false);
         maxLife = lifeQuiz;
     }
 
+    // --- ADICIONE LOGS NAS CHAMADAS DE INICIO PARA DEBUG ---
     public void IniciarQuiz(abrirPorta2 porta)
     {
+        Debug.Log("[PerguntasQuiz] IniciarQuiz chamado por abrirPorta2: " + (porta != null ? porta.name : "NULL"));
         portaQueChamou = porta;
         Comecar();
     }
     public void IniciarQuiz(abrirPorta3 porta)
     {
+        Debug.Log("[PerguntasQuiz] IniciarQuiz chamado por abrirPorta3: " + (porta != null ? porta.name : "NULL"));
         portaQueChamou = porta;
         Comecar();
     }
 
     public void IniciarQuiz(abrirPorta4 porta)
     {
+        Debug.Log("[PerguntasQuiz] IniciarQuiz chamado por abrirPorta4: " + (porta != null ? porta.name : "NULL"));
         portaQueChamou = porta;
         Comecar();
     }
 
     private void Comecar()
     {
+        Debug.Log("[PerguntasQuiz] Comecar() chamado. portaQueChamou = " + (portaQueChamou != null ? portaQueChamou.ToString() : "NULL"));
         gameObject.SetActive(true);
         Time.timeScale = 0f;
 
@@ -439,23 +442,35 @@ public class PerguntasQuiz : MonoBehaviour
         CarregarPergunta();
 
         GameManager gm = FindObjectOfType<GameManager>();
-        gm.SetUIActive(true);
+        if (gm != null)
+        {
+            gm.SetUIActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("[PerguntasQuiz] GameManager não encontrado em Comecar().");
+        }
     }
 
     void CarregarPergunta()
     {
+        Debug.Log("[PerguntasQuiz] CarregarPergunta() chamado. vezesAcertada=" + vezesAcertada + " / MinAcertos=" + MinAcertos);
+
         if (vezesAcertada >= MinAcertos)
         {
+            Debug.Log("[PerguntasQuiz] já atingiu MinAcertos dentro de CarregarPergunta -> FinalizarQuiz(true)");
             FinalizarQuiz(true);
             return;
         }
-
-
 
         random = new Random();
 
         indicePerguntaAtual = random.Next(0, listaDePerguntas.Length);
         titulo.text = listaDePerguntas[indicePerguntaAtual];
+
+        // log da pergunta e da resposta correta para depuração
+        Debug.Log($"[PerguntasQuiz] Pergunta #{indicePerguntaAtual}: {listaDePerguntas[indicePerguntaAtual]}");
+        Debug.Log($"[PerguntasQuiz] Resposta correta esperada (original): {listaDeRespostas[indicePerguntaAtual][0]}");
 
         string[] respostas = (string[])listaDeRespostas[indicePerguntaAtual].Clone();
         for (int i = respostas.Length - 1; i > 0; i--)
@@ -479,31 +494,48 @@ public class PerguntasQuiz : MonoBehaviour
             button4.onClick.RemoveAllListeners();
         }
 
-        button1.onClick.AddListener(() => VerificarResposta(respostas[0],button1));
-        button2.onClick.AddListener(() => VerificarResposta(respostas[1],button2));
-        button3.onClick.AddListener(() => VerificarResposta(respostas[2],button3));
-        button4.onClick.AddListener(() => VerificarResposta(respostas[3],button4));
-        
+        button1.onClick.AddListener(() => VerificarResposta(respostas[0], button1));
+        button2.onClick.AddListener(() => VerificarResposta(respostas[1], button2));
+        button3.onClick.AddListener(() => VerificarResposta(respostas[2], button3));
+        button4.onClick.AddListener(() => VerificarResposta(respostas[3], button4));
     }
-
 
     private void Update()
     {
-        acertos.text = "" + vezesAcertada + "/4";
+        if (acertos != null)
+            acertos.text = "" + vezesAcertada + "/4";
     }
 
-    public void VerificarResposta(string respostaSelecionada, Button clickedButton)
+    // --- ADICIONEI LOGS DETALHADOS AQUI ---
+    public void VerificarResposta(string respostaSelecionadaLocal, Button clickedButton)
     {
-        if (respostaSelecionada == listaDeRespostas[indicePerguntaAtual][0])
+        Debug.Log($"[PerguntasQuiz] VerificarResposta chamada. respostaSelecionadaLocal='{respostaSelecionadaLocal}' // indicePerguntaAtual={indicePerguntaAtual}");
+
+        string respostaCorretaOriginal = listaDeRespostas[indicePerguntaAtual][0];
+        Debug.Log($"[PerguntasQuiz] Comparando com a resposta correta original: '{respostaCorretaOriginal}'");
+
+        if (respostaSelecionadaLocal == respostaCorretaOriginal)
         {
             vezesAcertada++;
             SetButtonColor(clickedButton, correctColor);
+
+            Debug.Log("[PerguntasQuiz] Resposta correta! vezesAcertada agora = " + vezesAcertada);
+
+            // FINALIZA IMEDIATAMENTE SE ALCANÇOU O MÍNIMO
+            if (vezesAcertada >= MinAcertos)
+            {
+                Debug.Log("[PerguntasQuiz] Atingiu MinAcertos dentro de VerificarResposta -> FinalizarQuiz(true)");
+                FinalizarQuiz(true);
+                return;
+            }
         }
         else
         {
             lifeQuiz--;
             SetButtonColor(clickedButton, wrongColor);
             SetButtonColor(FindCorrectButton(), correctColor);
+
+            Debug.Log("[PerguntasQuiz] Resposta errada. lifeQuiz agora = " + lifeQuiz);
         }
 
         vezesMostrada++;
@@ -512,9 +544,7 @@ public class PerguntasQuiz : MonoBehaviour
 
     private Button FindCorrectButton()
     {
-
         string respostaCorreta = listaDeRespostas[indicePerguntaAtual][0];
-
 
         if (button1.GetComponentInChildren<TMP_Text>().text == respostaCorreta)
         {
@@ -547,6 +577,7 @@ public class PerguntasQuiz : MonoBehaviour
 
         if (lifeQuiz <= 0)
         {
+            Debug.Log("[PerguntasQuiz] vida acabada -> FinalizarQuiz(false)");
             FinalizarQuiz(false);
         }
         else
@@ -561,22 +592,92 @@ public class PerguntasQuiz : MonoBehaviour
 
     void FinalizarQuiz(bool venceu)
     {
+        Debug.Log("[PerguntasQuiz] FinalizarQuiz chamado. venceu=" + venceu);
         Time.timeScale = 1f;
         gameObject.SetActive(false);
 
         if (venceu)
         {
-            if (portaQueChamou is abrirPorta2 p2) p2.AbrirPortaDefinitivamente();
-            else if (portaQueChamou is abrirPorta3 p3) p3.AbrirPortaDefinitivamente();
-            else if (portaQueChamou is abrirPorta4 p4) p4.AbrirPortaDefinitivamente();
+            Debug.Log("[PerguntasQuiz] Tentando notificar a porta que chamou: portaQueChamou = " + (portaQueChamou != null ? portaQueChamou.ToString() : "NULL"));
+
+            // TENTATIVA 1: ver se é diretamente o tipo esperado
+            if (portaQueChamou is abrirPorta2 p2)
+            {
+                Debug.Log("[PerguntasQuiz] portaQueChamou é abrirPorta2 -> Chamando AbrirPortaDefinitivamente()");
+                p2.AbrirPortaDefinitivamente();
+            }
+            else if (portaQueChamou is abrirPorta3 p3)
+            {
+                Debug.Log("[PerguntasQuiz] portaQueChamou é abrirPorta3 -> Chamando AbrirPortaDefinitivamente()");
+                p3.AbrirPortaDefinitivamente();
+            }
+            else if (portaQueChamou is abrirPorta4 p4)
+            {
+                Debug.Log("[PerguntasQuiz] portaQueChamou é abrirPorta4 -> Chamando AbrirPortaDefinitivamente()");
+                p4.AbrirPortaDefinitivamente();
+            }
+            else
+            {
+                // TENTATIVA 2: se for um Component ou GameObject que contenha o script
+                Debug.Log("[PerguntasQuiz] portaQueChamou não é instância direta das classes esperadas. Tentando obter componente...");
+                UnityEngine.Object unityObj = portaQueChamou as UnityEngine.Object;
+                if (unityObj != null)
+                {
+                    GameObject go = null;
+                    if (unityObj is GameObject g) go = g;
+                    else if (unityObj is Component c) go = c.gameObject;
+
+                    if (go != null)
+                    {
+                        var p4comp = go.GetComponent<abrirPorta4>();
+                        if (p4comp != null)
+                        {
+                            Debug.Log("[PerguntasQuiz] Encontrado abrirPorta4 no GameObject -> chamando AbrirPortaDefinitivamente()");
+                            p4comp.AbrirPortaDefinitivamente();
+                        }
+                        else
+                        {
+                            var p3comp = go.GetComponent<abrirPorta3>();
+                            if (p3comp != null)
+                            {
+                                Debug.Log("[PerguntasQuiz] Encontrado abrirPorta3 no GameObject -> chamando AbrirPortaDefinitivamente()");
+                                p3comp.AbrirPortaDefinitivamente();
+                            }
+                            else
+                            {
+                                var p2comp = go.GetComponent<abrirPorta2>();
+                                if (p2comp != null)
+                                {
+                                    Debug.Log("[PerguntasQuiz] Encontrado abrirPorta2 no GameObject -> chamando AbrirPortaDefinitivamente()");
+                                    p2comp.AbrirPortaDefinitivamente();
+                                }
+                                else
+                                {
+                                    Debug.LogError("[PerguntasQuiz] Não foi possível invocar AbrirPortaDefinitivamente: nenhum componente encontrado no objeto fornecido.");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("[PerguntasQuiz] portaQueChamou é UnityEngine.Object, mas não foi possível determinar GameObject associado.");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("[PerguntasQuiz] portaQueChamou NÃO é um UnityEngine.Object e não é um dos tipos esperados. Valor: " + (portaQueChamou != null ? portaQueChamou.GetType().ToString() : "NULL"));
+                }
+            }
         }
         else
         {
+            Debug.Log("[PerguntasQuiz] Jogador perdeu -> carregando TelaInicial");
             SceneManager.LoadScene("TelaInicial");
         }
 
         GameManager gm = FindObjectOfType<GameManager>();
-        gm.SetUIActive(false);
+        if (gm != null)
+            gm.SetUIActive(false);
 
         portaQueChamou = null;
     }

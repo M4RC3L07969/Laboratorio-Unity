@@ -3,13 +3,13 @@
 public class abrirPorta4 : MonoBehaviour
 {
     [Header("Referências")]
-    public Animator portaBoss; // Animator da porta do boss
-    public bool portaAberta = false; // Controla se a porta foi aberta
-    public PerguntasQuiz quizManager; // Manager do quiz
+    public Animator portaBoss;
+    public bool portaAberta = false;
+    public PerguntasQuiz quizManager;
 
     [Header("Spawner que libera o quiz")]
 
-    public SpawnersAleatóriosSala3 spawner; // ← tipo do spawner correto
+    public SpawnersAleatóriosSala3 spawner;
 
     public AudioSource somPortaSource;
 
@@ -62,7 +62,7 @@ public class abrirPorta4 : MonoBehaviour
                 }
                 Debug.Log("Quiz 4 iniciado.");
                 quizManager.IniciarQuiz(this);
-                GetComponent<Collider>().enabled = false; // Desabilita para não reativar
+                GetComponent<Collider>().enabled = false;
    
             }
             else
@@ -73,18 +73,10 @@ public class abrirPorta4 : MonoBehaviour
     }
     public void AbrirPortaDefinitivamente()
     {
-        // TESTE 1: Isso nos diz se o Quiz chamou esta função
-        Debug.Log("### TESTE 1: A FUNÇÃO 'AbrirPortaDefinitivamente' FOI CHAMADA! ###");
-
-        // TESTE 2: Isso verifica se você arrastou o Animator para o campo no Inspector
         if (portaBoss == null)
         {
-            Debug.LogError("### ERRO: A VARIÁVEL 'portaBoss' ESTÁ VAZIA (None) NO INSPECTOR! ###");
-            return; // Para de executar se estiver vazia
+            return;
         }
-
-        // TESTE 3: Se chegamos aqui, o script está enviando o comando
-        Debug.Log("### TESTE 3: Enviando 'quartoQuiz' = true para o Animator: " + portaBoss.name + " ###");
         portaBoss.SetBool("quartoQuiz", true);
         portaAberta = true;
     }
