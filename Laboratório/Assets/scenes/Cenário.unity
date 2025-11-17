@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10712,9 +10712,9 @@ MonoBehaviour:
   objetoParaMudarCor: {fileID: 7592966062584303270}
   corNova: {r: 0, g: 1, b: 0, a: 1}
   somPortaSource: {fileID: 0}
-  somPortaClip: {fileID: 0}
+  somPortaClip: {fileID: 8300000, guid: d7a5a7448c905d6479042e6b07b213c6, type: 3}
   AudioTocou: 0
-  quizLiberadoClip: {fileID: 0}
+  quizLiberadoClip: {fileID: 8300000, guid: ae28174f77994584199386a7fd5392ae, type: 3}
   quizLiberadoSource: {fileID: 0}
 --- !u!1001 &573624774
 PrefabInstance:
@@ -29725,9 +29725,9 @@ MonoBehaviour:
   quizManager: {fileID: 1665457459}
   spawner: {fileID: 1962164779}
   somPortaSource: {fileID: 0}
-  somPortaClip: {fileID: 0}
+  somPortaClip: {fileID: 8300000, guid: d7a5a7448c905d6479042e6b07b213c6, type: 3}
   AudioTocou: 0
-  quizLiberadoClip: {fileID: 0}
+  quizLiberadoClip: {fileID: 8300000, guid: b68ff60ae34443348bd7ce95d052d374, type: 3}
   quizLiberadoSource: {fileID: 0}
 --- !u!1 &1432832271 stripped
 GameObject:
@@ -39841,6 +39841,10 @@ PrefabInstance:
       propertyPath: projetilBossAcido
       value: 
       objectReference: {fileID: 1140896709}
+    - target: {fileID: 669315096349226174, guid: 19a992c8bc121174792b93548507a5a0, type: 3}
+      propertyPath: somAtaqueBossClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4419b4957404b78429b6897f3bd5cd87, type: 3}
     - target: {fileID: 4360598679174691596, guid: 19a992c8bc121174792b93548507a5a0, type: 3}
       propertyPath: m_Name
       value: Boss
@@ -40099,6 +40103,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 9053500492245370835, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
+      propertyPath: somArmaClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c4e0e22a5e2607e44874f59014438c72, type: 3}
     - target: {fileID: 9053500492245370835, guid: 96809ca73e19a9f4ead921f03b40c264, type: 3}
       propertyPath: nextFireTime
       value: 4
@@ -40863,9 +40871,9 @@ MonoBehaviour:
   quizManager: {fileID: 1665457459}
   spawner: {fileID: 377888581}
   somPortaSource: {fileID: 0}
-  somPortaClip: {fileID: 0}
+  somPortaClip: {fileID: 8300000, guid: d7a5a7448c905d6479042e6b07b213c6, type: 3}
   AudioTocou: 0
-  quizLiberadoClip: {fileID: 0}
+  quizLiberadoClip: {fileID: 8300000, guid: 56be9c8c254253449bbb818197008e88, type: 3}
   quizLiberadoSource: {fileID: 0}
 --- !u!4 &8406668939675555831
 Transform:
@@ -40987,6 +40995,10 @@ PrefabInstance:
     - target: {fileID: 7916989067705164757, guid: 92e574079172b9a49acf599393157f73, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7916989067705164757, guid: 92e574079172b9a49acf599393157f73, type: 3}
+      propertyPath: AudioTocou
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7916989067705164757, guid: 92e574079172b9a49acf599393157f73, type: 3}
       propertyPath: somPortaClip

@@ -37,6 +37,10 @@ public class slimeBoss : MonoBehaviour
     private int stageBoss = 0;
     private bool morto = false;
 
+    public AudioSource somAtaqueBossSource;
+
+    public AudioClip somAtaqueBossClip;
+
     public Material Material1; // arrastar o material verde da bala ácido
     public Material Material2; // arrastar o material roxo da bala base
 
@@ -56,6 +60,10 @@ public class slimeBoss : MonoBehaviour
         player = GameObject.Find("Player (1)");
         fixedY = transform.position.y;
         StartCoroutine(AttackTimer());
+
+        somAtaqueBossSource.clip = somAtaqueBossClip;
+        somAtaqueBossSource.playOnAwake = false;
+        somAtaqueBossSource.volume = 0.4f;
     }
 
     void Update()
@@ -167,6 +175,7 @@ public class slimeBoss : MonoBehaviour
             if (!morto)
             {
                 Fire();
+                somAtaqueBossSource.Play();
             }
             yield return new WaitForSeconds(shootInterval);
         }

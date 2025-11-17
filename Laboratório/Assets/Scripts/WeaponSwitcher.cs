@@ -62,7 +62,7 @@ public class WeaponSwitcher : MonoBehaviour
 
         somArmaSource.clip = somArmaClip;
         somArmaSource.playOnAwake = false;
-        somArmaSource.volume = 0.2f;
+        somArmaSource.volume = 0.1f;
     }
 
     void Update()
