@@ -22630,7 +22630,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 881905770}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: mainMenu
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35236,7 +35236,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 881905770}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

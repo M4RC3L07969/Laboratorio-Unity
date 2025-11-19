@@ -3,7 +3,17 @@ guid: e8d92cfc37f542443b643b3f175c50b7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - groundCheck: {instanceID: 0}
+  - gameManager: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - shieldVisual: {instanceID: 0}
+  - footstepSource: {instanceID: 0}
+  - playerHitSource: {instanceID: 0}
+  - lowHPSource: {instanceID: 0}
+  - lowHP: {fileID: 8300000, guid: 175600ccbe37e164981c122b3922f0df, type: 3}
+  - footstepClip: {instanceID: 0}
+  - playerHit: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
