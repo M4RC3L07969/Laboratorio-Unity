@@ -57,7 +57,7 @@ public class slimeBoss : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player (1)");
+        player = GameObject.Find("Player");
         fixedY = transform.position.y;
         StartCoroutine(AttackTimer());
 
